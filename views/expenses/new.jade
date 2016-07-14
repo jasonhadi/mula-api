@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+    h1.
+        #{title}
+    form#formAddExpense(name="addexpense",method="post",action="/expenses")
+        p Username: 
+            input#inputUsername(type="text", placeholder="ex. jhadi", name="username")
+        p Expense Currency: 
+            input#inputExpCurrency(type="text", placeholder="ex. CAD", name="expCurrency")
+        p Reimburse Currency: 
+            input#inputReimbCurrency(type="text", placeholder="ex. CAD", name="reimbCurrency")
+        p Oldest Bill Date: 
+            input#inputOldestBillDate(type="date", name="oldestBillDate")
+        p
+            button#btnSubmit(type="submit") submit
