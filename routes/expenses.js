@@ -50,12 +50,16 @@ router.route('/')
         });
     });
 
+router.get('/new', function(req, res) {
+    res.render('expenses/new', { title: 'Add new expense' });
+});
+
 router.param('id', function(req, res, next, id) {
     mongoose.model('Expense').findById(id, function (err, expense) {
         if (err) {
-            console.log(id + ' was not found');
+            console.log('Expense ' + id + ' was not found');
             res.status(500);
-            err = new Error('ID Not Found');
+            err = new Error('Expense ID Not Found');
             err.status = 500;
 	    res.json({message : err.status  + ' ' + err});
         } else {
@@ -78,8 +82,6 @@ router.route('/:id')
     });
   });
 
-router.get('/new', function(req, res) {
-    res.render('expenses/new', { title: 'Add new expense' });
-});
+
 
 module.exports = router;

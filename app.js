@@ -6,10 +6,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var db = require('./models/db');
-var expense = require ('./models/expenses');
+var quixpense = require ('./models/quixpense.js');
 
 var routes = require('./routes/index');
 var expenses = require('./routes/expenses');
+var activities = require('./routes/activities');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/expenses', expenses);
+app.use('/activities', activities);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

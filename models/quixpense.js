@@ -27,6 +27,8 @@ var ExpenseSchema = new mongoose.Schema({
 	oldestBillDate: Date,
 	activities: [ ActivitySchema ],    
     	receipts: [ ReceiptSchema ],
+    	activityCount: { type: Number, default: 0 },
+    	receiptCount: { type: Number, default: 0 },
 	created: { type: Date, default: Date.now },
 	lastUpdated: { type: Date, default: Date.now }
 });
