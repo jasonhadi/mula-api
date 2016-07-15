@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+    h1.
+        #{title}
+    form#formAddReceipt(name="addreceipt",method="post",action="/receipts")
+        p ExpenseID: 
+            input#inputExpenseId(type="text", placeholder="ex. 5787da0f277680df5eb77123", name="expenseId")
+        p ActivityID: 
+            input#inputActivityId(type="text", placeholder="ex. 5787da0f277680df5eb77123", name="activityId")
+        p ImgID: 
+            input#inputImgId(type="text", placeholder="ex. 5787da0f277680df5eb77123", name="imgId")
+        p Where: 
+            input#inputWhere(type="text", placeholder="ex. O", name="where")
+        p Type: 
+            input#inputType(type="text", placeholder="ex. Gifts", name="type")
+        p Value: 
+            input#inputProject(type="number", name="number")
+        p
+            button#btnSubmit(type="submit") submit

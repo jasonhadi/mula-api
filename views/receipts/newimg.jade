@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+    h1.
+        #{title}
+    form#formAddImage(name="addimage",method="post",action="/receipts/img", enctype="multipart/form-data")
+        p Image: 
+            input#inputImg(type="file", name="img")
+        p
+            button#btnSubmit(type="submit") submit

@@ -23,7 +23,6 @@ router.route('/')
     })
     .post(function(req, res) {
 	var expenseId = req.body.expenseId;
-    	var number = req.body.number;
 	var type = req.body.type;
     	var clientName = req.body.clientName;
 	var project = req.body.project;
@@ -34,18 +33,18 @@ router.route('/')
         mongoose.model('Expense').findById(expenseId, function (err, expense) {
 		console.log( JSON.stringify(expense) );
 		if (err) { 
-			console.log('Expense ' + id + ' was not found');
+			console.log('Expense ' + expenseId + ' was not found');
 			res.status(500);
 			err = new Error('Expense ID Not Found');
 			err.status = 500;
 			res.json({message : err.status  + ' ' + err});
 		} else {
 			mongoose.model('Activity').create({
-				number: number,
 				type: type,
 				clientName: clientName,
 				project: project,
 				description: description,
+				parentExpense: expenseId,
 				created: created,
 				lastUpdated: lastUpdated
 			}, function (err, activity) {
@@ -61,9 +60,9 @@ router.route('/')
 					expense.lastUpdated = new Date();
 					expense.save(function (err) {
 						if (err) {
-							console.log("Could not create Activity!");
+							console.log("Could not save expense!");
 							res.status(500);
-							err = new Error("Could not create Activity!");
+							err = new Error("Could not save expense!");
 							err.status = 500;
 							res.json({message : err.status  + ' ' + err});
 						} else {
@@ -109,7 +108,5 @@ router.route('/:id')
       }
     });
   });
-
-
 
 module.exports = router;

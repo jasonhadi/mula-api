@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var multer = require('multer');
 
 var db = require('./models/db');
 var quixpense = require ('./models/quixpense.js');
@@ -11,6 +12,7 @@ var quixpense = require ('./models/quixpense.js');
 var routes = require('./routes/index');
 var expenses = require('./routes/expenses');
 var activities = require('./routes/activities');
+var receipts = require('./routes/receipts');
 
 var app = express();
 
@@ -26,9 +28,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(multer({ dest: './uploads/',
+ rename: function (fieldname, filename) {
+   return filename;
+ },
+}));
+
 app.use('/', routes);
 app.use('/expenses', expenses);
 app.use('/activities', activities);
+app.use('/receipts', receipts);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
