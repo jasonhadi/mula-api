@@ -5,7 +5,8 @@ var express = require('express'),
     methodOverride = require('method-override'), //used to manipulate POST
     fs = require('fs'),
     gm = require('gm').subClass({imageMagick: true}),
-    multer = require('multer');
+    multer = require('multer'),
+    receiptController = require('../controllers/receipts');
 
 var uploads = multer({
   dest: './uploads/'
@@ -22,67 +23,15 @@ router.use(methodOverride(function(req, res){
 }));
 
 router.route('/')
-    .get(function(req, res, next) {
-        mongoose.model('Receipt').find({}, function (err, activities) {
-              if (err) { return console.error(err); }
-	      else { res.json(activities); }     
-        });
+    .get(function(req, res) {
+	    receiptController.getReceipts(req, res, function(receipts) {
+		res.json(receipts);	    
+	    });
     })
     .post(function(req, res) {
-	var activityId = req.body.activityId;
-	var imgId = req.body.imgId;
-	var where = req.body.where;
-	var type = req.body.type;
-    	var value = req.body.value;
-	var created = req.body.created;
-	var lastUpdated = req.body.lastUpdated;
-
-        mongoose.model('Activity').findById(activityId, function (err, activity) {
-		console.log( JSON.stringify(activity) );
-		if (err) { 
-			console.log('Activity ' + id + ' was not found');
-			res.status(500);
-			err = new Error('Activity ID Not Found');
-			err.status = 500;
-			res.json({message : err.status  + ' ' + err});
-		} else {
-			mongoose.model('Receipt').create({
-				where: where,
-				type: type,
-				value: value,
-				imgId: imgId,
-				parentActivity: activityId,
-				parentExpense: activityId.parentExpense,
-				created: created,
-				lastUpdated: lastUpdated
-			}, function (err, receipt) {
-				if(err) {
-					console.log("Could not create Receipt!");
-					res.status(500);
-					err = new Error("Could not create Receipt!");
-					err.status = 500;
-					res.json({message : err.status  + ' ' + err});
-				} else {
-					console.log( JSON.stringify(activity) );
-					activity.receipts.push(receipt);
-					activity.lastUpdated = new Date();
-					mongoose.model('Expense').update( { _id: activity.parentExpense }, { $set: { lastUpdated: new Date() }}, { } );
-					activity.save(function (err) {
-						if (err) {
-							console.log("Could not save Activity!");
-							res.status(500);
-							err = new Error("Could not save Activity!");
-							err.status = 500;
-							res.json({message : err.status  + ' ' + err});
-						} else {
-							res.json(activity);
-						}
-					});
-				}
-			});
-
-		}
-	});
+	    receiptController.newReceipt(req, res, function(receipt) {
+		res.json(receipt);	    
+	    });
     });
 
 router.get('/new', function(req, res) {
@@ -94,41 +43,16 @@ router.route('/img')
 	    res.render('receipts/newimg', { title: 'Add new image' });
     })
     .post(uploads.single('img'), function(req, res) { 
-	console.log( JSON.stringify(req.file) );
-	
-	var data = fs.readFileSync(req.file.path);
-	var contentType = req.file.mimetype;
-	
-	gm(data, req.file.filename + ".jpg")
-	    .page(647, 792)
-	    .toBuffer('PDF', function (err, pdf) {
-		    if(err) { console.log("PDF error"); } 
-		    mongoose.model('Image').create({
-			    img: {
-				    data: pdf,
-			    	    contentType: 'application/pdf'
-			    }
-		    }, function (err, image) {
-			    if(err) {
-				    console.log("Could not create Image!");
-				    res.status(500);
-				    err = new Error("Could not create Image!");
-				    err.status = 500;
-				    res.json({message : err.status  + ' ' + err});
-			    } else {
-				    var img64 = image.img.data;
-				    var img = new Buffer(img64, 'base64');
+	  receiptController.newReceiptImg(req, res, function(image) {
+		  var img64 = image.img.data;
+		  var img = new Buffer(img64, 'base64');
 
-				    res.writeHead(200, {
-					    'Content-Type': image.img.contentType,
-					    'Content-Length': img.length
-				    });
-				    res.end(img);
-			    }
-		    });
-
-	    });
-
+		  res.writeHead(200, {
+			  'Content-Type': image.img.contentType,
+			  'Content-Length': img.length
+		  });
+		  res.end(img);
+	  });
     });
 
 router.get('/img/new', function(req, res) {
@@ -136,60 +60,32 @@ router.get('/img/new', function(req, res) {
 });
 
 router.param('img_id', function(req, res, next, id) {
-    mongoose.model('Image').findById(id, function (err, activity) {
-        if (err) {
-            console.log(id + ' image was not found');
-            res.status(404);
-            err = new Error('Image ID Not Found');
-            err.status = 404;
-	    res.json({message : err.status  + ' ' + err});
-        } else {
-            console.log(activity);
-            req.id = id;
-            next(); 
-        } 
-    });
+	receiptController.verifyReceiptImgId(req, res, next, id);
 });
 
 router.route('/img/:img_id')
    .get(function(req, res) {
-   	mongoose.model('Image').findById(req.img_id, function (err, image) {
-   		if (err) {
-   			console.log('GET Error: There was a problem retrieving: ' + err);
-   		} else {
-   			console.log('GET Retrieving ID: ' + image._id);
-			res.contentType(image.img.contentType);			
-			res.send(image.img.data);
-   		}
-   	});
+	  receiptController.getReceiptImgById(req, res, function(image) {
+		  var img64 = image.img.data;
+		  var img = new Buffer(img64, 'base64');
+
+		  res.writeHead(200, {
+			  'Content-Type': image.img.contentType,
+			  'Content-Length': img.length
+		  });
+		  res.end(img);
+	  });
    });
 
 router.param('id', function(req, res, next, id) {
-    mongoose.model('Receipt').findById(id, function (err, receipt) {
-        if (err) {
-            console.log(id + ' was not found');
-            res.status(404);
-            err = new Error('ID Not Found');
-            err.status = 404;
-	    res.json({message : err.status  + ' ' + err});
-        } else {
-            console.log(receipt);
-            req.id = id;
-            next(); 
-        } 
-    });
+    receiptController.verifyReceiptId(req, res, next, id);
 });
 
 router.route('/:id')
   .get(function(req, res) {
-    mongoose.model('Receipt').findById(req.id, function (err, receipt) {
-      if (err) {
-        console.log('GET Error: There was a problem retrieving: ' + err);
-      } else {
-        console.log('GET Retrieving ID: ' + receipt._id);
-	res.json(receipt);
-      }
-    });
+	  receiptController.getReceiptById(req, res, function(receipt) {
+		  res.json(receipt);	    
+	  });
   });
 
 

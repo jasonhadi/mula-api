@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var ImageSchema = new mongoose.Schema({
+    	username: String,
 	img: {
 		data: Buffer,
     		contentType: String
@@ -13,6 +14,7 @@ var ReceiptSchema = new mongoose.Schema({
 		number: Number,
 		activity: Number
 	},
+    	username: String,
     	where: String,
     	type: Number,
     	value: Number,
@@ -27,6 +29,7 @@ var ActivitySchema = new mongoose.Schema({
 		sheetNumber: {type: Number, default: 0 },
 		number: Number
 	}],
+    	username: String,
 	type: String,
     	clientName: String,
     	project: String,

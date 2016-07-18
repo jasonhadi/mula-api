@@ -2,7 +2,8 @@ var express = require('express'),
     router = express.Router(),
     mongoose = require('mongoose'), //mongo connection
     bodyParser = require('body-parser'), //parses information from POST
-    methodOverride = require('method-override'); //used to manipulate POST
+    methodOverride = require('method-override'), //used to manipulate POST
+    expenseController = require('../controllers/expenses');
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(methodOverride(function(req, res){
@@ -15,39 +16,15 @@ router.use(methodOverride(function(req, res){
 }));
 
 router.route('/')
-    .get(function(req, res, next) {
-        mongoose.model('Expense').find({}, function (err, expenses) {
-              if (err) { return console.error(err); }
-	      else { res.json(expenses); }     
-        });
+    .get(function(req, res) {
+	    expenseController.getExpenses(req, res, function(expenses) {
+		res.json(expenses);	    
+	    });
     })
     .post(function(req, res) {
-	var name = req.body.name;
-    	var username = req.body.username;
-	var submitDate = req.body.submitDate;
-    	var expCurrency = req.body.expCurrency;
-	var reimbCurrency = req.body.reimbCurrency;
-	var oldestBillDate = req.body.oldestBillDate;
-	var created = req.body.created;
-	var lastUpdated = req.body.lastUpdated;
-
-        mongoose.model('Expense').create({
-		name : name,
-		username : username,
-		submitDate : submitDate,
-		expCurrency : expCurrency,
-		reimbCurrency : reimbCurrency,
-		oldestBillDate : oldestBillDate,
-		created : created,
-		lastUpdated : lastUpdated
-        }, function (err, expense) {
-              if (err) {
-                  res.send("There was a problem adding the information to the database.");
-              } else {
-                  console.log('POST creating new expense: ' + expense);
-		  res.json(expense);
-              }
-        });
+	    expenseController.newExpense(req, res, function(expense) {
+		res.json(expense);	    
+	    });
     });
 
 router.get('/new', function(req, res) {
@@ -55,33 +32,14 @@ router.get('/new', function(req, res) {
 });
 
 router.param('id', function(req, res, next, id) {
-    mongoose.model('Expense').findById(id, function (err, expense) {
-        if (err) {
-            console.log('Expense ' + id + ' was not found');
-            res.status(500);
-            err = new Error('Expense ID Not Found');
-            err.status = 500;
-	    res.json({message : err.status  + ' ' + err});
-        } else {
-            console.log(expense);
-            req.id = id;
-            next(); 
-        } 
-    });
+	expenseController.verifyExpenseId(req, res, next, id);
 });
 
 router.route('/:id')
-  .get(function(req, res) {
-    mongoose.model('Expense').findById(req.id, function (err, expense) {
-      if (err) {
-        console.log('GET Error: There was a problem retrieving: ' + err);
-      } else {
-        console.log('GET Retrieving ID: ' + expense._id);
-	res.json(expense);
-      }
+    .get(function(req, res) {
+	    expenseController.getExpenseById(req, res, function(expense) {
+		res.json(expense);	    
+	    });
     });
-  });
-
-
 
 module.exports = router;
