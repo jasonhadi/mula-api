@@ -4,6 +4,7 @@ var express = require('express'),
     bodyParser = require('body-parser'), //parses information from POST
     methodOverride = require('method-override'), //used to manipulate POST
     fs = require('fs'),
+    gm = require('gm').subClass({imageMagick: true}),
     multer = require('multer');
 
 var uploads = multer({
@@ -97,30 +98,37 @@ router.route('/img')
 	
 	var data = fs.readFileSync(req.file.path);
 	var contentType = req.file.mimetype;
+	
+	gm(data, req.file.filename + ".jpg")
+	    .page(647, 792)
+	    .toBuffer('PDF', function (err, pdf) {
+		    if(err) { console.log("PDF error"); } 
+		    mongoose.model('Image').create({
+			    img: {
+				    data: pdf,
+			    	    contentType: 'application/pdf'
+			    }
+		    }, function (err, image) {
+			    if(err) {
+				    console.log("Could not create Image!");
+				    res.status(500);
+				    err = new Error("Could not create Image!");
+				    err.status = 500;
+				    res.json({message : err.status  + ' ' + err});
+			    } else {
+				    var img64 = image.img.data;
+				    var img = new Buffer(img64, 'base64');
 
-	mongoose.model('Image').create({
-		img: {
-			data: data,
-			contentType: contentType
-		}
-	}, function (err, image) {
-		if(err) {
-			console.log("Could not create Image!");
-			res.status(500);
-			err = new Error("Could not create Image!");
-			err.status = 500;
-			res.json({message : err.status  + ' ' + err});
-		} else {
-			var img64 = image.img.data;
-			var img = new Buffer(img64, 'base64');
+				    res.writeHead(200, {
+					    'Content-Type': image.img.contentType,
+					    'Content-Length': img.length
+				    });
+				    res.end(img);
+			    }
+		    });
 
-			res.writeHead(200, {
-				'Content-Type': 'image/jpeg',
-				'Content-Length': img.length
-			});
-			res.end(img);
-		}
-	});
+	    });
+
     });
 
 router.get('/img/new', function(req, res) {
