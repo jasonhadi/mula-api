@@ -28,12 +28,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(multer({ dest: './uploads/',
- rename: function (fieldname, filename) {
-   return filename;
- },
-}));
-
 app.use('/', routes);
 app.use('/expenses', expenses);
 app.use('/activities', activities);

@@ -6,6 +6,10 @@ var express = require('express'),
     fs = require('fs'),
     multer = require('multer');
 
+var uploads = multer({
+  dest: './uploads/'
+});
+
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(methodOverride(function(req, res){
       if (req.body && typeof req.body === 'object' && '_method' in req.body) {
@@ -88,11 +92,11 @@ router.route('/img')
     .get(function(req, res) {
 	    res.render('receipts/newimg', { title: 'Add new image' });
     })
-    .post(function(req, res) { 
-	var data = req.body.data;
-	var contentType = req.body.type;
-
-	console.log( JSON.stringify(req.files) );
+    .post(uploads.single('img'), function(req, res) { 
+	console.log( JSON.stringify(req.file) );
+	
+	var data = fs.readFileSync(req.file.path);
+	var contentType = req.file.mimetype;
 
 	mongoose.model('Image').create({
 		img: {
@@ -107,12 +111,16 @@ router.route('/img')
 			err.status = 500;
 			res.json({message : err.status  + ' ' + err});
 		} else {
-			console.log( JSON.stringify(image) );
-			res.contentType(image.img.contentType);			
-			res.send(image.img.data);
+			var img64 = image.img.data;
+			var img = new Buffer(img64, 'base64');
+
+			res.writeHead(200, {
+				'Content-Type': 'image/jpeg',
+				'Content-Length': img.length
+			});
+			res.end(img);
 		}
 	});
-
     });
 
 router.get('/img/new', function(req, res) {
