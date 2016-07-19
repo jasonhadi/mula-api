@@ -16,7 +16,7 @@ var ReceiptSchema = new mongoose.Schema({
 	},
     	username: String,
     	where: String,
-    	type: Number,
+    	type: String,
     	value: Number,
     	imgId: mongoose.Schema.Types.ObjectId,
     	parentActivity: mongoose.Schema.Types.ObjectId,
@@ -54,6 +54,7 @@ var ExpenseSchema = new mongoose.Schema({
 	lastUpdated: { type: Date, default: Date.now }
 });
 	    
+
 mongoose.model('Image', ImageSchema);
 mongoose.model('Receipt', ReceiptSchema);
 mongoose.model('Activity', ActivitySchema);

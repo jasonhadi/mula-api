@@ -19,6 +19,7 @@ module.exports = {
 	},
 
 	newReceipt: function(req, res, next) {
+		var expenseId = req.body.expenseId;
 		var activityId = req.body.activityId;
 		var imgId = req.body.imgId;
 		var where = req.body.where;
@@ -27,53 +28,34 @@ module.exports = {
 		var created = req.body.created;
 		var lastUpdated = req.body.lastUpdated;
 	
-	        mongoose.model('Activity').findById(activityId, function (err, activity) {
-			console.log( JSON.stringify(activity) );
-			if (err) { 
-				console.log('Activity ' + id + ' was not found');
+		
+	        mongoose.model('Expense').findById(expenseId, function (err, expense) {
+			if (err) {
+				console.log(id + ' was not found');
 				res.status(500);
-				err = new Error('Activity ID Not Found');
+				err = new Error('ID Not Found');
 				err.status = 500;
 				res.json({message : err.status  + ' ' + err});
-			} else {
+			}
+		       	else {
 				mongoose.model('Receipt').create({
 					where: where,
 					type: type,
 					value: value,
 					imgId: imgId,
 					parentActivity: activityId,
-					parentExpense: activityId.parentExpense,
-					created: created,
-					lastUpdated: lastUpdated
+					parentExpense: expenseId
 				}, function (err, receipt) {
-					if(err) {
-						console.log("Could not create Receipt!");
-						res.status(500);
-						err = new Error("Could not create Receipt!");
-						err.status = 500;
-						res.json({message : err.status  + ' ' + err});
-					} else {
-						console.log( JSON.stringify(activity) );
-						activity.receipts.push(receipt);
-						activity.lastUpdated = new Date();
-						mongoose.model('Expense').update( { _id: activity.parentExpense }, { $set: { lastUpdated: new Date() }}, { } );
-						activity.save(function (err) {
-							if (err) {
-								console.log("Could not save Activity!");
-								res.status(500);
-								err = new Error("Could not save Activity!");
-								err.status = 500;
-								res.json({message : err.status  + ' ' + err});
-							} else {
-								next(activity);
-							}
-						});
-					}
+					var activity = expense.activities.id(activityId);
+					activity.receipts.push(receipt);
+					activity.lastUpdated = new Date();
+					expense.lastUpdated = new Date();
+					expense.receiptCount = expense.receiptCount + 1;
+					expense.save();
+					next(expense);
 				});
-	
 			}
 		});
-
 	},
 
 
