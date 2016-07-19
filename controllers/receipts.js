@@ -111,11 +111,10 @@ module.exports = {
 	},
 
 	getReceiptImgById: function(req, res, next) { 
-	   	mongoose.model('Image').findById(req.img_id, function (err, image) {
+	   	mongoose.model('Image').findById(req.id, function (err, image) {
 			if (err) {
 				console.log('GET Error: There was a problem retrieving: ' + err);
 			} else {
-				console.log('GET Retrieving ID: ' + image._id);
 				next(image);
 			}
 		});

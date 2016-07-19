@@ -9,11 +9,9 @@ var ImageSchema = new mongoose.Schema({
 });
 
 var ReceiptSchema = new mongoose.Schema({
-    	row: {
-		sheetNumber: {type: Number, default: 0 },
-		number: Number,
-		activity: Number
-	},
+	sheetNumber: {type: Number, default: 0 },
+    	number: { type: Number, default: 0 },
+    	activity: { type: Number, default: 0 },
     	username: String,
     	where: String,
     	type: String,
@@ -27,7 +25,7 @@ var ReceiptSchema = new mongoose.Schema({
 var ActivitySchema = new mongoose.Schema({
     	row: [{
 		sheetNumber: {type: Number, default: 0 },
-		number: Number
+		number: { type: Number, default: 0 }
 	}],
     	username: String,
 	type: String,

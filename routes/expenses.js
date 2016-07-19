@@ -35,10 +35,24 @@ router.param('id', function(req, res, next, id) {
 	expenseController.verifyExpenseId(req, res, next, id);
 });
 
+router.route('/export/:id')
+    .get(function(req, res) {
+	    expenseController.exportExpense(req, res, function(expense) {
+		res.json(expense);	    
+	    });
+    });
+
 router.route('/:id')
     .get(function(req, res) {
-	    expenseController.getExpenseById(req, res, function(expense) {
-		res.json(expense);	    
+	    expenseController.getExpenseById(req, res, function(image) {
+		  var img64 = image.img.data;
+		  var img = new Buffer(img64, 'base64');
+
+		  res.writeHead(200, {
+			  'Content-Type': image.img.contentType,
+			  'Content-Length': img.length
+		  });
+		  res.end(img);
 	    });
     });
 

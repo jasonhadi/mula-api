@@ -17,9 +17,11 @@
     "gm": "^1.22.0",
     "jade": "~1.11.0",
     "method-override": "^2.3.6",
+    "mkdirp": "^0.5.1",
     "mongoose": "^4.5.4",
     "morgan": "~1.7.0",
     "multer": "^1.1.0",
+    "pdf-merge": "0.0.4",
     "serve-favicon": "~2.3.0"
   }
 }
