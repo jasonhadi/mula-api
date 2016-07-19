@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 
 var ImageSchema = new mongoose.Schema({
     	username: String,
+    	parentExpense: mongoose.Schema.Types.ObjectId,
+    	sheetNumber: Number,
 	img: {
 		data: Buffer,
     		contentType: String

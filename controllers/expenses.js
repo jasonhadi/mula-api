@@ -62,7 +62,7 @@ var batchImages = function(expenseId, sheetNumber, next) {
 			mongoose.model('Receipt').find({ parentExpense: expenseId, sheetNumber: sheetNumber }, null, { sort: { number: 1 } }, function (err, receipts) {
 				console.log( JSON.stringify(receipts) );
 				for(var i = 0; i < receipts.length; i++ ) {
-					labelImage(receipts[i].imgId, receipts[i].number, sheetNumber, path, pdfs, receipts.length, combinePdf, next);
+					labelImage(expenseId, receipts[i].imgId, receipts[i].number, sheetNumber, path, pdfs, receipts.length, combinePdf, next);
 				}	
 			});
 		}
@@ -87,6 +87,7 @@ var combinePdf = function(pdfs, next) {
 					err.status = 500;
 					res.json({message : err.status  + ' ' + err});
 				} else {
+
 					next(image);							
 				}
 			});
@@ -95,7 +96,7 @@ var combinePdf = function(pdfs, next) {
 	});
 };
 
-var labelImage = function(imgId, receiptNumber, sheetNumber, path, pdfs, receiptCount, combinePdf, next) {
+var labelImage = function(expenseId, imgId, receiptNumber, sheetNumber, path, pdfs, receiptCount, combinePdf, next) {
 	mongoose.model('Image').findById(imgId, function (err, image) {
 		if(err) {  }
 		else {
@@ -113,6 +114,9 @@ var labelImage = function(imgId, receiptNumber, sheetNumber, path, pdfs, receipt
 					pdfs.push(fn);
 					if(receiptCount	== pdfs.length) {
 						combinePdf(pdfs, next);
+						image.parentExpense = expenseId;
+						image.sheetNumber = sheetNumber;
+						image.save();
 					}
 				});
 		}	
