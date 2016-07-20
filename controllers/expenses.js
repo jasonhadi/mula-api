@@ -10,7 +10,8 @@ mongoose.set('debug', true);
 var sheetReceiptRowsCount = 27;
 var sheetActivityRowsCount = 5;
 
-var calculateSheets = function(expenseId, batch, next) {
+var calculateSheets = function(expenseId, next) {
+	console.log("calculatesheets");
 	mongoose.model('Expense').findById(expenseId, function (err, expense) {
 		var activities = expense.activities;
 		if(expense.receiptCount <= sheetReceiptRowsCount) {
@@ -38,11 +39,12 @@ var calculateSheets = function(expenseId, batch, next) {
 		} else { 
 
 		}
-		expense.save( batch(expenseId, expense.sheetCount, next) );
+		expense.save( batchImages(expenseId, expense.sheetCount, next) );
 	});
 };
 
 var setReceiptSheet = function( receiptId, sheetNumber, number, activity) {
+	console.log("setreceiptsheet");
 	mongoose.model('Receipt').findById(receiptId, function (err, receipt) {
 		receipt.sheetNumber = sheetNumber;
 		receipt.number = number;
@@ -69,16 +71,20 @@ var batchImages = function(expenseId, sheetNumber, next) {
 	});
 };
 
-var combinePdf = function(pdfs, next) {
-	var pdfm = new PDFMerge(pdfs);
+var combinePdf = function(pdfs, expenseId, sheetNumber, next) {
+	console.log("combinepdf");
+	var pdfm = new PDFMerge(pdfs.sort());
 	pdfm.merge(function(err, outpdf) {
 		if(err) { }
 		else {
 			mongoose.model('Image').create({
 				img: {
 					data: outpdf,
-					contentType: 'application/pdf'
-				}
+					contentType: 'application/pdf',
+				}, 
+				parentExpense: expenseId,
+				sheetNumber: sheetNumber,
+				combined: true
 			}, function (err, image) {
 				if(err) {
 					console.log("Could not create Image!");
@@ -97,6 +103,8 @@ var combinePdf = function(pdfs, next) {
 };
 
 var labelImage = function(expenseId, imgId, receiptNumber, sheetNumber, path, pdfs, receiptCount, combinePdf, next) {
+	console.log("labelimage");
+	console.log("LI: " + imgId);
 	mongoose.model('Image').findById(imgId, function (err, image) {
 		if(err) {  }
 		else {
@@ -113,7 +121,7 @@ var labelImage = function(expenseId, imgId, receiptNumber, sheetNumber, path, pd
 					if(err) { console.log(err); }	
 					pdfs.push(fn);
 					if(receiptCount	== pdfs.length) {
-						combinePdf(pdfs, next);
+						combinePdf(pdfs, expenseId, sheetNumber, next);
 						image.parentExpense = expenseId;
 						image.sheetNumber = sheetNumber;
 						image.save();
@@ -123,6 +131,18 @@ var labelImage = function(expenseId, imgId, receiptNumber, sheetNumber, path, pd
 	});	
 };
 
+var clearExports = function(expenseId, cs, next) {
+	console.log('clearexports');
+	mongoose.model('Image').find({ combined: true}, function(err, images) {
+		if (err) throw err;
+		console.log("CE: " + images.length);
+		for(var i = 0; i < images.length; i++ ) {
+			images[i].remove();	
+		}
+
+		cs(expenseId, next);
+	});
+};
 
 
 module.exports = {
@@ -187,6 +207,6 @@ module.exports = {
 	},
 
 	exportExpense: function(req, res, next) {
-		calculateSheets(req.id, batchImages, next);
+		clearExports(req.id, calculateSheets, next);
 	}
 };

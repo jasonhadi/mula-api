@@ -4,6 +4,7 @@ var ImageSchema = new mongoose.Schema({
     	username: String,
     	parentExpense: mongoose.Schema.Types.ObjectId,
     	sheetNumber: Number,
+    	combined: Boolean,
 	img: {
 		data: Buffer,
     		contentType: String
