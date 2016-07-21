@@ -49,6 +49,13 @@ router.route('/export/:id')
 	    });
     });
 
+router.route('/xml/:id')
+    .get(function(req, res) {
+	    expenseController.exportExpenseXml(req, res, function(xml) {
+		res.header('Content-Type', 'text/xml').send(xml);
+	    });
+    });
+
 router.route('/:id')
     .get(function(req, res) {
 	    expenseController.getExpenseById(req, res, function(expense) {

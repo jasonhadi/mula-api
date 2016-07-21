@@ -1,6 +1,7 @@
 var mongoose = require('mongoose'), //mongo connection
     bodyParser = require('body-parser'), //parses information from POST
     methodOverride = require('method-override'), //used to manipulate POST
+    js2xmlparser = require('js2xmlparser'),
     mkdirp = require('mkdirp'),
     PDFMerge = require('pdf-merge'),
     gm = require('gm').subClass({imageMagick: true});
@@ -208,5 +209,18 @@ module.exports = {
 
 	exportExpense: function(req, res, next) {
 		clearExports(req.id, calculateSheets, next);
+	},
+
+	exportExpenseXml: function( req, res, next) {
+	    mongoose.model('Expense').findById(req.id).exec( function (err, expense) {
+	      if (err) {
+	        console.log('GET Error: There was a problem retrieving: ' + err);
+	      } else {
+	        console.log('GET Retrieving ID: ' + expense._id);
+		var xml = js2xmlparser('expensesheet', JSON.stringify(expense));
+		console.log(xml);
+		next( xml );
+	      }
+	    });
 	}
 };
