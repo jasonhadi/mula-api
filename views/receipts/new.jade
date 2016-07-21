@@ -15,6 +15,6 @@ block content
         p Type: 
             input#inputType(type="text", placeholder="ex. Gifts", name="type")
         p Value: 
-            input#inputProject(type="number", name="number")
+            input#inputProject(type="number", step="0.01", min=0, name="value")
         p
             button#btnSubmit(type="submit") submit

@@ -18,6 +18,7 @@ var calculateSheets = function(expenseId, next) {
 		if(expense.receiptCount <= sheetReceiptRowsCount) {
 			if(activities.length <= sheetActivityRowsCount) { //Single sheet
 				var sheetNumber = 1;
+				var receiptNumber = 0;
 				for(var i = 0; i < activities.length; i++) {
 					var receipts = activities[i].receipts;
 					activities[i].row.push({
@@ -28,8 +29,10 @@ var calculateSheets = function(expenseId, next) {
 						console.log(receipts[j].id);
 
 						receipts[j].sheetNumber = sheetNumber;
-						receipts[j].number = j + 1;
+						receipts[j].number = receiptNumber;
 						receipts[j].activity = i;	
+
+						receiptNumber++;
 
 						setReceiptSheet(receipts[j].id, sheetNumber, j + 1, i );
 					}
