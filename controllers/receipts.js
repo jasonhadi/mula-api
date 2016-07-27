@@ -22,9 +22,10 @@ module.exports = {
 		var expenseId = req.body.expenseId;
 		var activityId = req.body.activityId;
 		var imgId = req.body.imgId;
+		var description = req.body.description;
 		var where = req.body.where;
 		var type = req.body.type;
-	    	var value = req.body.value;
+	    	var amount = req.body.amount;
 		var created = req.body.created;
 		var lastUpdated = req.body.lastUpdated;
 	
@@ -41,7 +42,7 @@ module.exports = {
 				mongoose.model('Receipt').create({
 					where: where,
 					type: type,
-					value: value,
+					amount: amount,
 					imgId: imgId,
 					parentActivity: activityId,
 					parentExpense: expenseId
