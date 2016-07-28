@@ -1,2 +1,4 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/quixpense');
+var config = require('../config');
+
+mongoose.connect(config.mongodb);
