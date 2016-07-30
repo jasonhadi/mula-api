@@ -14,6 +14,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "express": "~4.13.4",
+    "express-session": "^1.14.0",
     "gm": "^1.22.0",
     "jade": "~1.11.0",
     "js2xmlparser": "^1.0.0",
@@ -23,6 +24,8 @@
     "morgan": "~1.7.0",
     "mssql": "^3.3.0",
     "multer": "^1.1.0",
+    "passport": "^0.3.2",
+    "passport-ldapauth": "^0.5.0",
     "pdf-merge": "0.0.4",
     "serve-favicon": "~2.3.0"
   }

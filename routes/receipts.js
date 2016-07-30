@@ -1,4 +1,5 @@
 var express = require('express'),
+    session = require('express-session'),
     router = express.Router(),
     mongoose = require('mongoose'), //mongo connection
     bodyParser = require('body-parser'), //parses information from POST

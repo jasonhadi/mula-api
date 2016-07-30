@@ -1,20 +1,21 @@
 var express = require('express');
+var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var multer = require('multer');
+var passport = require('passport');
+var LdapStrategy = require('passport-ldapauth');
 
+var config = require('./config');
 var db = require('./models/db');
 var quixpense = require ('./models/quixpense.js');
 
-var routes = require('./routes/index');
-var expenses = require('./routes/expenses');
-var activities = require('./routes/activities');
-var receipts = require('./routes/receipts');
-
 var app = express();
+
+passport.use(new LdapStrategy(config.ldap));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,6 +28,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({ secret: 'islayscotch' }));
+app.use(passport.initialize());
+
+var routes = require('./routes/index')(passport);
+var expenses = require('./routes/expenses');
+var activities = require('./routes/activities');
+var receipts = require('./routes/receipts');
 
 app.use('/', routes);
 app.use('/expenses', expenses);
