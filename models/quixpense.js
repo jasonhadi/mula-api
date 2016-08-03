@@ -57,32 +57,20 @@ var ExpenseSchema = new mongoose.Schema({
 	lastUpdated: { type: Date, default: Date.now }
 });
 	    
-var ExportSchema = new mongoose.Schema({
+var UserSchema = new mongoose.Schema({
     	username: String,
-    	submitDate: Date,
     	expCurrency: String,
     	reimbCurrency: String,
-    	oldestBillDate: Date,
-    	activites: [{
-        	number: Number,
-        	assignment: String,
-        	project: String,
-        	clientName: String,
-        	description: String
-    	}],
-    	receipts: [{
-        	number: Number,
-        	activityNumber: Number,
-        	where: String,
-        	type: String,
-        	typeString: String,
-	        value: Number
-    	}],
-    	receiptPdf: String
+    	email: String,
+    	isCorporateCard: Boolean,
+    	cardType: String,
+    	bankType: String
 });   
 
-mongoose.model('Image', ImageSchema);
-mongoose.model('Receipt', ReceiptSchema);
-mongoose.model('Activity', ActivitySchema);
-mongoose.model('Expense', ExpenseSchema);
-mongoose.model('Export', ExportSchema);
+module.exports = {
+	ImageModel: mongoose.model('Image', ImageSchema),
+	ReceiptModel: mongoose.model('Receipt', ReceiptSchema),
+	ActivitytModel: mongoose.model('Activity', ActivitySchema),
+	ExpenseModel: mongoose.model('Expense', ExpenseSchema),
+	User: mongoose.model('User', UserSchema)
+};

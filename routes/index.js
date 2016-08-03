@@ -1,8 +1,8 @@
 var express = require('express'),
     router = express.Router(),
     bodyParser = require('body-parser'), //parses information from POST
-    methodOverride = require('method-override'); //used to manipulate POST
-
+    methodOverride = require('method-override'), //used to manipulate POST
+    userController = require('../controllers/users');
 
 module.exports = function(passport) {
 	router.use(bodyParser.urlencoded({ extended: true }));
@@ -17,6 +17,18 @@ module.exports = function(passport) {
 
 	router.get('/', function(req, res, next) {
 		res.render('index', { title: 'Express' });
+	});
+
+	router.post('/newuser', function(req, res, next) {
+		userController.newUser(req, res, function(user) {
+			res.json(user);
+		});
+	});
+
+	router.post('/user', function(req, res, next) {
+		userController.newUser(req, res, function(user) {
+			res.json(user);
+		});
 	});
 
 	router.get('/login', function(req, res, next) {
@@ -47,6 +59,17 @@ module.exports = function(passport) {
 	router.get('/logout', function(req, res, next) {
 		res.render('index', { title: 'Express' });
 	});
+
+	router.param('username', function(req, res, next, username) {
+		userController.verifyUser(req, res, next, username);
+	});
+
+	router.route('/user/:username')
+		.get(function(req, res) {
+			userController.getUser(req, res, function(user) {
+				res.json(user);
+			});
+		});
 
 	return router;
 };

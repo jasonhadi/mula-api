@@ -11,11 +11,23 @@ var LdapStrategy = require('passport-ldapauth');
 
 var config = require('./config');
 var db = require('./models/db');
-var quixpense = require ('./models/quixpense.js');
+var Quixpense = require ('./models/quixpense.js');
 
 var app = express();
 
 passport.use(new LdapStrategy(config.ldap));
+
+passport.serializeUser(function(user, next) {
+	console.log( JSON.stringify(user) );
+	next(null, user.sAMAccountName);
+});
+
+passport.deserializeUser(function(username, next) {
+	Quixpense.User.getUser(username, function(err, user) {
+		console.log( JSON.stringify(user) );
+		next(null, user);
+	});
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
