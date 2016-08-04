@@ -59,9 +59,10 @@ var ExpenseSchema = new mongoose.Schema({
 	    
 var UserSchema = new mongoose.Schema({
     	username: String,
+    	displayName: String,
+    	email: String,
     	expCurrency: String,
     	reimbCurrency: String,
-    	email: String,
     	isCorporateCard: Boolean,
     	cardType: String,
     	bankType: String

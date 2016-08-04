@@ -12,9 +12,10 @@ function newUser(req, res, next) {
 
 	Quixpense.User.create({
 		username: username, 
+		displayName: displayName, 
+		email: email, 
 		expCurrency: expCurrency,
 		reimbCurrency: reimbCurrency, 
-		email: email, 
 		isCorporateCard: isCorporateCard,
 		cardType: cardType,
 		bankType: bankType
