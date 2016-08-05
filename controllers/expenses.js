@@ -15,35 +15,65 @@ var calculateSheets = function(expenseId, next) {
 	console.log("calculatesheets");
 	mongoose.model('Expense').findById(expenseId, function (err, expense) {
 		var activities = expense.activities;
-		if(expense.receiptCount <= sheetReceiptRowsCount) {
-			if(activities.length <= sheetActivityRowsCount) { //Single sheet
-				var sheetNumber = 1;
-				var receiptNumber = 0;
-				for(var i = 0; i < activities.length; i++) {
-					var receipts = activities[i].receipts;
-					activities[i].row.push({
-							sheetNumber: sheetNumber,
-							number: i + 1	
-						});
-					for(var j = 0; j < receipts.length; j++) {
-						console.log(receipts[j].id);
+	
+		var receiptNumber = 1;
+		var currentActivity = 1;
+		var currentSheet = 1;
+		var oldestBillDate = "";
 
-						receipts[j].sheetNumber = sheetNumber;
-						receipts[j].number = receiptNumber;
-						receipts[j].activity = i;	
+		for(var i = 0; i < activities.length; i++) {
+			var receipts = activities[i].receipts;
 
-						receiptNumber++;
-
-						setReceiptSheet(receipts[j].id, sheetNumber, j + 1, i );
-					}
-				}
-				expense.sheetCount = 1;
-			} else {
+			//If the activity number exceeds 5, start a new sheet, reset activity number
+			if(currentActivity > 5) {
+				currentSheet++;
+				currentActivity = 1;
 			}
-		} else { 
+
+			//Add activity number to db
+			activities[i].row.push({
+				sheetNumber: currentSheet,
+				number: currentActivity
+			});
+			setActivitySheet(activities[i].id, currentSheet, currentActivity);
+
+			for(var j = 0; j < receipts.length; j++) {
+				//If receipt fits on sheet, proceed normally
+				//Otherewise, start new sheet, reset activity number and push to acitivity, then proceed
+				if(receiptNumber % 28 === 0) {
+					currentSheet++;
+					currentActivity = 1;
+
+					activities[i].row.push({
+						sheetNumber: currentSheet,
+						number: currentActivity
+					});
+					setActivitySheet(activities[i].id, currentSheet, currentActivity);
+				}
+
+				receipts[j].sheetNumber = currentSheet;
+				receipts[j].number = receiptNumber;
+				receipts[j].activity = currentActivity;	
+				setReceiptSheet(receipts[j].id, currentSheet, receiptNumber, i );
+
+				receiptNumber++;
+			}
+			currentActivity++;
 
 		}
+
+		expense.sheetCount = currentSheet;
 		expense.save( batchImages(expenseId, expense.sheetCount, next) );
+	});
+};
+
+var setActivitySheet = function (activityId, sheetNumber, number) {
+	mongoose.model('Activity').findById(activityId, function (err, activity) {
+		activity.row.push({
+			sheetNumber: sheetNumber,
+			number: number
+		});
+		activity.save();
 	});
 };
 
