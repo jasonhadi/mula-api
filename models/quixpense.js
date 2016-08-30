@@ -18,11 +18,13 @@ var ReceiptSchema = new mongoose.Schema({
     	username: String,
     	where: String,
     	type: String,
+    	description: String,
     	amount: Number,
     	imgId: mongoose.Schema.Types.ObjectId,
     	parentActivity: mongoose.Schema.Types.ObjectId,
     	parentExpense: mongoose.Schema.Types.ObjectId,
 	created: { type: Date, default: Date.now },
+	submitted: { type: Date },
 	lastUpdated: { type: Date, default: Date.now }
 });
 
