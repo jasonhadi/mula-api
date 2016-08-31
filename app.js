@@ -43,15 +43,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: 'islayscotch' }));
 app.use(passport.initialize());
 
-var routes = require('./routes/index')(passport);
-var expenses = require('./routes/expenses');
-var activities = require('./routes/activities');
-var receipts = require('./routes/receipts');
+var routes = require('./routes/users/index')(passport);
+//var expenses = require('./routes/users/expenses');
+//var activities = require('./routes/users/activities');
+//var receipts = require('./routes/users/receipts');
 
-app.use('/', routes);
-app.use('/expenses', expenses);
-app.use('/activities', activities);
-app.use('/receipts', receipts);
+app.use('/users', routes);
+//app.use('/expenses', expenses);
+//app.use('/activities', activities);
+//app.use('/receipts', receipts);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

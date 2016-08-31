@@ -6,7 +6,6 @@ var mongoose = require('mongoose'), //mongo connection
     PDFMerge = require('pdf-merge'),
     gm = require('gm').subClass({imageMagick: true});
 
-mongoose.set('debug', true);
 
 var sheetReceiptRowsCount = 27;
 var sheetActivityRowsCount = 5;

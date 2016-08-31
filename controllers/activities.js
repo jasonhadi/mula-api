@@ -1,16 +1,32 @@
 var mongoose = require('mongoose'), //mongo connection
     bodyParser = require('body-parser'), //parses information from POST
-    methodOverride = require('method-override'); //used to manipulate POST
+    methodOverride = require('method-override'), //used to manipulate POST
+    Quixpense = require('../models/quixpense');
+
+function getActivities(req, res, next) {
+	Quixpense.Acitivty.find({ userId: req.params.userid }, function (err, activities) {
+		if (err) { return console.error(err); }
+		else { next(activities); }     
+	});
+}
+
+function newActivity(req, res, next) {
+		var expenseId = req.body.expenseId;
+		var type = req.body.type;
+		var clientName = req.body.clientName;
+		var project = req.body.project;
+		var description = req.body.description;
+		var created = req.body.created;
+		var lastUpdated = req.body.lastUpdated;
+
+}
+
+
+
 
 
 module.exports = {
-	getActivities: function(req, res, next) {
-		mongoose.model('Activity').find({}, function (err, activities) {
-			if (err) { return console.error(err); }
-			else { next(activities); }     
-		});
-	},
-
+	getActivities: getActivites, 
 	newActivity: function(req, res, next) {
 		var expenseId = req.body.expenseId;
 		var type = req.body.type;

@@ -1,8 +1,9 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'); //mongo connection
 var Quixpense = require('../models/quixpense');
 
 function newUser(req, res, next) {
 	var username = req.body.username;
+	var displayName = req.body.displayName;
 	var expCurrency = req.body.expCurrency;
 	var reimbCurrency = req.body.reimbCurrency;
 	var email = req.body.email;
@@ -32,16 +33,16 @@ function newUser(req, res, next) {
 	});
 }
 
-function verifyUser(req, res, next, username) {
-	Quixpense.User.findOne({ 'username': username }, function(err, user) {
+function verifyUser(req, res, next, userid) {
+	Quixpense.User.findOne({ 'userid': userid }, function(err, user) {
 		if (err) {
 			console.log(id + ' was not found');
-			res.status(404);
+			res.status(500);
 			err = new Error('User Not Found');
-			err.status = 404;
+			err.status = 500;
 			return res.json({message : err.status  + ' ' + err});
 		} else {
-			req.username = username;
+			req.userid = userid;
 			return next(); 
 		} 
 
@@ -49,8 +50,8 @@ function verifyUser(req, res, next, username) {
 }
 
 function getUser(req, res, next) {
-	var username = req.username;
-	Quixpense.User.findOne({ 'username': username }, function(err, user) {
+	var userid = req.userid;
+	Quixpense.User.findOne({ _id: userid }, function(err, user) {
 		if(err) {
 			console.log("Could not find user!");
 			res.status(500);
@@ -64,8 +65,43 @@ function getUser(req, res, next) {
 	});
 }
 
+function updateUser(req, res, next) {
+	var userid = req.userid;
+
+	Quixpense.User.findOne({ _id: userid }, function(err, user) {
+		if (err) {
+			console.log(userid + ' was not found');
+			res.status(500);
+			err = new Error('User Not Found');
+			err.status = 500;
+			return res.json({message : err.status  + ' ' + err});
+		} else {
+			if (req.body.username) user.username = req.body.username;
+			if (req.body.displayName) user.displayName = req.body.displayName;
+			if (req.body.expCurrency) user.expCurrency = req.body.expCurrency;
+			if (req.body.reimbCurrency) user.reimbCurrency = req.body.reimbCurrency;
+			if (req.body.email) user.email = req.body.email;
+			if (req.body.isCorporateCard) user.isCorporateCard = req.body.isCorporateCard;
+			if (req.body.cardType) user.cardType = req.body.cardType;
+			if (req.body.bankType) user.bankType = req.body.bankType;
+
+			user.save(function(err) {
+				if (err) {
+					console.log(id + ' was not found');
+					res.status(404);
+					err = new Error('User Not Found');
+					err.status = 404;
+					return res.json({message : err.status  + ' ' + err});
+				} else { return next(user); }
+			});
+		} 
+
+	});	
+}
+
 module.exports = {
 	newUser: newUser,
 	verifyUser: verifyUser,
-	getUser: getUser
+	getUser: getUser,
+	updateUser: updateUser
 };

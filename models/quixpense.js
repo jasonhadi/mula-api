@@ -1,10 +1,11 @@
 var mongoose = require('mongoose');
 
+mongoose.set('debug', true);
+
 var ImageSchema = new mongoose.Schema({
-    	username: String,
+    	username: mongoose.Schema.Types.ObjectId,
     	parentExpense: mongoose.Schema.Types.ObjectId,
-    	sheetNumber: Number,
-    	combined: Boolean,
+    	parentReceipt: mongoose.Schema.Types.ObjectId,
 	img: {
 		data: Buffer,
     		contentType: String
@@ -13,19 +14,20 @@ var ImageSchema = new mongoose.Schema({
 
 var ReceiptSchema = new mongoose.Schema({
 	sheetNumber: {type: Number, default: 0 },
-    	number: { type: Number, default: 0 },
-    	activity: { type: Number, default: 0 },
-    	username: String,
-    	where: String,
-    	type: String,
-    	description: String,
-    	amount: Number,
+    	userId: mongoose.Schema.Types.ObjectId,
     	imgId: mongoose.Schema.Types.ObjectId,
     	parentActivity: mongoose.Schema.Types.ObjectId,
     	parentExpense: mongoose.Schema.Types.ObjectId,
+    	receiptNumber: { type: Number, default: 0 },
+    	activityNumber: { type: Number, default: 0 },
+    	where: String,
+    	type: String,
+    	amount: Number,
+    	description: String,
 	created: { type: Date, default: Date.now },
+	lastUpdated: { type: Date, default: Date.now },
 	submitted: { type: Date },
-	lastUpdated: { type: Date, default: Date.now }
+    	processed: Boolean
 });
 
 var ActivitySchema = new mongoose.Schema({
@@ -71,9 +73,9 @@ var UserSchema = new mongoose.Schema({
 });   
 
 module.exports = {
-	ImageModel: mongoose.model('Image', ImageSchema),
-	ReceiptModel: mongoose.model('Receipt', ReceiptSchema),
-	ActivitytModel: mongoose.model('Activity', ActivitySchema),
+	Image: mongoose.model('Image', ImageSchema),
+	Receipt: mongoose.model('Receipt', ReceiptSchema),
+	Activity: mongoose.model('Activity', ActivitySchema),
 	ExpenseModel: mongoose.model('Expense', ExpenseSchema),
 	User: mongoose.model('User', UserSchema)
 };
