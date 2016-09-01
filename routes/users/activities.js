@@ -22,7 +22,7 @@ router.route('/')
 	    });
     })
     .post(function(req, res) {
-	    activityController.newActivity(req, res, function(activitiy) {
+	    activityController.newActivity(req, res, function(activity) {
 		res.json(activity);	    
 	    });
     });

@@ -3,13 +3,13 @@ extends ../layout
 block content
     h1.
         #{title}
-    form#formAddReceipt(name="addreceipt",method="post",action="/receipts/new",enctype="multipart/form-data")
+    form#formAddReceipt(name="addreceipt",method="post",action="/users/57c5ed60cb9c234842d4d61f/receipts/57c5efedcda103ac48f33d9e",enctype="multipart/form-data")
         p Image: 
             input#inputImg(type="file", name="img")
         p Where: 
             input#inputWhere(type="text", placeholder="ex. O", name="where")
         p Type: 
-            input#inputType(type="text", placeholder="ex. Gifts", name="type")
+            input#inputType(type="text", placeholder="ex. gifts", name="type")
         p Amount: 
             input#inputAmount(type="number", step="0.01", min=0, name="amount")
         p

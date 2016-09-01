@@ -63,20 +63,29 @@ function newReceipt(req, res, next) {
 
 function updateReceipt(req, res, next) {
 	var userid = req.params.userid;
-	var receiptid = req.receiptid;
+	var receiptid = req.params.receiptid;
+
+	console.log('yo update');
+	console.log(JSON.stringify(req.body));
 
 	Quixpense.Receipt.findById(receiptid, function (err, receipt) {
 		if (err) {
+			console.log(err);
 			console.log(receiptid + ' was not found');
 			res.status(500);
 			err = new Error('ID Not Found');
 			err.status = 500;
 			res.json({message : err.status  + ' ' + err});
+		} else if(!receipt) {
+			console.log('new receipt');
+			newReceipt(req,res,next);
 		} else {
 			if(req.file) { 
 				var imageId = mongoose.Types.ObjectId();
 				var data = fs.readFileSync(req.file.path);
 				var contentType = req.file.mimetype;
+
+				console.log('save image');
 
 				gm(data, req.file.filename + ".jpg")
 					.page(647, 792)
@@ -90,7 +99,7 @@ function updateReceipt(req, res, next) {
 						} else { 
 							Quixpense.Image.create({
 								_id: imageId,
-								parentReceipt: receiptId,
+								parentReceipt: receiptid,
 								img: {
 									data: pdf,
 									contentType: 'application/pdf'
@@ -112,6 +121,7 @@ function updateReceipt(req, res, next) {
 											err.status = 404;
 											return res.json({message : err.status  + ' ' + err});
 										}
+										console.log('save update image');
 									});
 								}	
 							});
@@ -164,7 +174,7 @@ function verifyReceiptId(req, res, next, receiptid) {
 }
 
 function getReceipt(req, res, next) {
-	Quixpense.Receipt.findById(req.receiptid, function (err, receipt) {
+	Quixpense.Receipt.findById(req.params.receiptid, function (err, receipt) {
 		if (err) {
 			console.log(receiptid + ' was not found');
 			res.status(500);
@@ -178,7 +188,7 @@ function getReceipt(req, res, next) {
 }
 
 function deleteReceipt(req, res, next) {
-	Quixpense.Receipt.findById(req.receiptid, function (err, receipt) {
+	Quixpense.Receipt.findById(req.params.receiptid, function (err, receipt) {
 		if (err) {
 			console.log(receiptid + ' was not found');
 			res.status(500);
@@ -205,7 +215,7 @@ function deleteReceipt(req, res, next) {
 }
 
 function getReceiptImg(req, res, next) { 
-	var receiptid = req.receiptid;
+	var receiptid = req.params.receiptid;
    	Quixpense.Image.findOne({ parentReceipt: receiptid }, function (err, image) {
 		if (err) {
 			console.log(receiptid + ' was not found');
