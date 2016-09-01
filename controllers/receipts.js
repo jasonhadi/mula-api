@@ -6,7 +6,8 @@ var mongoose = require('mongoose'), //mongo connection
     Quixpense = require('../models/quixpense');
 
 function newReceipt(req, res, next) {
-	var imageId = mongoose.Types.ObjectId();
+	var userid = req.params.userid;
+
 	var data = fs.readFileSync(req.file.path);
 	var contentType = req.file.mimetype;
 
@@ -31,30 +32,19 @@ function newReceipt(req, res, next) {
 				err.status = 500;
 				res.json({message : err.status  + ' ' + err});
 			} else { 
-				Quixpense.Image.create({
-					_id: imageId,
-					parentReceipt: receiptId,
+				Quixpense.Receipt.create({
+					_id: receiptId,
+					userId: userid,
+					where: where,
+					type: type,
+					amount: amount,
 					img: {
 						data: pdf,
 						contentType: 'application/pdf'
 					}
-				}, function (err, image) {
-					if(err) {
-						console.log("Could not create Image!");
-						res.status(500);
-						err = new Error("Could not create Image!");
-						err.status = 500;
-						res.json({message : err.status  + ' ' + err});
-					} 
-				});
 
-				Quixpense.Receipt.create({
-					_id: receiptId,
-					where: where,
-					type: type,
-					amount: amount,
-					imgId: imageId,
 				}, function (err, receipt) {
+					receipt.img = undefined;
 					next(receipt);
 				});
 			}
@@ -63,18 +53,20 @@ function newReceipt(req, res, next) {
 
 function updateReceipt(req, res, next) {
 	var userid = req.params.userid;
-	var receiptid = req.receiptid;
+	var receiptid = req.params.receiptid;
 
 	Quixpense.Receipt.findById(receiptid, function (err, receipt) {
 		if (err) {
+			console.log(err);
 			console.log(receiptid + ' was not found');
 			res.status(500);
 			err = new Error('ID Not Found');
 			err.status = 500;
 			res.json({message : err.status  + ' ' + err});
+		} else if(!receipt) {
+			newReceipt(req,res,next);
 		} else {
 			if(req.file) { 
-				var imageId = mongoose.Types.ObjectId();
 				var data = fs.readFileSync(req.file.path);
 				var contentType = req.file.mimetype;
 
@@ -88,32 +80,16 @@ function updateReceipt(req, res, next) {
 							err.status = 500;
 							res.json({message : err.status  + ' ' + err});
 						} else { 
-							Quixpense.Image.create({
-								_id: imageId,
-								parentReceipt: receiptId,
-								img: {
-									data: pdf,
-									contentType: 'application/pdf'
+							receipt.img = { data: pdf, contentType: 'application/pdf' };
+							receipt.save(function(err) {
+								if (err) {
+									console.log(id + ' was not found');
+									res.status(404);
+									err = new Error('User Not Found');
+									err.status = 404;
+									return res.json({message : err.status  + ' ' + err});
 								}
-							}, function (err, image) {
-								if(err) {
-									console.log("Could not create Image!");
-									res.status(500);
-									err = new Error("Could not create Image!");
-									err.status = 500;
-									res.json({message : err.status  + ' ' + err});
-								} else {
-									receipt.imgId = imageId;
-									receipt.save(function(err) {
-										if (err) {
-											console.log(id + ' was not found');
-											res.status(404);
-											err = new Error('User Not Found');
-											err.status = 404;
-											return res.json({message : err.status  + ' ' + err});
-										}
-									});
-								}	
+								console.log('save update image');
 							});
 						}
 					});
@@ -135,14 +111,17 @@ function updateReceipt(req, res, next) {
 					err = new Error('User Not Found');
 					err.status = 404;
 					return res.json({message : err.status  + ' ' + err});
-				} else { return next(receipt); }
+				} else { 
+					receipt.img = undefined;
+					return next(receipt); 
+				}
 			});
 		}
 	});
 }
 
 function getReceipts(req, res, next) {
-	Quixpense.Receipt.find({ userId: req.params.userid }, function (err, receipts) {
+	Quixpense.Receipt.find({ userId: req.params.userid }, '-img', function (err, receipts) {
 			if (err) { return console.error(err); }
 			else { next(receipts); }     
 	});
@@ -164,9 +143,9 @@ function verifyReceiptId(req, res, next, receiptid) {
 }
 
 function getReceipt(req, res, next) {
-	Quixpense.Receipt.findById(req.receiptid, function (err, receipt) {
+	Quixpense.Receipt.findById(req.params.receiptid, '-img', function (err, receipt) {
 		if (err) {
-			console.log(receiptid + ' was not found');
+			console.log(req.params.receiptid + ' was not found');
 			res.status(500);
 			err = new Error('ID Not Found');
 			err.status = 500;
@@ -178,7 +157,7 @@ function getReceipt(req, res, next) {
 }
 
 function deleteReceipt(req, res, next) {
-	Quixpense.Receipt.findById(req.receiptid, function (err, receipt) {
+	Quixpense.Receipt.findById(req.params.receiptid, function (err, receipt) {
 		if (err) {
 			console.log(receiptid + ' was not found');
 			res.status(500);
@@ -205,8 +184,7 @@ function deleteReceipt(req, res, next) {
 }
 
 function getReceiptImg(req, res, next) { 
-	var receiptid = req.receiptid;
-   	Quixpense.Image.findOne({ parentReceipt: receiptid }, function (err, image) {
+   	Quixpense.Receipt.findById(req.params.receiptid, 'img', function (err, receipt) {
 		if (err) {
 			console.log(receiptid + ' was not found');
 			res.status(500);
@@ -214,7 +192,7 @@ function getReceiptImg(req, res, next) {
 			err.status = 500;
 			res.json({message : err.status  + ' ' + err});
 		} else {
-			next(image);
+			next(receipt);
 		}
 	});
 }

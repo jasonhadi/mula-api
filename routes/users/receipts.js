@@ -26,15 +26,17 @@ router.route('/')
 		res.json(receipts);	    
 	    });
     })
-    .post(function(req, res) {
+    .post(uploads.single('img'), function(req, res) {
 	    receiptController.newReceipt(req, res, function(receipt) {
 		res.json(receipt);	    
 	    });
     });
 
-
-router.param('receiptid', function(req, res, next, receiptid) {
-    receiptController.verifyReceiptId(req, res, next, receiptid);
+router.get('/new', function(req, res) {
+    res.render('receipts/new', { title: 'Add new receipt' });
+});
+router.get('/:receiptid/new', function(req, res) {
+    res.render('receipts/new', { title: 'update receipt' });
 });
 
 router.route('/:receiptid')
@@ -43,7 +45,7 @@ router.route('/:receiptid')
 		  res.json(receipt);	    
 	  });
   })
-  .put(function(req, res) {
+  .post(uploads.single('img'), function(req, res) { //change back to put after testing
 	  receiptController.updateReceipt(req, res, function(receipt) {
 		  res.json(receipt);	    
 	  });
@@ -56,12 +58,12 @@ router.route('/:receiptid')
 
 router.route('/:receiptid/img')
   .get(function(req, res) {
-	  receiptController.getReceiptImg(req, res, function(image) {
-		  var img64 = image.img.data;
+	  receiptController.getReceiptImg(req, res, function(receipt) {
+		  var img64 = receipt.img.data;
 		  var img = new Buffer(img64, 'base64');
 
 		  res.writeHead(200, {
-			  'Content-Type': image.img.contentType,
+			  'Content-Type': receipt.img.contentType,
 			  'Content-Length': img.length
 		  });
 		  res.end(img);

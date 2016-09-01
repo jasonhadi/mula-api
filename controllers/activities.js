@@ -4,84 +4,42 @@ var mongoose = require('mongoose'), //mongo connection
     Quixpense = require('../models/quixpense');
 
 function getActivities(req, res, next) {
-	Quixpense.Acitivty.find({ userId: req.params.userid }, function (err, activities) {
+	Quixpense.Activity.find({ userId: req.params.userid }, function (err, activities) {
 		if (err) { return console.error(err); }
 		else { next(activities); }     
 	});
 }
 
 function newActivity(req, res, next) {
-		var expenseId = req.body.expenseId;
-		var type = req.body.type;
-		var clientName = req.body.clientName;
-		var project = req.body.project;
-		var description = req.body.description;
-		var created = req.body.created;
-		var lastUpdated = req.body.lastUpdated;
+	var userId = req.body.userId;
+	var type = req.body.type;
+	var clientName = req.body.clientName;
+	var project = req.body.project;
+	var description = req.body.description;
 
+	Quixpense.Activity.create({
+		userId: userId,
+		type: type,
+		clientName: clientName,
+		project: project,
+		description: description,
+	}, function (err, activity) {
+		if(err) {
+			console.log("Could not create Activity!");
+			res.status(500);
+			err = new Error("Could not create Activity!");
+			err.status = 500;
+			res.json({message : err.status  + ' ' + err});
+		} else {
+			console.log( JSON.stringify(activity) );
+			next(activity);
+		}
+	});
 }
 
-
-
-
-
 module.exports = {
-	getActivities: getActivites, 
-	newActivity: function(req, res, next) {
-		var expenseId = req.body.expenseId;
-		var type = req.body.type;
-		var clientName = req.body.clientName;
-		var project = req.body.project;
-		var description = req.body.description;
-		var created = req.body.created;
-		var lastUpdated = req.body.lastUpdated;
-
-		mongoose.model('Expense').findById(expenseId, function (err, expense) {
-			console.log( JSON.stringify(expense) );
-			if (err) { 
-				console.log('Expense ' + expenseId + ' was not found');
-				res.status(500);
-				err = new Error('Expense ID Not Found');
-				err.status = 500;
-				res.json({message : err.status  + ' ' + err});
-			} else {
-				mongoose.model('Activity').create({
-					type: type,
-					clientName: clientName,
-					project: project,
-					description: description,
-					parentExpense: expenseId,
-					created: created,
-					lastUpdated: lastUpdated
-				}, function (err, activity) {
-					if(err) {
-						console.log("Could not create Activity!");
-						res.status(500);
-						err = new Error("Could not create Activity!");
-						err.status = 500;
-						res.json({message : err.status  + ' ' + err});
-					} else {
-						console.log( JSON.stringify(activity) );
-						expense.activities.push(activity);
-						expense.lastUpdated = new Date();
-						expense.save(function (err) {
-							if (err) {
-								console.log("Could not save expense!");
-								res.status(500);
-								err = new Error("Could not save expense!");
-								err.status = 500;
-								res.json({message : err.status  + ' ' + err});
-							} else {
-								res.json(expense);
-							}
-						});
-					}
-				});
-
-			}
-
-		});
-	},
+	getActivities: getActivities, 
+	newActivity: newActivity,
 
 	verifyActivityId: function(req, res, next, id) {
 		console.log(id);
