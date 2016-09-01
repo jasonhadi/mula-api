@@ -27,17 +27,23 @@ router.route('/')
 	    });
     });
 
-router.get('/new', function(req, res) {
-    res.render('activities/new', { title: 'Add new activity' });
+router.param('activityid', function(req, res, next, activityid) {
+	activityController.verifyActivityId(req, res, next, activityid);
 });
 
-router.param('id', function(req, res, next, id) {
-	activityController.verifyActivityId(req, res, next, id);
-});
-
-router.route('/:id')
+router.route('/:activityid')
   .get(function(req, res) {
-	  activityController.getActivityById(req, res, function(activity) {
+	  activityController.getActivity(req, res, function(activity) {
+		res.json(activity);
+	  });
+  })
+  .put(function(req, res) {
+	  activityController.updateActivity(req, res, function(activity) {
+		res.json(activity);
+	  });
+  })
+  .delete(function(req, res) {
+	  activityController.deleteActivity(req, res, function(activity) {
 		res.json(activity);
 	  });
   });

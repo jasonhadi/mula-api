@@ -45,7 +45,12 @@ router.route('/:receiptid')
 		  res.json(receipt);	    
 	  });
   })
-  .post(uploads.single('img'), function(req, res) { //change back to put after testing
+  .post(uploads.single('img'), function(req, res) { 
+	  receiptController.updateReceipt(req, res, function(receipt) {
+		  res.json(receipt);	    
+	  });
+  })
+  .put(uploads.single('img'), function(req, res) { 
 	  receiptController.updateReceipt(req, res, function(receipt) {
 		  res.json(receipt);	    
 	  });
