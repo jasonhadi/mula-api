@@ -2,12 +2,6 @@ var mongoose = require('mongoose');
 
 mongoose.set('debug', true);
 
-var ImageSchema = new mongoose.Schema({
-    	username: mongoose.Schema.Types.ObjectId,
-    	parentExpense: mongoose.Schema.Types.ObjectId,
-    	parentReceipt: mongoose.Schema.Types.ObjectId,
-});
-
 var ReceiptSchema = new mongoose.Schema({
 	sheetNumber: {type: Number, default: 0 },
     	userId: mongoose.Schema.Types.ObjectId,
@@ -71,7 +65,6 @@ var UserSchema = new mongoose.Schema({
 });   
 
 module.exports = {
-	Image: mongoose.model('Image', ImageSchema),
 	Receipt: mongoose.model('Receipt', ReceiptSchema),
 	Activity: mongoose.model('Activity', ActivitySchema),
 	ExpenseModel: mongoose.model('Expense', ExpenseSchema),
