@@ -75,74 +75,78 @@ function numberExpenses(req, res, next) {
 	var activities = req.body.activities;
 	var expenseId = mongoose.Types.ObjectId();
 
-	Quixpense.Receipt.find({parentActivity: { $in: activities.map(mongoose.Types.ObjectId)}}, '-img')
-			 .sort({ parentActivity: 1 })
-			 .lean()
-		  	 .exec(function(err, receipts) {
-				var currentSheet = 1;
-				var currentActivity = 0;
-				var currentActivityId = "";
-				var receiptNumber = 1;
-				var oldestBillDate = moment();
-				var activitySave = false;
-				var activityArray = [];
+	Quixpense.Activity.update({_id: { $in: activities.map(mongoose.Types.ObjectId)}}, { row: [] }, { multi: true } , function(err) {
+		Quixpense.Receipt.find({parentActivity: { $in: activities.map(mongoose.Types.ObjectId)}}, '-img')
+		.sort({ parentActivity: 1 })
+		.lean()
+		.exec(function(err, receipts) {
+			var currentSheet = 1;
+			var currentActivity = 0;
+			var currentActivityId = "";
+			var receiptNumber = 1;
+			var oldestBillDate = moment();
+			var activitySave = false;
+			var activityArray = [];
 
-				async.each(receipts,
-					function(receipt, callback) {
-						if(currentActivityId != receipt.parentActivity) {
-							currentActivity++;
-							activitySave = true;
-							currentActivityId = receipt.parentActivity;
-							activityArray.push(receipt.parentActivity);
-						}
-						if(receiptNumber % 28 === 0 || currentActivity > 5) {
-							currentSheet++;
-							currentActivity = 1;
-							activitySave = true;
-						} 
-						if(oldestBillDate.isAfter(receipt.date)) oldestBillDate = moment(receipt.date);
+			async.each(receipts,
+				function(receipt, callback) {
+					if(currentActivityId != receipt.parentActivity) {
+						currentActivity++;
+						activitySave = true;
+						currentActivityId = receipt.parentActivity;
+						activityArray.push(receipt.parentActivity);
+					}
+					if(receiptNumber % 28 === 0 || currentActivity > 5) {
+						currentSheet++;
+						currentActivity = 1;
+						activitySave = true;
+					} 
+					if(oldestBillDate.isAfter(receipt.date)) oldestBillDate = moment(receipt.date);
 
-						if(activitySave) {
-							activitySave = false;
+					if(activitySave) {
+						activitySave = false;
 
-							Quixpense.Activity.findById(currentActivityId, function (err, activity) {
-								activity.row.push({
-									sheetNumber: currentSheet,
-									number: currentActivity
-								});
-								activity.parentExpense = expenseId;
-								activity.save(function(err) {
-									Quixpense.Receipt.findById(receipt._id, '-img', function (err, receipt) {
-										receipt.sheetNumber = currentSheet;
-										receipt.receiptNumber = receiptNumber;
-										receipt.activityNumber = currentActivity;
-										receipt.parentExpense = expenseId;
-										receipt.save(function(err) {
-											callback();	
-										});
+						Quixpense.Activity.findById(currentActivityId, function (err, activity) {
+							activity.row.push({
+								sheetNumber: currentSheet,
+								number: currentActivity
+							});
+							activity.parentExpense = expenseId;
+							activity.save(function(err) {
+								Quixpense.Receipt.findById(receipt._id, '-img', function (err, receipt) {
+									receipt.sheetNumber = currentSheet;
+									receipt.receiptNumber = receiptNumber;
+									receipt.activityNumber = currentActivity;
+									receipt.parentExpense = expenseId;
+									receipt.save(function(err) {
+										callback();	
 									});
 								});
 							});
-						} else {
-							Quixpense.Receipt.findById(receipt._id, '-img', function (err, receipt) {
-								receipt.sheetNumber = currentSheet;
-								receipt.receiptNumber = receiptNumber;
-								receipt.activityNumber = currentActivity;
-								receipt.parentExpense = expenseId;
-								receipt.save(function(err) {
-									callback();	
-								});
+						});
+					} else {
+						Quixpense.Receipt.findById(receipt._id, '-img', function (err, receipt) {
+							receipt.sheetNumber = currentSheet;
+							receipt.receiptNumber = receiptNumber;
+							receipt.activityNumber = currentActivity;
+							receipt.parentExpense = expenseId;
+							receipt.save(function(err) {
+								callback();	
 							});
-						}
-
-						receiptNumber++;
-					}, function(err) {
-						Quixpense.Activity.find({parentExpense: expenseId}, function(err, activities) {
-							generateExpense(expenseId, receipts, activities, next);
 						});
 					}
-				);
-			 });
+
+					receiptNumber++;
+				}, function(err) {
+					Quixpense.Activity.find({parentExpense: expenseId}, function(err, activities) {
+						generateExpense(expenseId, receipts, activities, next);
+					});
+				}
+		);
+		});
+
+	});
+
 }
 
 function generateExpense(expenseId, newReceipts, newActivities, next) {
@@ -150,9 +154,9 @@ function generateExpense(expenseId, newReceipts, newActivities, next) {
 		_id: expenseId
 	}, function(err, expense) {
 		if(err) { console.log('sss'); }
-		expense.update({$push: {receipts: {$each: newReceipts}, activities: {$each: newActivities}}}, function(err, expense) {
+		Quixpense.Expense.findByIdAndUpdate(expenseId, {$push: {receipts: {$each: newReceipts}, activities: {$each: newActivities}}}, function(err, exp) {
 			if(err) { console.log('aaa'); }
-			next(expense);	
+			next(exp);	
 		});
 	});
 }
@@ -161,7 +165,7 @@ function updateActivitySheet(activityId, sheetNumber, activityNumber, expenseId)
 	Quixpense.Activity.findById(activityId, function (err, activity) {
 		activity.row.push({
 			sheetNumber: sheetNumber,
-			number: activityNumber
+		number: activityNumber
 		});
 		activity.parentExpense = expenseId;
 		activity.save();
