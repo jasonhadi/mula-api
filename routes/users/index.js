@@ -6,6 +6,7 @@ var express = require('express'),
 
 var receipts = require('./receipts');
 var activities = require('./activities');
+var expenses = require('./expenses');
 
 module.exports = function(passport) {
 	router.use(bodyParser.urlencoded({ extended: true }));
@@ -49,6 +50,7 @@ module.exports = function(passport) {
 
 	router.use('/:userid/receipts', receipts);
 	router.use('/:userid/activities', activities);
+	router.use('/:userid/expenses', expenses);
 
 	return router;
 };

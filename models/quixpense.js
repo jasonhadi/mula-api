@@ -3,7 +3,6 @@ var mongoose = require('mongoose');
 mongoose.set('debug', true);
 
 var ReceiptSchema = new mongoose.Schema({
-	sheetNumber: {type: Number, default: 0 },
     	userId: mongoose.Schema.Types.ObjectId,
 	img: {
 		data: Buffer,
@@ -13,9 +12,11 @@ var ReceiptSchema = new mongoose.Schema({
     	parentExpense: mongoose.Schema.Types.ObjectId,
     	receiptNumber: { type: Number, default: 0 },
     	activityNumber: { type: Number, default: 0 },
+	sheetNumber: {type: Number, default: 0 },
     	where: String,
     	type: String,
     	amount: Number,
+	date: { type: Date, default: Date.now },
     	description: String,
 	created: { type: Date, default: Date.now },
 	lastUpdated: { type: Date, default: Date.now },
@@ -39,16 +40,21 @@ var ActivitySchema = new mongoose.Schema({
 });
 
 var ExpenseSchema = new mongoose.Schema({
-	name: String,
+    	userId: mongoose.Schema.Types.ObjectId,
     	username: String,
-	submitDate: Date,
+	submitDate: { type: Date, default: Date.now },
     	expCurrency: String,
 	reimbCurrency: String,
-	oldestBillDate: Date,
-	activities: [ ActivitySchema ],    
+	oldestBillDate: { type: Date, default: Date.now },
     	receiptCount: { type: Number, default: 0 },
     	sheetCount: { type: Number, default: 0 },
     	submitted: { type: Boolean, default: false },
+	sheet: {
+		data: Buffer,
+    		contentType: String
+	},
+    	activities: [ ActivitySchema ],
+    	receipts: [ ReceiptSchema],
 	created: { type: Date, default: Date.now },
 	lastUpdated: { type: Date, default: Date.now }
 });
@@ -67,6 +73,6 @@ var UserSchema = new mongoose.Schema({
 module.exports = {
 	Receipt: mongoose.model('Receipt', ReceiptSchema),
 	Activity: mongoose.model('Activity', ActivitySchema),
-	ExpenseModel: mongoose.model('Expense', ExpenseSchema),
+	Expense: mongoose.model('Expense', ExpenseSchema),
 	User: mongoose.model('User', UserSchema)
 };

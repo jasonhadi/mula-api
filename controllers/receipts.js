@@ -103,6 +103,7 @@ function updateReceipt(req, res, next) {
     			if(req.body.amount) receipt.amount = req.body.amount;
 			if(req.body.created) receipt.created = req.body.created;
 			if(req.body.lastUpdated) receipt.lastUpdated = req.body.lastUpdated;
+			if(req.body.parentActivity) receipt.parentActivity = req.body.parentActivity;
 
 			receipt.save(function(err) {
 				if (err) {
@@ -148,7 +149,7 @@ function getReceipt(req, res, next) {
 }
 
 function deleteReceipt(req, res, next) {
-	Quixpense.Receipt.findById(req.params.receiptid, function (err, receipt) {
+	Quixpense.Receipt.findById(req.params.receiptid, '-img', function (err, receipt) {
 		if (err) {
 			console.log(receiptid + ' was not found');
 			res.status(500);
@@ -170,7 +171,6 @@ function deleteReceipt(req, res, next) {
 					err.status = 500;
 					res.json({message : err.status  + ' ' + err});
 				} else {
-					receipt.img = undefined;
 					res.json({
 						status: "success",
 						receipt: receipt

@@ -10,6 +10,7 @@
     "url": "git+https://github.com/jasonhadi/quixpense-server.git"
   },
   "dependencies": {
+    "async": "^2.0.1",
     "body-parser": "^1.15.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
@@ -20,6 +21,7 @@
     "js2xmlparser": "^1.0.0",
     "method-override": "^2.3.6",
     "mkdirp": "^0.5.1",
+    "moment": "^2.14.1",
     "mongoose": "^4.5.4",
     "morgan": "~1.7.0",
     "mssql": "^3.3.0",
