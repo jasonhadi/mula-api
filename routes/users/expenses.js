@@ -16,11 +16,98 @@ router.use(methodOverride(function(req, res){
 }));
 
 router.route('/')
+/**
+ * @api {get} /:userid/expenses Get all Expenses by User
+ * @apiGroup Expenses
+ * @apiParam {ObjectId} userid User ID of the User.
+ * @apiSuccess {Object[]} expenses Array list of Expenses for the user.
+ * @apiSuccess {ObjectId} expenses._id ID of the Expense.
+ * @apiSuccess {Activity[]} expenses.activities Array list of activities in the Expense. See Activities section for Activity object description.
+ * @apiSuccess {Date} expenses.created Creation date of the Expense.
+ * @apiSuccess {Date} expenses.lastUpdated Last updated date of the Expense.
+ * @apiSuccess {Date} expenses.oldestBillDate Date of the oldest receipt in the Expense.
+ * @apiSuccess {Receipt[]} expenses.receipts Array list of receipts in the Expense. See Receipts section for Receipt object description.
+ * @apiSuccess {Date} expenses.submitDate Date when the Expense was submitted.
+ * @apiSuccess {Boolean} expenses.submitted Whether the Expense has been exported.
+ * @apiSuccess {ObjectId} expenses.userId The user which created this Expense.
+ * @apiSuccessExample {json} Example Response:
+ * HTTP/1.1 200 OK
+ * [
+ *   {
+ *       "__v": 0,
+ *       "_id": "57c9c83e2ae2efd65a1e16b3",
+ *       "activities": [
+ *           {
+ *     		...                
+ *           }
+ *       ],
+ *       "created": "2016-09-02T18:43:10.738Z",
+ *       "lastUpdated": "2016-09-02T18:43:10.738Z",
+ *       "oldestBillDate": "2016-09-02T18:43:10.736Z",
+ *       "receipts": [
+ *           {
+ *     		...                
+ *           }
+ *       ],
+ *       "submitDate": "2016-09-02T18:43:10.736Z",
+ *       "submitted": false,
+ *       "userId": "57c5ed60cb9c234842d4d61f"
+ *   }
+ * ]
+ */
     .get(function(req, res) {
 	    expenseController.getExpenses(req, res, function(expenses) {
 		res.json(expenses);	    
 	    });
     })
+/**
+ * @api {post} /:userid/expenses Create new Expense by User
+ * @apiGroup Expenses
+ * @apiDescription This action will generate the expense spreadsheet, create the combined receipt PDF, and send an email to the user with the attachments.
+ * @apiParam {ObjectId} userid User ID of the User.
+ * @apiParam {ObjectId[]} activities Array list of activity IDs included in submitted Expense.
+ * @apiParamExample {json} Content Example:
+ * {
+ * 	"activities": [
+ * 		"57c86fea2f4ac8860450e8a5",
+ * 		"57c86ff12f4ac8860450e8a6"
+ * 	]
+ * }
+ * @apiSuccess {Object[]} expenses Array list of Expenses for the user.
+ * @apiSuccess {ObjectId} expenses._id ID of the Expense.
+ * @apiSuccess {Activity[]} expenses.activities Array list of activities in the Expense. See Activities section for Activity object description.
+ * @apiSuccess {Date} expenses.created Creation date of the Expense.
+ * @apiSuccess {Date} expenses.lastUpdated Last updated date of the Expense.
+ * @apiSuccess {Date} expenses.oldestBillDate Date of the oldest receipt in the Expense.
+ * @apiSuccess {Receipt[]} expenses.receipts Array list of receipts in the Expense. See Receipts section for Receipt object description.
+ * @apiSuccess {Date} expenses.submitDate Date when the Expense was submitted.
+ * @apiSuccess {Boolean} expenses.submitted Whether the Expense has been exported.
+ * @apiSuccess {ObjectId} expenses.userId The user which created this Expense.
+ * @apiSuccessExample {json} Success
+ * HTTP/1.1 200 OK
+ * [
+ *   {
+ *       "__v": 0,
+ *       "_id": "57c9c83e2ae2efd65a1e16b3",
+ *       "activities": [
+ *           {
+ *     		...                
+ *           }
+ *       ],
+ *       "created": "2016-09-02T18:43:10.738Z",
+ *       "lastUpdated": "2016-09-02T18:43:10.738Z",
+ *       "oldestBillDate": "2016-09-02T18:43:10.736Z",
+ *       "receipts": [
+ *           {
+ *     		...                
+ *           }
+ *       ],
+ *       "submitDate": "2016-09-02T18:43:10.736Z",
+ *       "submitted": false,
+ *       "userId": "57c5ed60cb9c234842d4d61f"
+ *   }
+ * ]
+ */
     .post(function(req, res) {
 	    expenseController.numberExpenses(req, res, function(expenses) {
 		res.json(expenses);	    
@@ -32,6 +119,43 @@ router.param('expenseid', function(req, res, next, expenseid) {
 });
 
 router.route('/:expenseid')
+/**
+ * @api {get} /:userid/expenses/:expenseid Get Expense by ID
+ * @apiGroup Expenses
+ * @apiParam {ObjectId} userid User ID of the User.
+ * @apiParam {ObjectId} expenseid Expense ID of the requested Expense.
+ * @apiSuccess {ObjectId} _id ID of the Expense.
+ * @apiSuccess {Activity[]} activities Array list of activities in the Expense. See Activities section for Activity object description.
+ * @apiSuccess {Date} created Creation date of the Expense.
+ * @apiSuccess {Date} lastUpdated Last updated date of the Expense.
+ * @apiSuccess {Date} oldestBillDate Date of the oldest receipt in the Expense.
+ * @apiSuccess {Receipt[]} receipts Array list of receipts in the Expense. See Receipts section for Receipt object description.
+ * @apiSuccess {Date} submitDate Date when the Expense was submitted.
+ * @apiSuccess {Boolean} submitted Whether the Expense has been exported.
+ * @apiSuccess {ObjectId} userId The user which created this Expense.
+ * @apiSuccessExample {json} Example Response:
+ * HTTP/1.1 200 OK
+ * {
+ *     "__v": 0,
+ *     "_id": "57c9c83e2ae2efd65a1e16b3",
+ *     "activities": [
+ *         {
+ *   		...                
+ *         }
+ *     ],
+ *     "created": "2016-09-02T18:43:10.738Z",
+ *     "lastUpdated": "2016-09-02T18:43:10.738Z",
+ *     "oldestBillDate": "2016-09-02T18:43:10.736Z",
+ *     "receipts": [
+ *         {
+ *   		...                
+ *         }
+ *     ],
+ *     "submitDate": "2016-09-02T18:43:10.736Z",
+ *     "submitted": false,
+ *     "userId": "57c5ed60cb9c234842d4d61f"
+ * }
+ */
     .get(function(req, res) {
 	    expenseController.getExpense(req, res, function(expense) {
 		res.json(expense);	    
@@ -43,7 +167,14 @@ router.route('/:expenseid')
 	    });
     });
 
+
 router.route('/:expenseid/pdf')
+/**
+ * @api {get} /:userid/expenses/:expenseid/pdf Get Expense PDF by ID
+ * @apiGroup Expenses
+ * @apiParam {ObjectId} userid User ID of the User.
+ * @apiParam {ObjectId} expenseid Expense ID of the requested Expense.
+ */
   .get(function(req, res) {
 	  expenseController.getExpenseSheet(req, res, function(expense) {
 		  var img64 = expense.sheet.data;

@@ -34,7 +34,7 @@ function newUser(req, res, next) {
 }
 
 function verifyUser(req, res, next, userid) {
-	Quixpense.User.findOne({ 'userid': userid }, function(err, user) {
+	Quixpense.User.findOne({ _id: userid }, function(err, user) {
 		if (err) {
 			console.log(id + ' was not found');
 			res.status(500);
