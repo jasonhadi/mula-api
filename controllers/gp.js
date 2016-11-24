@@ -52,6 +52,7 @@ function getProjectsJson(req, res, next) {
 		return costCategories.filter(function(c) { 
 			return (c.Assignment === assignment);
 		}).map(function(c) {
+			if(c['Cost Category Name'] === 'Mileage') return 'Mileage (KM)';
 			return c['Cost Category Name'];
 		});
 	}
@@ -88,10 +89,6 @@ function getProjectsJson(req, res, next) {
 			});
 		}
 	}, function(err, results) {
-		//next(results);
-		//var a = mapCostCategoriestoAssignment(results.costCategories, 'Client Billable');
-		//var b = mapCostCategorytoProject(a, 'Client Billable', results.projects);
-
 		generate(results.assignments, results.costCategories, results.projects, next);
 	});
 }
