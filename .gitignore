@@ -32,6 +32,8 @@ npm-debug.log
 
 # Other
 *.swp
+*.swo
 *.xml
 *.xls*
 uploads
+config.js
