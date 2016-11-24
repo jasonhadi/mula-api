@@ -236,30 +236,6 @@ router.route('/:receiptid')
  *	}
  * }
  */
- * @apiSuccess {ObjectId} _id ID of the Receipt.
- * @apiSuccess {ObjectId} userId The User which created this Receipt.
- * @apiSuccess {ObjectId} parentActivity The Activity ID which this Receipt is categorized under.
- * @apiSuccess {String} type Type of Receipt.
- * @apiSuccess {Number} amount Value of Receipt.
- * @apiSuccess {String} [description] Description of Receipt.
- * @apiSuccess {Date} created Creation date of the Receipt.
- * @apiSuccess {Date} created Creation date of the Receipt.
- * @apiSuccess {Date} date Date marked on Receipt.
- * @apiSuccessExample {json} Example Response:
- * HTTP/1.1 200 OK
- * {
- * 	"_id": "57c8704c2f4ac8860450e8a8",
- * 	"userId": "57c5ed60cb9c234842d4d61f",
- * 	"where": "O",
- * 	"type": "Meals & Entertainment",
- * 	"amount": 281.52,
- * 	"description": "Lunch with Alice",
- * 	"parentActivity": "57c86ff12f4ac8860450e8a6",
- * 	"lastUpdated": "2016-09-01T18:15:41.130Z",
- * 	"created": "2016-09-01T18:15:41.130Z",
- * 	"date": "2016-09-01T20:50:23.676Z",
- * }
- */
   .delete(function(req, res) {
 	  receiptController.deleteReceipt(req, res, function(receipt) {
 		  res.json(receipt);	    

@@ -12,6 +12,10 @@ var LdapStrategy = require('passport-ldapauth');
 var config = require('./config');
 var db = require('./models/db');
 var Quixpense = require ('./models/quixpense.js');
+var sql = require('mssql');
+var sqlConn = new sql.Connection(config.mssql);
+sql.globalConnection = sqlConn;
+sql.globalConnection.connect();
 
 var app = express();
 
@@ -43,15 +47,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: 'islayscotch' }));
 app.use(passport.initialize());
 
-var routes = require('./routes/users/index')(passport);
-//var expenses = require('./routes/users/expenses');
-//var activities = require('./routes/users/activities');
-//var receipts = require('./routes/users/receipts');
+var users = require('./routes/users/index')(passport);
+var gp = require('./routes/gp')(passport);
 
-app.use('/users', routes);
-//app.use('/expenses', expenses);
-//app.use('/activities', activities);
-//app.use('/receipts', receipts);
+app.use('/users', users);
+app.use('/gp', gp);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
