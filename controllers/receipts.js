@@ -6,7 +6,7 @@ var mongoose = require('mongoose'), //mongo connection
     Quixpense = require('../models/quixpense');
 
 function newReceipt(req, res, next) {
-	var userid = req.params.userid;
+	var userid = req.user.id;
 
 	var data = fs.readFileSync(req.file.path);
 	var contentType = req.file.mimetype;
@@ -52,7 +52,7 @@ function newReceipt(req, res, next) {
 }
 
 function updateReceipt(req, res, next) {
-	var userid = req.params.userid;
+	var userid = req.user.id;
 	var receiptid = req.params.receiptid;
 
 	Quixpense.Receipt.findById(receiptid, function (err, receipt) {
@@ -122,7 +122,7 @@ function updateReceipt(req, res, next) {
 }
 
 function getReceipts(req, res, next) {
-	Quixpense.Receipt.find({ userId: req.params.userid }, '-img', function (err, receipts) {
+	Quixpense.Receipt.find({ userId: req.user.id }, '-img', function (err, receipts) {
 			if (err) { return console.error(err); }
 			else { next(receipts); }     
 	});

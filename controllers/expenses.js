@@ -18,7 +18,7 @@ function getExpense(req, res, next) {
 }
 
 function getExpenses(req, res, next) {
-	Quixpense.Expense.find({ userId: req.params.userid }, '-sheet', function (err, expenses) {
+	Quixpense.Expense.find({ userId: req.user.id }, '-sheet', function (err, expenses) {
 		if (err) { return console.error(err); }
 		else { next(expenses); }     
 	});
@@ -74,7 +74,7 @@ function getExpenseSheet(req, res, next) {
 function numberExpenses(req, res, next) {
 	var activities = req.body.activities;
 	var expenseId = mongoose.Types.ObjectId();
-	var userId = req.params.userid;
+	var userId = req.user.id;
 
 	Quixpense.Activity.update({_id: { $in: activities.map(mongoose.Types.ObjectId)}}, { row: [] }, { multi: true } , function(err) {
 		Quixpense.Receipt.find({parentActivity: { $in: activities.map(mongoose.Types.ObjectId)}}, '-img')

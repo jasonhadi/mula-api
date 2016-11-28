@@ -4,7 +4,7 @@ var mongoose = require('mongoose'), //mongo connection
     Quixpense = require('../models/quixpense');
 
 function getActivities(req, res, next) {
-	Quixpense.Activity.find({ userId: req.params.userid }, function (err, activities) {
+	Quixpense.Activity.find({ userId: req.user.id }, function (err, activities) {
 		if (err) { return console.error(err); }
 		else { next(activities); }     
 	});
@@ -18,7 +18,7 @@ function getActivity(req, res, next) {
 }
 
 function newActivity(req, res, next) {
-	var userId = req.params.userid;
+	var userId = req.user.id;
 	var type = req.body.type;
 	var clientName = req.body.clientName;
 	var project = req.body.project;
