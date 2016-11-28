@@ -3,7 +3,7 @@ var express = require('express'),
     router = express.Router({mergeParams: true}),
     bodyParser = require('body-parser'), //parses information from POST
     methodOverride = require('method-override'), //used to manipulate POST
-    expenseController = require('../../controllers/expenses');
+    expenseController = require('../controllers/expenses');
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(methodOverride(function(req, res){

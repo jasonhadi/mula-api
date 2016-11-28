@@ -65,6 +65,21 @@ function getUser(req, res, next) {
 	});
 }
 
+function getUserByUsername(username, next) {
+	Quixpense.User.findOne({ username: username }, function(err, user) {
+		if(err) {
+			console.log("Could not find user!");
+			res.status(500);
+			err = new Error("Could not find user!");
+			err.status = 500;
+			return res.json({message : err.status  + ' ' + err});
+		} else {
+			return next(user);
+		}
+
+	});
+}
+
 function updateUser(req, res, next) {
 	var userid = req.userid;
 
@@ -103,5 +118,6 @@ module.exports = {
 	newUser: newUser,
 	verifyUser: verifyUser,
 	getUser: getUser,
+	getUserByUsername: getUserByUsername,
 	updateUser: updateUser
 };

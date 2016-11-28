@@ -7,7 +7,7 @@ var express = require('express'),
     gm = require('gm').subClass({imageMagick: true}),
     multer = require('multer'),
     uploads = multer({ dest: './uploads/' }),
-    receiptController = require('../../controllers/receipts');
+    receiptController = require('../controllers/receipts');
 
 
 router.use(bodyParser.urlencoded({ extended: true }));

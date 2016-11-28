@@ -2,12 +2,12 @@ var express = require('express'),
     router = express.Router(),
     bodyParser = require('body-parser'), //parses information from POST
     methodOverride = require('method-override'), //used to manipulate POST
-    userController = require('../../controllers/users');
+    userController = require('../controllers/users');
 
-var receipts = require('./receipts');
-var activities = require('./activities');
-var expenses = require('./expenses');
-
+//var receipts = require('./receipts');
+//var activities = require('./activities');
+//var expenses = require('./expenses');
+//
 module.exports = function(passport) {
 	router.use(bodyParser.urlencoded({ extended: true }));
 	router.use(methodOverride(function(req, res){
@@ -48,9 +48,9 @@ module.exports = function(passport) {
 			});
 		});
 
-	router.use('/:userid/receipts', receipts);
-	router.use('/:userid/activities', activities);
-	router.use('/:userid/expenses', expenses);
+	//router.use('/:userid/receipts', receipts);
+	//router.use('/:userid/activities', activities);
+	//router.use('/:userid/expenses', expenses);
 
 	return router;
 };
