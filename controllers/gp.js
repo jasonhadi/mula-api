@@ -66,12 +66,6 @@ function getProjectsJson(req, res, next) {
 		});
 	}
 
-	function remapCostCategorytoSheet(costCategory, map) {
-		return costCategory.map(function(c) {
-				
-		});
-	}
-
 	async.parallel({
 		projects: function(callback) {
 			mssql.query("SELECT [Project Name],[Assignment] FROM [RLINC].[dbo].[_projectList] WHERE [Project Name] NOT LIKE 'Expenses%'", function(err, recordset) {

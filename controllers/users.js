@@ -65,7 +65,6 @@ function getUserByUsername(username, next) {
 }
 
 function updateUser(req, res, next) {
-	console.log(req.body);
 	var userid = req.user.id;
 
 	Quixpense.User.findOne({ _id: userid }, function(err, user) {
@@ -89,7 +88,18 @@ function updateUser(req, res, next) {
 					err = new Error('User Not Found');
 					err.status = 404;
 					return res.json({message : err.status  + ' ' + err});
-				} else { return next(user); }
+				} else { 
+					userObj = {
+						id: req.user.id,
+						username: req.user.username,
+						firstname: req.user.firstname,
+						lastname: req.user.lastname,
+						email: req.user.email,
+						expCurrency: user.expCurrency,
+						reimbCurrency: user.reimbCurrency
+					};
+					return next(userObj); 
+				}
 			});
 		} 
 

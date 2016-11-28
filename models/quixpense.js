@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.set('debug', true);
+mongoose.set('debug', false);
 
 var ReceiptSchema = new mongoose.Schema({
     	userId: mongoose.Schema.Types.ObjectId,
@@ -20,7 +20,7 @@ var ReceiptSchema = new mongoose.Schema({
     	description: String,
 	created: { type: Date, default: Date.now },
 	lastUpdated: { type: Date, default: Date.now },
-	submitted: { type: Date },
+	submitted: { type: Boolean, default: false },
     	processed: Boolean
 });
 
@@ -36,6 +36,7 @@ var ActivitySchema = new mongoose.Schema({
     	description: String,
     	parentExpense: mongoose.Schema.Types.ObjectId,
 	created: { type: Date, default: Date.now },
+	submitted: { type: Boolean, default: false },
 	lastUpdated: { type: Date, default: Date.now }
 });
 
@@ -61,11 +62,9 @@ var ExpenseSchema = new mongoose.Schema({
 	    
 var UserSchema = new mongoose.Schema({
     	username: String,
-    	displayName: String,
-    	email: String,
-    	expCurrency: String,
-    	reimbCurrency: String,
-    	isCorporateCard: Boolean,
+    	expCurrency: { type: String, default: 'CAD' },
+    	reimbCurrency: { type: String, default: 'CAD' },
+    	hasCorporateCard: { type: Boolean, default: false },
     	cardType: String,
     	bankType: String
 });   

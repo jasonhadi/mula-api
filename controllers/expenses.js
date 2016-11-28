@@ -8,8 +8,6 @@ var mongoose = require('mongoose'), //mongo connection
     gm = require('gm').subClass({imageMagick: true}),
     Quixpense = require('../models/quixpense');
 
-mongoose.set('debug', true);
-
 function getExpense(req, res, next) {
 	Quixpense.Expense.findById(req.expenseid, '-sheet').populate('receipts').exec(function (err, expense) {
 		if (err) { return console.error(err); }
