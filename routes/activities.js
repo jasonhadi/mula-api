@@ -17,9 +17,9 @@ router.use(methodOverride(function(req, res){
 
 router.route('/')
 /**
- * @api {get} /:userid/activities Get all Activities by User
+ * @api {get} /activities Get all Activities
  * @apiGroup Activities
- * @apiParam {ObjectId} userid User ID of the User.
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiSuccess {Object[]} activities Array list of Activities for the User.
  * @apiSuccess {ObjectId} activities._id ID of the Activity.
  * @apiSuccess {ObjectId} activities.userId The User which created this Expense.
@@ -50,9 +50,9 @@ router.route('/')
 	    });
     })
 /**
- * @api {post} /:userid/activities Create new Activity by User
+ * @api {post} /activities Create new Activity
  * @apiGroup Activities
- * @apiParam {ObjectId} userid User ID of the User.
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiParam {String} type Type of activity.
  * @apiParam {String} [clientName] Name of client associated with the Activity.
  * @apiParam {String} project Project associated with the Activity.
@@ -96,9 +96,9 @@ router.param('activityid', function(req, res, next, activityid) {
 
 router.route('/:activityid')
 /**
- * @api {get} /:userid/activities/:activityid Get Activity by ID
+ * @api {get} /activities/:activityid Get Activity by ID
  * @apiGroup Activities
- * @apiParam {ObjectId} userid User ID of the User.
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiParam {ObjectId} activityid Activity ID of the Activity.
  * @apiSuccess {ObjectId} _id ID of the Activity.
  * @apiSuccess {ObjectId} userId The User which created this Expense.
@@ -126,9 +126,9 @@ router.route('/:activityid')
 	  });
   })
 /**
- * @api {put} /:userid/activities/:activityid Update Activity by ID
+ * @api {put} /activities/:activityid Update Activity by ID
  * @apiGroup Activities
- * @apiParam {ObjectId} userid User ID of the User.
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiParam {ObjectId} activityid Activity ID of the Activity.
  * @apiParam {String} type Type of activity.
  * @apiParam {String} [clientName] Name of client associated with the Activity.
@@ -166,9 +166,9 @@ router.route('/:activityid')
 	  });
   })
 /**
- * @api {delete} /:userid/activities/:activityid Delete Activity by ID
+ * @api {delete} /activities/:activityid Delete Activity by ID
  * @apiGroup Activities
- * @apiParam {ObjectId} userid User ID of the User.
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiParam {ObjectId} activityid Activity ID of the Activity.
  * @apiSuccess {String="success","failed"} status Status of the DELETE action.
  * @apiSuccess {Object} activity Activity object.

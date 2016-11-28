@@ -17,9 +17,9 @@ router.use(methodOverride(function(req, res){
 
 router.route('/')
 /**
- * @api {get} /:userid/expenses Get all Expenses by User
+ * @api {get} /expenses Get all Expenses 
  * @apiGroup Expenses
- * @apiParam {ObjectId} userid User ID of the User.
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiSuccess {Object[]} expenses Array list of Expenses for the user.
  * @apiSuccess {ObjectId} expenses._id ID of the Expense.
  * @apiSuccess {Activity[]} expenses.activities Array list of activities in the Expense. See Activities section for Activity object description.
@@ -61,10 +61,10 @@ router.route('/')
 	    });
     })
 /**
- * @api {post} /:userid/expenses Create new Expense by User
+ * @api {post} /expenses Create new Expense 
  * @apiGroup Expenses
  * @apiDescription This action will generate the expense spreadsheet, create the combined receipt PDF, and send an email to the user with the attachments.
- * @apiParam {ObjectId} userid User ID of the User.
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiParam {ObjectId[]} activities Array list of activity IDs included in submitted Expense.
  * @apiParamExample {json} Content Example:
  * {
@@ -120,9 +120,9 @@ router.param('expenseid', function(req, res, next, expenseid) {
 
 router.route('/:expenseid')
 /**
- * @api {get} /:userid/expenses/:expenseid Get Expense by ID
+ * @api {get} /expenses/:expenseid Get Expense by ID
  * @apiGroup Expenses
- * @apiParam {ObjectId} userid User ID of the User.
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiParam {ObjectId} expenseid Expense ID of the requested Expense.
  * @apiSuccess {ObjectId} _id ID of the Expense.
  * @apiSuccess {Activity[]} activities Array list of activities in the Expense. See Activities section for Activity object description.
@@ -170,9 +170,9 @@ router.route('/:expenseid')
 
 router.route('/:expenseid/pdf')
 /**
- * @api {get} /:userid/expenses/:expenseid/pdf Get Expense PDF by ID
+ * @api {get} /expenses/:expenseid/pdf Get Expense PDF by ID
  * @apiGroup Expenses
- * @apiParam {ObjectId} userid User ID of the User.
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiParam {ObjectId} expenseid Expense ID of the requested Expense.
  */
   .get(function(req, res) {

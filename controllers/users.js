@@ -33,24 +33,8 @@ function newUser(req, res, next) {
 	});
 }
 
-function verifyUser(req, res, next, userid) {
-	Quixpense.User.findOne({ _id: userid }, function(err, user) {
-		if (err) {
-			console.log(id + ' was not found');
-			res.status(500);
-			err = new Error('User Not Found');
-			err.status = 500;
-			return res.json({message : err.status  + ' ' + err});
-		} else {
-			req.userid = userid;
-			return next(); 
-		} 
-
-	});	
-}
-
 function getUser(req, res, next) {
-	var userid = req.userid;
+	var userid = req.user.id;
 	Quixpense.User.findOne({ _id: userid }, function(err, user) {
 		if(err) {
 			console.log("Could not find user!");
@@ -81,7 +65,8 @@ function getUserByUsername(username, next) {
 }
 
 function updateUser(req, res, next) {
-	var userid = req.userid;
+	console.log(req.body);
+	var userid = req.user.id;
 
 	Quixpense.User.findOne({ _id: userid }, function(err, user) {
 		if (err) {
@@ -91,11 +76,8 @@ function updateUser(req, res, next) {
 			err.status = 500;
 			return res.json({message : err.status  + ' ' + err});
 		} else {
-			if (req.body.username) user.username = req.body.username;
-			if (req.body.displayName) user.displayName = req.body.displayName;
 			if (req.body.expCurrency) user.expCurrency = req.body.expCurrency;
 			if (req.body.reimbCurrency) user.reimbCurrency = req.body.reimbCurrency;
-			if (req.body.email) user.email = req.body.email;
 			if (req.body.isCorporateCard) user.isCorporateCard = req.body.isCorporateCard;
 			if (req.body.cardType) user.cardType = req.body.cardType;
 			if (req.body.bankType) user.bankType = req.body.bankType;
@@ -116,7 +98,6 @@ function updateUser(req, res, next) {
 
 module.exports = {
 	newUser: newUser,
-	verifyUser: verifyUser,
 	getUser: getUser,
 	getUserByUsername: getUserByUsername,
 	updateUser: updateUser

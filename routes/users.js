@@ -1,85 +1,69 @@
 var express = require('express'),
     router = express.Router(),
-    bodyParser = require('body-parser'), //parses information from POST
-    methodOverride = require('method-override'), //used to manipulate POST
     userController = require('../controllers/users');
 
-//var receipts = require('./receipts');
-//var activities = require('./activities');
-//var expenses = require('./expenses');
-//
-module.exports = function(passport) {
-	router.use(bodyParser.urlencoded({ extended: true }));
-	router.use(methodOverride(function(req, res){
-		if (req.body && typeof req.body === 'object' && '_method' in req.body) {
-			// look in urlencoded POST bodies and delete it
-			var method = req.body._method;
-			delete req.body._method;
-			return method;
-		}
-	}));
-
-	router.route('/')
-		.get(function(req, res) {
-			userController.getAllUsers(req, res, function(user) {
-				res.json(user);
-			});
-		})
-		.post(function(req, res) {
-			userController.newUser(req, res, function(user) {
-				res.json(user);
-			});
+router.route('/')
+/**
+ * @api {get} /user Get User 
+ * @apiGroup User
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
+ * @apiSuccess {ObjectId} ID of the User.
+ * @apiSuccess {String} username Username of the User.
+ * @apiSuccess {String} firstname First name of the User.
+ * @apiSuccess {String} lastname Last name of the User.
+ * @apiSuccess {String} email Email of the User.
+ * @apiSuccess {String} expCurrency Expense currency of the User.
+ * @apiSuccess {String} reimbCurrency Reimbursement currency of the User.
+ * @apiSuccessExample {json} Example Response:
+ * HTTP/1.1 200 OK
+ * {
+ * 	"id": "57c5ed60cb9c234842d4d61f",
+ * 	"username": "jhadi",
+ * 	"firstname": "Jason",
+ * 	"lastname": "Hadi",
+ * 	"email": "jhadi@rlsolutions.com",
+ * 	"expCurrency": "CAD",
+ * 	"reimbCurrency": "CAD",
+ * 	"iat": 1480347240
+ * }
+ */
+	.get(function(req, res) {
+		res.json(req.user);
+	})
+/**
+ * @api {put} /user Update User 
+ * @apiGroup User
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
+ * @apiParam {String} expCurrency Expense currency of the User.
+ * @apiParam {String} reimbCurrency Reimbursement currency of the User.
+ * @apiParamExample {json} Content Example:
+ * {
+ * 	"expCurrency": "CAD"
+ * }
+ * @apiParam {ObjectId} ID of the User.
+ * @apiSuccess {String} username Username of the User.
+ * @apiSuccess {String} firstname First name of the User.
+ * @apiSuccess {String} lastname Last name of the User.
+ * @apiSuccess {String} email Email of the User.
+ * @apiSuccess {String} expCurrency Expense currency of the User.
+ * @apiSuccess {String} reimbCurrency Reimbursement currency of the User.
+ * @apiSuccessExample {json} Example Response:
+ * HTTP/1.1 200 OK
+ * {
+ * 	"id": "57c5ed60cb9c234842d4d61f",
+ * 	"username": "jhadi",
+ * 	"firstname": "Jason",
+ * 	"lastname": "Hadi",
+ * 	"email": "jhadi@rlsolutions.com",
+ * 	"expCurrency": "CAD",
+ * 	"reimbCurrency": "CAD",
+ * 	"iat": 1480347240
+ * }
+ */
+	.put(function(req, res) {
+		userController.updateUser(req, res, function(user) {
+			res.json(user);
 		});
-
-
-	router.param('userid', function(req, res, next, userid) {
-		userController.verifyUser(req, res, next, userid);
 	});
 
-	router.route('/:userid')
-		.get(function(req, res) {
-			userController.getUser(req, res, function(user) {
-				res.json(user);
-			});
-		})
-		.put(function(req, res) {
-			userController.updateUser(req, res, function(user) {
-				res.json(user);
-			});
-		});
-
-	//router.use('/:userid/receipts', receipts);
-	//router.use('/:userid/activities', activities);
-	//router.use('/:userid/expenses', expenses);
-
-	return router;
-};
-
-//	router.get('/login', function(req, res, next) {
-//		res.render('login', { title: 'Login' });
-//	});
-//
-//
-//	router.post('/login', function(req, res, next) {
-//		passport.authenticate('ldapauth', function(err, user, info) {
-//			console.log(user);
-//			if (err) { 
-//				console.log(err);
-//				return next(err); 
-//			}
-//			if (! user) { 
-//				return res.render('login', { msg: 'Invalid username or password.' }); 
-//			}
-//			req.login(user, { session: false }, function(err){
-//				if(err) { 
-//					console.log(err);
-//					return res.render('login', { msg: 'Invalid username or password.' }); 
-//				}
-//				return res.redirect('/');
-//			});
-//		})(req, res, next);
-//	});
-//
-//	router.get('/logout', function(req, res, next) {
-//		res.render('index', { title: 'Express' });
-//	});
+module.exports = router;

@@ -35,14 +35,14 @@ app.use(passport.initialize());
 app.use(ejwt({secret: config.jwtsecret}).unless({path: ['/auth']}));
 
 var auth = require('./routes/auth')(passport);
-//var users = require('./routes/users');
+var users = require('./routes/users');
 var gp = require('./routes/gp');
 var expenses = require('./routes/expenses');
 var activities = require('./routes/activities');
 var receipts = require('./routes/receipts');
 
 app.use('/auth', auth);
-//app.use('/user', users);
+app.use('/user', users);
 app.use('/gp', gp);
 app.use('/expenses', expenses);
 app.use('/activities', activities);

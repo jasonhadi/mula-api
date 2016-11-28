@@ -7,6 +7,7 @@ module.exports = function(passport) {
 /**
  * @api {get} /gp/expenses Get all Projects
  * @apiGroup GP
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiSuccess {String[]} projects String Array of Projects in GP.
  * @apiSuccessExample {json} Example Response:
  * HTTP/1.1 200 OK
@@ -25,6 +26,7 @@ module.exports = function(passport) {
 /**
  * @api {get} /gp/assignments Get all Assignments
  * @apiGroup GP
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiSuccess {String[]} assignments String Array list of Assignments in GP.
  * @apiSuccessExample {json} Example Response:
  * HTTP/1.1 200 OK
@@ -43,6 +45,7 @@ module.exports = function(passport) {
 /**
  * @api {get} /gp/costcategories Get all Cost Categories
  * @apiGroup GP
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiSuccess {String[]} costcategories String Array list of Cost Categories in GP.
  * @apiSuccessExample {json} Example Response:
  * HTTP/1.1 200 OK
@@ -59,8 +62,9 @@ module.exports = function(passport) {
 		});	
 	});
 /**
- * @api {get} /gp/mapping Get mapping of Projects, Assignments, and Cost Categories in GP.
+ * @api {get} /gp/mapping Get full GP mapping
  * @apiGroup GP
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiSuccess {Object[]} gp Array list of projects in GP.
  * @apiSuccess {Object} project Project object from GP.
  * @apiSuccess {String} project.projectname Project name of Project from GP.

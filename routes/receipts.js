@@ -22,9 +22,9 @@ router.use(methodOverride(function(req, res){
 
 router.route('/')
 /**
- * @api {get} /:userid/activities Get all Receipts by User
+ * @api {get} /activities Get all Receipts 
  * @apiGroup Receipts
- * @apiParam {ObjectId} userid User ID of the User.
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiSuccess {Object[]} receipts Array list of Receipts for the User.
  * @apiSuccess {ObjectId} receipts._id ID of the Receipt.
  * @apiSuccess {ObjectId} receipts.userId The User which created this Receipt.
@@ -58,10 +58,10 @@ router.route('/')
 	    });
     })
 /**
- * @api {post} /:userid/receipts Create new Receipt by User
+ * @api {post} /receipts Create new Receipt 
  * @apiGroup Receipts
  * @apiDescription The encoding for this POST is multipart/formdata to handle the image upload.
- * @apiParam {ObjectId} userid User ID of the User.
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiParam {ObjectId} [activityId] Activity ID of the related Activity.
  * @apiParam {String} [description] Description of the Receipt.
  * @apiParam {String="O","U","Can HST", "Can GST"} where Location code of Receipt.
@@ -117,9 +117,9 @@ router.get('/:receiptid/new', function(req, res) {
 
 router.route('/:receiptid')
 /**
- * @api {get} /:userid/receipts/:receiptid Get Receipt by ID
+ * @api {get} /receipts/:receiptid Get Receipt by ID
  * @apiGroup Receipts
- * @apiParam {ObjectId} userid User ID of the User.
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiParam {ObjectId} receiptid Receipt ID of the Receipt.
  * @apiSuccess {ObjectId} _id ID of the Receipt.
  * @apiSuccess {ObjectId} userId The User which created this Receipt.
@@ -155,10 +155,10 @@ router.route('/:receiptid')
 	  });
   })
 /**
- * @api {post} /:userid/receipts/:receiptid Update Receipt by ID
+ * @api {post} /receipts/:receiptid Update Receipt by ID
  * @apiGroup Receipts
  * @apiDescription The encoding for this POST is multipart/formdata to handle the image upload.
- * @apiParam {ObjectId} userid User ID of the User.
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiParam {ObjectId} receiptid Receipt ID of the related Receipt.
  * @apiParam {ObjectId} [activityId] Activity ID of the related Activity.
  * @apiParam {String} [description] Description of the Receipt.
@@ -202,10 +202,10 @@ router.route('/:receiptid')
 	  });
   })
 /**
- * @api {delete} /:userid/receipts/:receiptid Delete Receipt by ID
+ * @api {delete} /receipts/:receiptid Delete Receipt by ID
  * @apiGroup Receipts
  * @apiDescription The encoding for this POST is multipart/formdata to handle the image upload.
- * @apiParam {ObjectId} userid User ID of the User.
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiParam {ObjectId} receiptid Receipt ID of the related Receipt.
  * @apiSuccess {String="success","failed"} status Status of the DELETE action.
  * @apiSuccess {Object[]} receipt.Details of the delete Receipt.
