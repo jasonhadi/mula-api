@@ -32,7 +32,7 @@ describe('Users', function() {
 			.send({ username: config.test.username, password: config.test.password })
 			.end(function(err, res) {
 				res.should.have.status(200);
-				res.should.be.json;
+				r = res.should.be.json;
 				res.body.should.be.a('object');
 				res.body.should.have.a.property('token');
 				
@@ -47,7 +47,7 @@ describe('Users', function() {
 			.set('Authorization', token)
 			.end(function(err, res) {
 				res.should.have.status(200);
-				res.should.be.json;
+				r = res.should.be.json;
 				res.body.should.be.a('object');
 				res.body.should.have.a.property('id');
 				res.body.should.have.a.property('username');
@@ -67,7 +67,7 @@ describe('Users', function() {
 			.send({ expCurrency: 'USD', reimbCurrency: 'USD' })
 			.end(function(err, res) {
 				res.should.have.status(200);
-				res.should.be.json;
+				r = res.should.be.json;
 				res.body.should.be.a('object');
 				res.body.should.have.a.property('id');
 				res.body.should.have.a.property('username');
@@ -79,6 +79,21 @@ describe('Users', function() {
 
 				res.body.expCurrency.should.equal('USD');
 				res.body.reimbCurrency.should.equal('USD');
+				done();
+			});	
+	});	
+	it('should submit feedback by User on /user/feedback POST', function(done) {
+		chai.request(server)
+			.post('/user/feedback')
+			.set('Authorization', token)
+			.send({ feedback: 'Test feedback!'})
+			.end(function(err, res) {
+				res.should.have.status(200);
+				r = res.should.be.json;
+				res.body.should.be.a('object');
+				res.body.should.have.a.property('feedback');
+
+				res.body.feedback.should.equal('Test feedback!');
 				done();
 			});	
 	});	
