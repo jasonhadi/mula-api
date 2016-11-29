@@ -22,7 +22,7 @@ router.route('/')
  * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiSuccess {Object[]} expenses Array list of Expenses for the user.
  * @apiSuccess {ObjectId} expenses._id ID of the Expense.
- * @apiSuccess {Activity[]} expenses.activities Array list of activities in the Expense. See Activities section for Activity object description.
+ * @apiSuccess {Project[]} expenses.projects Array list of projects in the Expense. See Projects section for Project object description.
  * @apiSuccess {Date} expenses.created Creation date of the Expense.
  * @apiSuccess {Date} expenses.lastUpdated Last updated date of the Expense.
  * @apiSuccess {Date} expenses.oldestBillDate Date of the oldest receipt in the Expense.
@@ -36,7 +36,7 @@ router.route('/')
  *   {
  *       "__v": 0,
  *       "_id": "57c9c83e2ae2efd65a1e16b3",
- *       "activities": [
+ *       "projects": [
  *           {
  *     		...                
  *           }
@@ -65,17 +65,17 @@ router.route('/')
  * @apiGroup Expenses
  * @apiDescription This action will generate the expense spreadsheet, create the combined receipt PDF, and send an email to the user with the attachments.
  * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
- * @apiParam {ObjectId[]} activities Array list of activity IDs included in submitted Expense.
+ * @apiParam {ObjectId[]} projects Array list of project IDs included in submitted Expense.
  * @apiParamExample {json} Content Example:
  * {
- * 	"activities": [
+ * 	"projects": [
  * 		"57c86fea2f4ac8860450e8a5",
  * 		"57c86ff12f4ac8860450e8a6"
  * 	]
  * }
  * @apiSuccess {Object[]} expenses Array list of Expenses for the user.
  * @apiSuccess {ObjectId} expenses._id ID of the Expense.
- * @apiSuccess {Activity[]} expenses.activities Array list of activities in the Expense. See Activities section for Activity object description.
+ * @apiSuccess {Project[]} expenses.projects Array list of projects in the Expense. See Projects section for Project object description.
  * @apiSuccess {Date} expenses.created Creation date of the Expense.
  * @apiSuccess {Date} expenses.lastUpdated Last updated date of the Expense.
  * @apiSuccess {Date} expenses.oldestBillDate Date of the oldest receipt in the Expense.
@@ -89,7 +89,7 @@ router.route('/')
  *   {
  *       "__v": 0,
  *       "_id": "57c9c83e2ae2efd65a1e16b3",
- *       "activities": [
+ *       "projects": [
  *           {
  *     		...                
  *           }
@@ -125,7 +125,7 @@ router.route('/:expenseid')
  * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiParam {ObjectId} expenseid Expense ID of the requested Expense.
  * @apiSuccess {ObjectId} _id ID of the Expense.
- * @apiSuccess {Activity[]} activities Array list of activities in the Expense. See Activities section for Activity object description.
+ * @apiSuccess {Project[]} projects Array list of projects in the Expense. See Projects section for Project object description.
  * @apiSuccess {Date} created Creation date of the Expense.
  * @apiSuccess {Date} lastUpdated Last updated date of the Expense.
  * @apiSuccess {Date} oldestBillDate Date of the oldest receipt in the Expense.
@@ -138,7 +138,7 @@ router.route('/:expenseid')
  * {
  *     "__v": 0,
  *     "_id": "57c9c83e2ae2efd65a1e16b3",
- *     "activities": [
+ *     "projects": [
  *         {
  *   		...                
  *         }
