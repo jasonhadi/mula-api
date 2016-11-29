@@ -12,7 +12,7 @@
     },
     {
         "assignment": "Conference (Mkt Exp)",
-        "coding": "misc",
+        "coding": "conference",
         "costCategories": [
             "Meals & Entertainment",
             "Car Rentl, Parking, Toll",
@@ -144,7 +144,7 @@
     },
     {
         "assignment": "Conference (Mkt Exp)",
-        "coding": "misc",
+        "coding": "conference",
         "costCategories": [
             "Meals & Entertainment",
             "Car Rentl, Parking, Toll",
@@ -298,7 +298,7 @@
     },
     {
         "assignment": "Client Billable",
-        "coding": "misc",
+        "coding": "client",
         "costCategories": [
             "Meals & Entertainment",
             "Car Rentl, Parking, Toll",
