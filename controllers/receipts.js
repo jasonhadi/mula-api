@@ -12,32 +12,30 @@ function newReceipt(req, res, next) {
 	var contentType = req.file.mimetype;
 
 	var receiptId = mongoose.Types.ObjectId();
-	var expenseId = req.body.expenseId;
-	var activityId = req.body.activityId;
-	var imgId = req.body.imgId;
-	var description = req.body.description;
+	var parentActivity = req.body.parentActivity;
 	var where = req.body.where;
 	var type = req.body.type;
     	var amount = req.body.amount;
-	var created = req.body.created;
-	var lastUpdated = req.body.lastUpdated;
+	var date = req.body.date;
+	var description = req.body.description;
 
 	gm(data, req.file.filename + ".jpg")
 		.page(647, 792)
 		.toBuffer('PDF', function (err, pdf) {
 			if(err) {
-				console.log("Could not convert image to pdf!");
-				res.status(500);
 				err = new Error("Could not covnert image to pdf!");
 				err.status = 500;
-				res.json({message : err.status  + ' ' + err});
+				res.status(500).json({message : err.status  + ' ' + err});
 			} else { 
 				Quixpense.Receipt.create({
 					_id: receiptId,
 					userId: userid,
+					parentActivity: parentActivity,
 					where: where,
 					type: type,
 					amount: amount,
+					date: date,
+					description: description,
 					img: {
 						data: pdf,
 						contentType: 'application/pdf'

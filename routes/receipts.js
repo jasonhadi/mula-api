@@ -1,10 +1,8 @@
 var express = require('express'),
+    router = express.Router(),
     session = require('express-session'),
-    router = express.Router({mergeParams: true}),
     bodyParser = require('body-parser'), //parses information from POST
     methodOverride = require('method-override'), //used to manipulate POST
-    fs = require('fs'),
-    gm = require('gm').subClass({imageMagick: true}),
     multer = require('multer'),
     uploads = multer({ dest: './uploads/' }),
     receiptController = require('../controllers/receipts');
@@ -62,17 +60,20 @@ router.route('/')
  * @apiGroup Receipts
  * @apiDescription The encoding for this POST is multipart/formdata to handle the image upload.
  * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
- * @apiParam {ObjectId} [activityId] Activity ID of the related Activity.
+ * @apiParam {ObjectId} [parentActivity] Activity ID of the related Activity.
  * @apiParam {String} [description] Description of the Receipt.
  * @apiParam {String="O","U","Can HST", "Can GST"} where Location code of Receipt.
  * @apiParam {String} type Type of the Receipt.
  * @apiParam {Number} amount Amount of the Receipt.
+ * @apiParam {Date} date Date of the Receipt.
+ * @apiParam {String} description Description of the Receipt.
  * @apiParam {File} img Image file of the Receipt.
  * @apiParamExample {json} Content Example:
  * {
  * 	"userId": "57c5ed60cb9c234842d4d61f",
- * 	"activityId": "57c86ff12f4ac8860450e8a6",
+ * 	"parentAcitivty": "57c86ff12f4ac8860450e8a6",
  * 	"description": "Lunch with Bob",
+ * 	"date": "2016/12/01",
  * 	"where": "O",
  * 	"type": "Meals & Entertainment",
  * 	"img": [some binary data],

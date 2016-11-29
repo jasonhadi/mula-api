@@ -20,8 +20,7 @@ var ReceiptSchema = new mongoose.Schema({
     	description: String,
 	created: { type: Date, default: Date.now },
 	lastUpdated: { type: Date, default: Date.now },
-	submitted: { type: Boolean, default: false },
-    	processed: Boolean
+	submitted: { type: Boolean, default: false }
 });
 
 var ActivitySchema = new mongoose.Schema({
@@ -69,9 +68,17 @@ var UserSchema = new mongoose.Schema({
     	bankType: String
 });   
 
+var FeedbackSchema = new mongoose.Schema({
+	username: String,
+	fullname: String,
+	submitted: { type: Date, default: Date.now },
+    	feedback: String
+});
+
 module.exports = {
 	Receipt: mongoose.model('Receipt', ReceiptSchema),
 	Activity: mongoose.model('Activity', ActivitySchema),
 	Expense: mongoose.model('Expense', ExpenseSchema),
-	User: mongoose.model('User', UserSchema)
+	User: mongoose.model('User', UserSchema),
+	Feedback: mongoose.model('Feedback', FeedbackSchema)
 };

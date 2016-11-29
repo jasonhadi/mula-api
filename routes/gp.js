@@ -2,8 +2,6 @@ var express = require('express'),
     router = express.Router(),
     gp = require('../controllers/gp');
 
-
-module.exports = function(passport) {
 /**
  * @api {get} /gp/expenses Get all Projects
  * @apiGroup GP
@@ -18,11 +16,11 @@ module.exports = function(passport) {
  *   "UGC 2016"
  * ]  
  */
-	router.get('/projects', function(req, res) {
-		gp.getProjects(req, res, function(projects) {
-			res.json(projects);
-		});	
-	});
+router.get('/projects', function(req, res) {
+	gp.getProjects(req, res, function(projects) {
+		res.json(projects);
+	});	
+});
 /**
  * @api {get} /gp/assignments Get all Assignments
  * @apiGroup GP
@@ -37,11 +35,11 @@ module.exports = function(passport) {
  *   "Office Overhead"
  * ]  
  */
-	router.get('/assignments', function(req, res) {
-		gp.getAssignments(req, res, function(assignments) {
-			res.json(assignments);
-		});	
-	});
+router.get('/assignments', function(req, res) {
+	gp.getAssignments(req, res, function(assignments) {
+		res.json(assignments);
+	});	
+});
 /**
  * @api {get} /gp/costcategories Get all Cost Categories
  * @apiGroup GP
@@ -56,11 +54,11 @@ module.exports = function(passport) {
  *   "Supplies"
  * ]  
  */
-	router.get('/costcategories', function(req, res) {
-		gp.getCostCategories(req, res, function(costCategories) {
-			res.json(costCategories);
-		});	
-	});
+router.get('/costcategories', function(req, res) {
+	gp.getCostCategories(req, res, function(costCategories) {
+		res.json(costCategories);
+	});	
+});
 /**
  * @api {get} /gp/mapping Get full GP mapping
  * @apiGroup GP
@@ -110,11 +108,10 @@ module.exports = function(passport) {
  *    }
  * ]
  */
-	router.get('/mapping', function(req, res) {
-		gp.getProjectsJson(req, res, function(projectJson) {
-			res.json(projectJson);
-		});	
+router.get('/mapping', function(req, res) {
+	gp.getProjectsJson(req, res, function(projectJson) {
+		res.json(projectJson);
 	});	
+});	
 
-	return router;
-};
+module.exports = router;

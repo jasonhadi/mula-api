@@ -1,0 +1,1003 @@
+[
+    {
+        "assignment": "Alliances",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Alliance royalties, relat"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "American Hospital Association"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "APIC 2014"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "APIC 2015"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "APIC 2016"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "APIC 2017"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "ASHP 2015"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "ASHP 2016"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "ASHRM 2015"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "ASHRM 2016"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "ASHRM_2013"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "ASHRM_2014"
+    },
+    {
+        "assignment": "Australia (Gen Exp)",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Australian/NZ Expenses General"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Booth Maintenance and Upkeep"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Children Christmas Party 2015"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Children Christmas Party 2016"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Christmas Party 2013"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Christmas Party 2014"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Christmas Party 2015"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Christmas Party 2016"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Company Retreat 2015"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Company Retreat 2016"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Company Retreat 2017"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Company Retreat 2018"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Company Retreat 2019"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Company-wide meetings"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "profdev",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Conf: Beryl PX"
+    },
+    {
+        "assignment": "Client Billable",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Config FIM: PSO"
+    },
+    {
+        "assignment": "Client Billable",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Consulting"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Dept activities, meals, entrtn"
+    },
+    {
+        "assignment": "Prof. Development",
+        "coding": "profdev",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Employee Prof. Development"
+    },
+    {
+        "assignment": "Client Billable",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Escrow Fees 8yrs 2010-2016"
+    },
+    {
+        "assignment": "Z-Travel/Ent/Food",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Food & Alcohol for office"
+    },
+    {
+        "assignment": "Z-Travel/Ent/Food",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "General Marketing Expenses"
+    },
+    {
+        "assignment": "Coference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "HIMSS 2014"
+    },
+    {
+        "assignment": "Coference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "HIMSS 2015"
+    },
+    {
+        "assignment": "Coference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "HIMSS 2016"
+    },
+    {
+        "assignment": "Coference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "HIMSS 2017"
+    },
+    {
+        "assignment": "",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "HST/GST-ITC"
+    },
+    {
+        "assignment": "Coference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "IHI 2015"
+    },
+    {
+        "assignment": "Coference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "IHI 2016"
+    },
+    {
+        "assignment": "Coference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "IHI_2013"
+    },
+    {
+        "assignment": "Coference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "IHI_2014"
+    },
+    {
+        "assignment": "Client Billable",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Implement: R"
+    },
+    {
+        "assignment": "Client Billable",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Implement: R,RC,PR"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Infection Conference CAD"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Infection Conference US"
+    },
+    {
+        "assignment": "Z-Travel/Ent/Food",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Meals & Ent (without travel)"
+    },
+    {
+        "assignment": "Office Renovation",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Office Renovation"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Other Cross-Departmentl Events"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Patient Safety Congress 2016"
+    },
+    {
+        "assignment": "R&D",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Product Research"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Pub Nights"
+    },
+    {
+        "assignment": "Recruitment",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Recruitment"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Regional Conf: Australia/NZ"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Regional Conf: Canada"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Regional Conf: International"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Regional Conf: US"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Regional Conf: US Central"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Regional Conf: US East"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Regional Conf: US Midwest"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Regional Conf: US South"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Regional Conf: US South East"
+    },
+    {
+        "assignment": "Conference (Mkt Exp)",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Regional Conf: US West, SW"
+    },
+    {
+        "assignment": "UGC",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "RL Connections CA"
+    },
+    {
+        "assignment": "UGC",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "RL Connections Canada"
+    },
+    {
+        "assignment": "UGC",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "RL Connections GA"
+    },
+    {
+        "assignment": "UGC",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "RL Connections IL"
+    },
+    {
+        "assignment": "UGC",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "RL Connections PA"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "RL Golf Tournament 2014"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "RL Golf Tournament 2015"
+    },
+    {
+        "assignment": "Office/Dept Events",
+        "coding": "offdptevt",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "RL Golf Tournament 2016"
+    },
+    {
+        "assignment": "",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "RSA Lim. 100hrs: R,C"
+    },
+    {
+        "assignment": "Client Billable",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "RSA Lim. Expense"
+    },
+    {
+        "assignment": "Marketing Other",
+        "coding": "salestrip",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Sales Campaigns"
+    },
+    {
+        "assignment": "Sales Trip",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Sales Retreat"
+    },
+    {
+        "assignment": "Sales Trip",
+        "coding": "salestrip",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Sales Retreat 2014"
+    },
+    {
+        "assignment": "Sales Trip",
+        "coding": "salestrip",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Sales Travel: Australia/NZ"
+    },
+    {
+        "assignment": "Sales Trip",
+        "coding": "salestrip",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Sales Travel: Canada"
+    },
+    {
+        "assignment": "Sales Trip",
+        "coding": "salestrip",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Sales Travel: International"
+    },
+    {
+        "assignment": "Sales Trip",
+        "coding": "salestrip",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Sales Travel: US Central"
+    },
+    {
+        "assignment": "Sales Trip",
+        "coding": "salestrip",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Sales Travel: US East"
+    },
+    {
+        "assignment": "Sales Trip",
+        "coding": "salestrip",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Sales Travel: US Midwest"
+    },
+    {
+        "assignment": "Sales Trip",
+        "coding": "salestrip",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Sales Travel: US West, SW"
+    },
+    {
+        "assignment": "Client Billable",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "System Health Check"
+    },
+    {
+        "assignment": "Client Billable",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Training: 07 hrs Onsite"
+    },
+    {
+        "assignment": "Z-Travel/Ent/Food",
+        "coding": "misc",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "Travel(can't allocate elsewhr)"
+    },
+    {
+        "assignment": "UGC",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "UGC 2014 San Diego"
+    },
+    {
+        "assignment": "UGC",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "UGC 2015 New Orleans"
+    },
+    {
+        "assignment": "UGC",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "UGC 2016 Toronto"
+    },
+    {
+        "assignment": "UGC",
+        "coding": "conference",
+        "costCategories": [
+            "Meals & Entertainment",
+            "Car Rentl, Parking, Toll",
+            "Hotel",
+            "Taxi"
+        ],
+        "project": "UGCUS 2016"
+    }
+]
