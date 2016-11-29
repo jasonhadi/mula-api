@@ -12,7 +12,7 @@ function newReceipt(req, res, next) {
 	var contentType = req.file.mimetype;
 
 	var receiptId = mongoose.Types.ObjectId();
-	var parentActivity = req.body.parentActivity;
+	var parentProject = req.body.parentProject;
 	var where = req.body.where;
 	var type = req.body.type;
     	var amount = req.body.amount;
@@ -30,7 +30,7 @@ function newReceipt(req, res, next) {
 				Quixpense.Receipt.create({
 					_id: receiptId,
 					userId: userid,
-					parentActivity: parentActivity,
+					parentProject: parentProject,
 					where: where,
 					type: type,
 					amount: amount,
@@ -94,14 +94,14 @@ function updateReceipt(req, res, next) {
 			}
 			
 			if(req.body.expenseId) receipt.expenseId = req.body.expenseId;
-			if(req.body.activityId) receipt.activityId = req.body.activityId;
+			if(req.body.projectId) receipt.projectId = req.body.projectId;
 			if(req.body.description) receipt.description = req.body.description;
 			if(req.body.where) receipt.where = req.body.where;
 			if(req.body.type) receipt.type = req.body.type;
     			if(req.body.amount) receipt.amount = req.body.amount;
 			if(req.body.created) receipt.created = req.body.created;
 			if(req.body.lastUpdated) receipt.lastUpdated = req.body.lastUpdated;
-			if(req.body.parentActivity) receipt.parentActivity = req.body.parentActivity;
+			if(req.body.parentProject) receipt.parentProject = req.body.parentProject;
 
 			receipt.save(function(err) {
 				if (err) {
