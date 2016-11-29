@@ -106,9 +106,31 @@ function updateUser(req, res, next) {
 	});	
 }
 
+function submitFeedback(req, res, next) {
+	var userid = req.user.id;
+	var fullname = req.user.firstname + ' ' + req.user.lastname;
+	var feedback = req.body.feedback;
+
+	Quixpense.Feedback.create({
+		username: userid, 
+		fullname: fullname,
+		feedback: feedback
+	}, function(err, feedback) {
+		if(err) {
+			err = new Error("Could not create user!");
+			err.status = 500;
+			return res.status(500).json({message : err.status  + ' ' + err});
+		} else {
+			return next(feedback);
+		}
+	});
+
+}
+
 module.exports = {
 	newUser: newUser,
 	getUser: getUser,
 	getUserByUsername: getUserByUsername,
-	updateUser: updateUser
+	updateUser: updateUser,
+	submitFeedback: submitFeedback
 };

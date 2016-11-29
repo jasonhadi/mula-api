@@ -66,4 +66,11 @@ router.route('/')
 		});
 	});
 
+router.route('/feedback')
+	.post(function(req, res) {
+		userController.submitFeedback(req, res, function(feedback) {
+			res.json(feedback);
+		});
+	});
+
 module.exports = router;
