@@ -23,6 +23,11 @@ function getCostCategories(req, res, next) {
 	});
 }
 
+function getPremadeJson(req, res, next) {
+	var json = require('../models/gp');
+	next(json);
+}
+
 function getProjectsJson(req, res, next) {
 	function generate(assignments, costCategories, projects, next) {
 		assignments.forEach(function(a) {
@@ -90,6 +95,7 @@ function getProjectsJson(req, res, next) {
 module.exports = {
 	getCostCategories: getCostCategories,
 	getProjects: getProjects,
-	getProjectsJson: getProjectsJson,
+	//getProjectsJson: getProjectsJson,
+	getProjectsJson: getPremadeJson,
 	getAssignments: getAssignments
 };
