@@ -113,5 +113,23 @@ describe('Projects', function() {
 				done();
 			});	
 	});	
+	it('should delete PROJECT by ID /projects/:id DELETE', function(done) {
+		chai.request(server)
+			.delete('/projects/' + projectid)
+			.set('Authorization', token)
+			.end(function(err, res) {
+				res.should.have.status(200);
+				r = res.should.be.json;
+				res.body.should.be.a('object');
+				res.body.should.have.a.property('status');
+				res.body.should.have.a.property('project');
+
+				res.body.status.should.equal('success');
+				res.body.project._id.should.equal(projectid);
+
+				done();
+			});	
+	});	
+
 
 });
