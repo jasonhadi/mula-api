@@ -2,10 +2,10 @@ var chai = require('chai');
 var chaiHttp = require('chai-http');
 var should = chai.should();
 
-var config = require('../config');
-var server = require('../app');
-var Quixpense = require('../models/quixpense');
-var receiptsController = require('../controllers/receipts');
+var config = require('../../config');
+var server = require('../../app');
+var Quixpense = require('../../models/quixpense');
+var receiptsController = require('../../controllers/receipts');
 
 chai.use(chaiHttp);
 

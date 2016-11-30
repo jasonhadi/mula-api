@@ -2,10 +2,10 @@ var chai = require('chai');
 var chaiHttp = require('chai-http');
 var should = chai.should();
 
-var config = require('../config');
-var server = require('../app');
-var Quixpense = require('../models/quixpense');
-var projectsController = require('../controllers/projects');
+var config = require('../../config');
+var server = require('../../app');
+var Quixpense = require('../../models/quixpense');
+var projectsController = require('../../controllers/projects');
 
 chai.use(chaiHttp);
 
@@ -87,4 +87,31 @@ describe('Projects', function() {
 				done();
 			});	
 	});	
+	it('should update PROJECT by ID /projects/:id PUT', function(done) {
+		chai.request(server)
+			.put('/projects/' + projectid)
+			.set('Authorization', token)
+			.send({ 
+				description: 'Test update.',
+			       	name: 'UGC 2017', 
+			       	assignment: 'ABC' 
+			})
+			.end(function(err, res) {
+				res.should.have.status(200);
+				r = res.should.be.json;
+				res.body.should.be.a('object');
+				res.body.should.have.a.property('_id');
+				res.body.should.have.a.property('userId');
+				res.body.should.have.a.property('name');
+				res.body.should.have.a.property('description');
+				res.body.should.have.a.property('assignment');
+
+				res.body.name.should.equal('UGC 2017');
+				res.body.description.should.equal('Test update.');
+				res.body.assignment.should.equal('ABC');
+
+				done();
+			});	
+	});	
+
 });
