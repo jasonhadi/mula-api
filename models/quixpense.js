@@ -29,9 +29,9 @@ var ProjectSchema = new mongoose.Schema({
 		number: { type: Number, default: 0 }
 	}],
     	userId: mongoose.Schema.Types.ObjectId,
-	type: String,
+	assignment: String,
     	clientName: String,
-    	project: String,
+    	name: String,
     	description: String,
     	parentExpense: mongoose.Schema.Types.ObjectId,
 	created: { type: Date, default: Date.now },
