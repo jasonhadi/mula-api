@@ -55,7 +55,7 @@ router.route('/')
  * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiParam {String} assignment Assignment of project.
  * @apiParam {String} [clientName] Name of client associated with the Project.
- * @apiParam {String} project Project associated with the Project.
+ * @apiParam {String} name Name associated with the Project.
  * @apiParam {String} [description] Description associated with the Project.
  * @apiParamExample {json} Content Example:
  * {
@@ -131,7 +131,7 @@ router.route('/:projectid')
  * @apiParam {ObjectId} projectid Project ID of the Project.
  * @apiParam {String} assignment Assignment of project.
  * @apiParam {String} [clientName] Name of client associated with the Project.
- * @apiParam {String} project Project associated with the Project.
+ * @apiParam {String} name Name associated with the Project.
  * @apiParam {String} [description] Description associated with the Project.
  * @apiParamExample {json} Content Example:
  * {

@@ -38,7 +38,6 @@ function newProject(req, res, next) {
 			err.status = 500;
 			res.json({message : err.status  + ' ' + err});
 		} else {
-			console.log( JSON.stringify(project) );
 			return next(project);
 		}
 	});
@@ -53,7 +52,6 @@ function verifyProjectId(req, res, next, projectid) {
 			err.status = 404;
 			res.json({message : err.status  + ' ' + err});
 		} else {
-			console.log(project);
 			req.projectid = projectid;
 			next(); 
 		} 
