@@ -38,14 +38,14 @@ var auth = require('./routes/auth')(passport);
 var users = require('./routes/users');
 var gp = require('./routes/gp');
 var expenses = require('./routes/expenses');
-var activities = require('./routes/activities');
+var projects = require('./routes/projects');
 var receipts = require('./routes/receipts');
 
 app.use('/auth', auth);
 app.use('/user', users);
 app.use('/gp', gp);
 app.use('/expenses', expenses);
-app.use('/activities', activities);
+app.use('/projects', projects);
 app.use('/receipts', receipts);
 
 // catch 404 and forward to error handler

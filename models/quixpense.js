@@ -8,10 +8,10 @@ var ReceiptSchema = new mongoose.Schema({
 		data: Buffer,
     		contentType: String
 	},
-    	parentActivity: mongoose.Schema.Types.ObjectId,
+    	parentProject: mongoose.Schema.Types.ObjectId,
     	parentExpense: mongoose.Schema.Types.ObjectId,
     	receiptNumber: { type: Number, default: 0 },
-    	activityNumber: { type: Number, default: 0 },
+    	ProjectNumber: { type: Number, default: 0 },
 	sheetNumber: {type: Number, default: 0 },
     	where: String,
     	type: String,
@@ -23,15 +23,15 @@ var ReceiptSchema = new mongoose.Schema({
 	submitted: { type: Boolean, default: false }
 });
 
-var ActivitySchema = new mongoose.Schema({
+var ProjectSchema = new mongoose.Schema({
     	row: [{
 		sheetNumber: {type: Number, default: 0 },
 		number: { type: Number, default: 0 }
 	}],
     	userId: mongoose.Schema.Types.ObjectId,
-	type: String,
+	assignment: String,
     	clientName: String,
-    	project: String,
+    	name: String,
     	description: String,
     	parentExpense: mongoose.Schema.Types.ObjectId,
 	created: { type: Date, default: Date.now },
@@ -53,7 +53,7 @@ var ExpenseSchema = new mongoose.Schema({
 		data: Buffer,
     		contentType: String
 	},
-    	activities: [ ActivitySchema ],
+    	projects: [ ProjectSchema ],
     	receipts: [ ReceiptSchema],
 	created: { type: Date, default: Date.now },
 	lastUpdated: { type: Date, default: Date.now }
@@ -77,7 +77,7 @@ var FeedbackSchema = new mongoose.Schema({
 
 module.exports = {
 	Receipt: mongoose.model('Receipt', ReceiptSchema),
-	Activity: mongoose.model('Activity', ActivitySchema),
+	Project: mongoose.model('Project', ProjectSchema),
 	Expense: mongoose.model('Expense', ExpenseSchema),
 	User: mongoose.model('User', UserSchema),
 	Feedback: mongoose.model('Feedback', FeedbackSchema)

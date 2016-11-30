@@ -70,53 +70,53 @@ function getExpenseSheet(req, res, next) {
 }
 
 function numberExpenses(req, res, next) {
-	var activities = req.body.activities;
+	var projects = req.body.projects;
 	var expenseId = mongoose.Types.ObjectId();
 	var userId = req.user.id;
 
-	Quixpense.Activity.update({_id: { $in: activities.map(mongoose.Types.ObjectId)}}, { row: [] }, { multi: true } , function(err) {
-		Quixpense.Receipt.find({parentActivity: { $in: activities.map(mongoose.Types.ObjectId)}}, '-img')
-		.sort({ parentActivity: 1 })
+	Quixpense.Project.update({_id: { $in: projects.map(mongoose.Types.ObjectId)}}, { row: [] }, { multi: true } , function(err) {
+		Quixpense.Receipt.find({parentProject: { $in: projects.map(mongoose.Types.ObjectId)}}, '-img')
+		.sort({ parentProject: 1 })
 		.lean()
 		.exec(function(err, receipts) {
 			var currentSheet = 1;
-			var currentActivity = 0;
-			var currentActivityId = "";
+			var currentProject = 0;
+			var currentProjectId = "";
 			var receiptNumber = 1;
 			var oldestBillDate = moment();
-			var activitySave = false;
-			var activityArray = [];
+			var projectSave = false;
+			var projectArray = [];
 
 			async.each(receipts,
 				function(receipt, callback) {
-					if(currentActivityId != receipt.parentActivity) {
-						currentActivity++;
-						activitySave = true;
-						currentActivityId = receipt.parentActivity;
-						activityArray.push(receipt.parentActivity);
+					if(currentProjectId != receipt.parentProject) {
+						currentProject++;
+						projectSave = true;
+						currentProjectId = receipt.parentProject;
+						projectArray.push(receipt.parentProject);
 					}
-					if(receiptNumber % 28 === 0 || currentActivity > 5) {
+					if(receiptNumber % 28 === 0 || currentProject > 5) {
 						currentSheet++;
-						currentActivity = 1;
-						activitySave = true;
+						currentProject = 1;
+						projectSave = true;
 					} 
 					if(oldestBillDate.isAfter(receipt.date)) oldestBillDate = moment(receipt.date);
 
-					if(activitySave) {
-						activitySave = false;
+					if(projectSave) {
+						projectSave = false;
 
-						Quixpense.Activity.findById(currentActivityId, function (err, activity) {
-							activity.row.push({
+						Quixpense.Project.findById(currentProjectId, function (err, project) {
+							project.row.push({
 								sheetNumber: currentSheet,
-								number: currentActivity
+								number: currentProject
 							});
-							activity.parentExpense = expenseId;
-							activity.save(function(err) {
+							project.parentExpense = expenseId;
+							project.save(function(err) {
 								Quixpense.Receipt.findById(receipt._id, '-img', function (err, receipt) {
 									console.log('RN:::::::::' + receiptNumber);
 									receipt.sheetNumber = currentSheet;
 									receipt.receiptNumber = receiptNumber;
-									receipt.activityNumber = currentActivity;
+									receipt.projectNumber = currentProject;
 									receipt.parentExpense = expenseId;
 									receipt.save(function(err) {
 										callback();	
@@ -130,7 +130,7 @@ function numberExpenses(req, res, next) {
 							console.log('RN:::::::::' + receiptNumber);
 							receipt.sheetNumber = currentSheet;
 							receipt.receiptNumber = receiptNumber;
-							receipt.activityNumber = currentActivity;
+							receipt.projectNumber = currentProject;
 							receipt.parentExpense = expenseId;
 							receipt.save(function(err) {
 								callback();	
@@ -140,8 +140,8 @@ function numberExpenses(req, res, next) {
 					}
 
 				}, function(err) {
-					Quixpense.Activity.find({parentExpense: expenseId}, function(err, activities) {
-						generateExpense(expenseId, userId, receipts, activities, next);
+					Quixpense.Project.find({parentExpense: expenseId}, function(err, projects) {
+						generateExpense(expenseId, userId, receipts, projects, next);
 					});
 				}
 		);
@@ -150,12 +150,12 @@ function numberExpenses(req, res, next) {
 	});
 }
 
-function generateExpense(expenseId, userId, newReceipts, newActivities, next) {
+function generateExpense(expenseId, userId, newReceipts, newProjects, next) {
 	Quixpense.Expense.create({
 		_id: expenseId
 	}, function(err, expense) {
 		if(err) { console.log('sss'); }
-		Quixpense.Expense.findByIdAndUpdate(expenseId, {$push: {receipts: {$each: newReceipts}, activities: {$each: newActivities}}}, function(err, exp) {
+		Quixpense.Expense.findByIdAndUpdate(expenseId, {$push: {receipts: {$each: newReceipts}, projects: {$each: newProjects}}}, function(err, exp) {
 			if(err) { console.log('aaa'); }
 			generateExpensePdf(expenseId, userId, next);
 		});

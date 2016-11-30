@@ -20,13 +20,13 @@ router.use(methodOverride(function(req, res){
 
 router.route('/')
 /**
- * @api {get} /activities Get all Receipts 
+ * @api {get} /projects Get all Receipts 
  * @apiGroup Receipts
  * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiSuccess {Object[]} receipts Array list of Receipts for the User.
  * @apiSuccess {ObjectId} receipts._id ID of the Receipt.
  * @apiSuccess {ObjectId} receipts.userId The User which created this Receipt.
- * @apiSuccess {ObjectId} receipts.parentActivity The Activity ID which this Receipt is categorized under.
+ * @apiSuccess {ObjectId} receipts.parentProject The Project ID which this Receipt is categorized under.
  * @apiSuccess {String} receipts.type Type of Receipt.
  * @apiSuccess {String="O","U","Can HST", "Can GST"} receipts.where Location code of Receipt.
  * @apiSuccess {Number} receipts.amount Value of Receipt.
@@ -43,7 +43,7 @@ router.route('/')
  *		"where": "O",
  *		"type": "Taxi",
  *		"amount": 20.52,
- *		"parentActivity": "57c86ff12f4ac8860450e8a6",
+ *		"parentProject": "57c86ff12f4ac8860450e8a6",
  *		"lastUpdated": "2016-09-01T18:15:41.130Z",
  *		"created": "2016-09-01T18:15:41.130Z",
  *		"date": "2016-09-01T20:50:23.676Z",
@@ -60,7 +60,7 @@ router.route('/')
  * @apiGroup Receipts
  * @apiDescription The encoding for this POST is multipart/formdata to handle the image upload.
  * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
- * @apiParam {ObjectId} [parentActivity] Activity ID of the related Activity.
+ * @apiParam {ObjectId} [parentProject] Project ID of the related Project.
  * @apiParam {String} [description] Description of the Receipt.
  * @apiParam {String="O","U","Can HST", "Can GST"} where Location code of Receipt.
  * @apiParam {String} type Type of the Receipt.
@@ -81,7 +81,7 @@ router.route('/')
  * }
  * @apiSuccess {ObjectId} _id ID of the Receipt.
  * @apiSuccess {ObjectId} userId The User which created this Receipt.
- * @apiSuccess {ObjectId} parentActivity The Activity ID which this Receipt is categorized under.
+ * @apiSuccess {ObjectId} parentProject The Project ID which this Receipt is categorized under.
  * @apiSuccess {String} type Type of Receipt.
  * @apiSuccess {Number} amount Value of Receipt.
  * @apiSuccess {String} [description] Description of Receipt.
@@ -97,7 +97,7 @@ router.route('/')
  * 	"type": "Meals & Entertainment",
  * 	"amount": 80.52,
  * 	"description": "Lunch with Bob",
- * 	"parentActivity": "57c86ff12f4ac8860450e8a6",
+ * 	"parentProject": "57c86ff12f4ac8860450e8a6",
  * 	"lastUpdated": "2016-09-01T18:15:41.130Z",
  * 	"created": "2016-09-01T18:15:41.130Z",
  * 	"date": "2016-09-01T20:50:23.676Z",
@@ -124,7 +124,7 @@ router.route('/:receiptid')
  * @apiParam {ObjectId} receiptid Receipt ID of the Receipt.
  * @apiSuccess {ObjectId} _id ID of the Receipt.
  * @apiSuccess {ObjectId} userId The User which created this Receipt.
- * @apiSuccess {ObjectId} parentActivity The Activity ID which this Receipt is categorized under.
+ * @apiSuccess {ObjectId} parentProject The Project ID which this Receipt is categorized under.
  * @apiSuccess {String} type Type of Receipt.
  * @apiSuccess {Number} amount Value of Receipt.
  * @apiSuccess {String} [description] Description of Receipt.
@@ -139,7 +139,7 @@ router.route('/:receiptid')
  * 	"where": "O",
  * 	"type": "Taxi",
  * 	"amount": 20.52,
- * 	"parentActivity": "57c86ff12f4ac8860450e8a6",
+ * 	"parentProject": "57c86ff12f4ac8860450e8a6",
  * 	"lastUpdated": "2016-09-01T18:15:41.130Z",
  * 	"created": "2016-09-01T18:15:41.130Z",
  * 	"date": "2016-09-01T20:50:23.676Z",
@@ -161,7 +161,7 @@ router.route('/:receiptid')
  * @apiDescription The encoding for this POST is multipart/formdata to handle the image upload.
  * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiParam {ObjectId} receiptid Receipt ID of the related Receipt.
- * @apiParam {ObjectId} [activityId] Activity ID of the related Activity.
+ * @apiParam {ObjectId} [projectId] Project ID of the related Project.
  * @apiParam {String} [description] Description of the Receipt.
  * @apiParam {String="O","U","Can HST", "Can GST"} [where] Location code of Receipt.
  * @apiParam {String} [type] Type of the Receipt.
@@ -175,7 +175,7 @@ router.route('/:receiptid')
  * }
  * @apiSuccess {ObjectId} _id ID of the Receipt.
  * @apiSuccess {ObjectId} userId The User which created this Receipt.
- * @apiSuccess {ObjectId} parentActivity The Activity ID which this Receipt is categorized under.
+ * @apiSuccess {ObjectId} parentProject The Project ID which this Receipt is categorized under.
  * @apiSuccess {String} type Type of Receipt.
  * @apiSuccess {Number} amount Value of Receipt.
  * @apiSuccess {String} [description] Description of Receipt.
@@ -191,7 +191,7 @@ router.route('/:receiptid')
  * 	"type": "Meals & Entertainment",
  * 	"amount": 281.52,
  * 	"description": "Lunch with Alice",
- * 	"parentActivity": "57c86ff12f4ac8860450e8a6",
+ * 	"parentProject": "57c86ff12f4ac8860450e8a6",
  * 	"lastUpdated": "2016-09-01T18:15:41.130Z",
  * 	"created": "2016-09-01T18:15:41.130Z",
  * 	"date": "2016-09-01T20:50:23.676Z",
@@ -212,7 +212,7 @@ router.route('/:receiptid')
  * @apiSuccess {Object[]} receipt.Details of the delete Receipt.
  * @apiSuccess {ObjectId} receipt._id ID of the Receipt.
  * @apiSuccess {ObjectId} receipt.userId The User which created this Receipt.
- * @apiSuccess {ObjectId} receipt.parentActivity The Activity ID which this Receipt is categorized under.
+ * @apiSuccess {ObjectId} receipt.parentProject The Project ID which this Receipt is categorized under.
  * @apiSuccess {String} receipt.type Type of Receipt.
  * @apiSuccess {String="O","U","Can HST", "Can GST"} receipt.where Location code of Receipt.
  * @apiSuccess {Number} receipt.amount Value of Receipt.
@@ -230,7 +230,7 @@ router.route('/:receiptid')
  *		"where": "O",
  *		"type": "Taxi",
  *		"amount": 20.52,
- *		"parentActivity": "57c86ff12f4ac8860450e8a6",
+ *		"parentProject": "57c86ff12f4ac8860450e8a6",
  *		"lastUpdated": "2016-09-01T18:15:41.130Z",
  *		"created": "2016-09-01T18:15:41.130Z",
  *		"date": "2016-09-01T20:50:23.676Z",
