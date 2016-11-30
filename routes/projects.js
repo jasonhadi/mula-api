@@ -59,7 +59,6 @@ router.route('/')
  * @apiParam {String} [description] Description associated with the Project.
  * @apiParamExample {json} Content Example:
  * {
- * 	"userId": "57c5ed60cb9c234842d4d61f",
  * 	"type": "UGC",
  * 	"project": "UGC 2016 Toronto",
  * 	"description": "Receipts for UGC 2016",
