@@ -70,11 +70,11 @@ function updateProject(req, res, next) {
 			return newProject(req, res, next);
 		}
 		else { 
-			if(req.body.userId) project.userId = req.body.userId;
 			if(req.body.assignment) project.assignment = req.body.assignment;
 			if(req.body.clientName) project.clientName = req.body.clientName;
-			if(req.body.name) project.project = req.body.name;
+			if(req.body.name) project.name = req.body.name;
 			if(req.body.description) project.description = req.body.description;
+			//TODO: Refresh lastUpdated
 
 			project.save(function(err) {
 				if (err) {
