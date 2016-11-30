@@ -25,10 +25,13 @@ if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV ==='test') {
 	http = require('http');
 	server = http.createServer(app);
 } else if(process.env.NODE_ENV === 'production') {
-	http = require('https');
-	var fs = require('fs');
+        http = require('https');
+        var fs = require('fs');
 	
-	server = http.createServer({pfx: fs.readFileSync(config.pfx), passphrase: config.pfxpwd}, app);
+        server = http.createServer({
+                key: fs.readFileSync(config.key),
+                cert: fs.readFileSync(config.cer)
+        }, app);
 }
 
 /**
