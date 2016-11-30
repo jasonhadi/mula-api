@@ -19,6 +19,7 @@
     "express-jwt": "^5.1.0",
     "express-session": "^1.14.0",
     "gm": "^1.22.0",
+    "https": "^1.0.0",
     "jade": "~1.11.0",
     "js2xmlparser": "^1.0.0",
     "jsonwebtoken": "^7.1.9",
