@@ -23,7 +23,7 @@ function newReceipt(req, res, next) {
 		.page(647, 792)
 		.toBuffer('PDF', function (err, pdf) {
 			if(err) {
-				err = new Error("Could not covnert image to pdf!");
+				err = new Error("Could not convert image to pdf!");
 				err.status = 500;
 				res.status(500).json({message : err.status  + ' ' + err});
 			} else { 
