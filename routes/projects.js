@@ -23,9 +23,9 @@ router.route('/')
  * @apiSuccess {Object[]} projects Array list of Projects for the User.
  * @apiSuccess {ObjectId} projects._id ID of the Project.
  * @apiSuccess {ObjectId} projects.userId The User which created this Expense.
- * @apiSuccess {String} projects.type Type of project.
+ * @apiSuccess {String} projects.assignment Assignment of project.
  * @apiSuccess {String} projects.clientName Name of client associated with the Project.
- * @apiSuccess {String} projects.project Project category of Project.
+ * @apiSuccess {String} projects.name Name of Project.
  * @apiSuccess {String} projects.description Description of Project.
  * @apiSuccess {Date} projects.created Creation date of the Project.
  * @apiSuccess {Date} projects.lastUpdated Last updated date of the Project.
@@ -35,8 +35,8 @@ router.route('/')
  * 	{
  * 		"_id": "57c86fea2f4ac8860450e8a5",
  * 		"userId": "57c5ed60cb9c234842d4d61f",
- * 	 	"type": "UGC",
- * 		"project": "UGC 2016 Toronto",
+ * 	 	"assignment": "UGC",
+ * 		"name": "UGC 2016 Toronto",
  * 		"description": "Receipts for UGC 2016",
  * 		"clientName": "Alpha Client",
  * 		"lastUpdated": "2016-09-01T18:14:02.408Z",
@@ -53,21 +53,21 @@ router.route('/')
  * @api {post} /projects Create new Project
  * @apiGroup Projects
  * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
- * @apiParam {String} type Type of project.
+ * @apiParam {String} assignment Assignment of project.
  * @apiParam {String} [clientName] Name of client associated with the Project.
  * @apiParam {String} project Project associated with the Project.
  * @apiParam {String} [description] Description associated with the Project.
  * @apiParamExample {json} Content Example:
  * {
- * 	"type": "UGC",
- * 	"project": "UGC 2016 Toronto",
+ * 	"assignment": "UGC",
+ * 	"name": "UGC 2016 Toronto",
  * 	"description": "Receipts for UGC 2016",
  * }
  * @apiSuccess {ObjectId} _id ID of the Project.
  * @apiSuccess {ObjectId} userId The User which created this Expense.
- * @apiSuccess {String} type Type of project.
+ * @apiSuccess {String} assignment Assignment of project.
  * @apiSuccess {String} projects.clientName Name of client associated with the Project.
- * @apiSuccess {String} projects.project Project category of Project.
+ * @apiSuccess {String} projects.name Name of Project.
  * @apiSuccess {String} projects.description Description of Project.
  * @apiSuccess {Date} projects.created Creation date of the Project.
  * @apiSuccess {Date} projects.lastUpdated Last updated date of the Project.
@@ -76,8 +76,8 @@ router.route('/')
  * {
  * 	"_id": "57c86fea2f4ac8860450e8a5",
  * 	"userId": "57c5ed60cb9c234842d4d61f",
- * 	"type": "UGC",
- * 	"project": "UGC 2016 Toronto",
+ * 	"assignment": "UGC",
+ * 	"name": "UGC 2016 Toronto",
  * 	"description": "Receipts for UGC 2016",
  * 	"lastUpdated": "2016-09-01T18:14:02.408Z",
  * 	"created": "2016-09-01T18:14:02.408Z"
@@ -101,9 +101,9 @@ router.route('/:projectid')
  * @apiParam {ObjectId} projectid Project ID of the Project.
  * @apiSuccess {ObjectId} _id ID of the Project.
  * @apiSuccess {ObjectId} userId The User which created this Expense.
- * @apiSuccess {String} type Type of project.
+ * @apiSuccess {String} assignment Assignment of project.
  * @apiSuccess {String} clientName Name of client associated with the Project.
- * @apiSuccess {String} project Project category of Project.
+ * @apiSuccess {String} name Name of Project.
  * @apiSuccess {String} description Description of Project.
  * @apiSuccess {Date} created Creation date of the Project.
  * @apiSuccess {Date} lastUpdated Last updated date of the Project.
@@ -112,8 +112,8 @@ router.route('/:projectid')
  * {
  * 	"_id": "57c86fea2f4ac8860450e8a5",
  * 	"userId": "57c5ed60cb9c234842d4d61f",
- * 	"type": "UGC",
- * 	"project": "UGC 2016 Toronto",
+ * 	"assignment": "UGC",
+ * 	"name": "UGC 2016 Toronto",
  * 	"description": "Receipts for UGC 2016",
  * 	"lastUpdated": "2016-09-01T18:14:02.408Z",
  * 	"created": "2016-09-01T18:14:02.408Z"
@@ -129,21 +129,21 @@ router.route('/:projectid')
  * @apiGroup Projects
  * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiParam {ObjectId} projectid Project ID of the Project.
- * @apiParam {String} type Type of project.
+ * @apiParam {String} assignment Assignment of project.
  * @apiParam {String} [clientName] Name of client associated with the Project.
  * @apiParam {String} project Project associated with the Project.
  * @apiParam {String} [description] Description associated with the Project.
  * @apiParamExample {json} Content Example:
  * {
- * 	"type": "UGC",
- * 	"project": "UGC 2016 Toronto",
+ * 	"assignment": "UGC",
+ * 	"name": "UGC 2016 Toronto",
  * 	"description": "Receipts for UGC 2016",
  * }
  * @apiSuccess {ObjectId} _id ID of the Project.
  * @apiSuccess {ObjectId} userId The User which created this Project.
- * @apiSuccess {String} type Type of project.
+ * @apiSuccess {String} assignment Assignment of project.
  * @apiSuccess {String} clientName Name of client associated with the Project.
- * @apiSuccess {String} project Project category of Project.
+ * @apiSuccess {String} name Name of Project.
  * @apiSuccess {String} description Description of Project.
  * @apiSuccess {Date} created Creation date of the Project.
  * @apiSuccess {Date} lastUpdated Last updated date of the Project.
@@ -152,8 +152,8 @@ router.route('/:projectid')
  * {
  * 	"_id": "57c86fea2f4ac8860450e8a5",
  * 	"userId": "57c5ed60cb9c234842d4d61f",
- * 	"type": "UGC",
- * 	"project": "UGC 2016 Toronto",
+ * 	"assignment": "UGC",
+ * 	"name": "UGC 2016 Toronto",
  * 	"description": "Receipts for UGC 2016",
  * 	"lastUpdated": "2016-09-01T18:14:02.408Z",
  * 	"created": "2016-09-01T18:14:02.408Z"
@@ -173,9 +173,9 @@ router.route('/:projectid')
  * @apiSuccess {Object} project Project object.
  * @apiSuccess {ObjectId} project._id ID of the Project.
  * @apiSuccess {ObjectId} project.userId The User which created this Project.
- * @apiSuccess {String} project.type Type of project.
+ * @apiSuccess {String} project.assignment Assignment of project.
  * @apiSuccess {String} project.clientName Name of client associated with the Project.
- * @apiSuccess {String} project.project Project category of Project.
+ * @apiSuccess {String} project.name Project category of Project.
  * @apiSuccess {String} project.description Description of Project.
  * @apiSuccess {Date} project.created Creation date of the Project.
  * @apiSuccess {Date} project.lastUpdated Last updated date of the Project.
@@ -186,8 +186,8 @@ router.route('/:projectid')
  * 	"project" : {
  * 		"_id": "57c86fea2f4ac8860450e8a5",
  * 		"userId": "57c5ed60cb9c234842d4d61f",
- * 		"type": "UGC",
- * 		"project": "UGC 2016 Toronto",
+ * 		"assignment": "UGC",
+ * 		"name": "UGC 2016 Toronto",
  * 		"description": "Receipts for UGC 2016",
  * 		"lastUpdated": "2016-09-01T18:14:02.408Z",
  * 		"created": "2016-09-01T18:14:02.408Z"

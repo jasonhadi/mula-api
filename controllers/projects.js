@@ -19,16 +19,16 @@ function getProject(req, res, next) {
 
 function newProject(req, res, next) {
 	var userId = req.user.id;
-	var type = req.body.type;
+	var assignment = req.body.assignment;
 	var clientName = req.body.clientName;
-	var project = req.body.project;
+	var name = req.body.name;
 	var description = req.body.description;
 
 	Quixpense.Project.create({
 		userId: userId,
-		type: type,
+		assignment: assignment,
 		clientName: clientName,
-		project: project,
+		name: name,
 		description: description,
 	}, function (err, project) {
 		if(err) {
@@ -73,9 +73,9 @@ function updateProject(req, res, next) {
 		}
 		else { 
 			if(req.body.userId) project.userId = req.body.userId;
-			if(req.body.type) project.type = req.body.type;
+			if(req.body.assignment) project.assignment = req.body.assignment;
 			if(req.body.clientName) project.clientName = req.body.clientName;
-			if(req.body.project) project.project = req.body.project;
+			if(req.body.name) project.project = req.body.name;
 			if(req.body.description) project.description = req.body.description;
 
 			project.save(function(err) {
