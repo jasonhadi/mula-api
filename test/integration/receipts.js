@@ -23,7 +23,7 @@ describe('Receipts', function() {
 	});
 
 	after(function(done) {
-		//Quixpense.Receipt.collection.drop();
+		Quixpense.Receipt.collection.drop();
 		done();
 	});
 
