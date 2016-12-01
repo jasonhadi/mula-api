@@ -11,7 +11,7 @@ var ReceiptSchema = new mongoose.Schema({
     	parentProject: mongoose.Schema.Types.ObjectId,
     	parentExpense: mongoose.Schema.Types.ObjectId,
     	receiptNumber: { type: Number, default: 0 },
-    	ProjectNumber: { type: Number, default: 0 },
+    	projectNumber: { type: Number, default: 0 },
 	sheetNumber: {type: Number, default: 0 },
     	where: String,
     	type: String,

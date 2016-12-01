@@ -112,7 +112,6 @@ function updateReceipt(req, res, next) {
 						return res.json({message : err.status  + ' ' + err});
 					} else { 
 						receipt.img = undefined;
-						console.log(JSON.stringify(receipt));
 						return next(receipt); 
 					}
 				});
