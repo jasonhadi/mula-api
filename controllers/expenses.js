@@ -1,6 +1,4 @@
 var mongoose = require('mongoose'), //mongo connection
-    bodyParser = require('body-parser'), //parses information from POST
-    methodOverride = require('method-override'), //used to manipulate POST
     mkdirp = require('mkdirp'),
     moment = require('moment'),
     async = require('async'),
@@ -85,15 +83,14 @@ function numberExpenses(req, res, next) {
 			var receiptNumber = 1;
 			var oldestBillDate = moment();
 			var projectSave = false;
-			var projectArray = [];
+			var receiptArray = [];
 
-			async.each(receipts,
+			async.eachSeries(receipts,
 				function(receipt, callback) {
-					if(currentProjectId != receipt.parentProject) {
+					if(currentProjectId.toString() != receipt.parentProject.toString()) {
 						currentProject++;
 						projectSave = true;
 						currentProjectId = receipt.parentProject;
-						projectArray.push(receipt.parentProject);
 					}
 					if(receiptNumber % 28 === 0 || currentProject > 5) {
 						currentSheet++;
@@ -113,12 +110,12 @@ function numberExpenses(req, res, next) {
 							project.parentExpense = expenseId;
 							project.save(function(err) {
 								Quixpense.Receipt.findById(receipt._id, '-img', function (err, receipt) {
-									console.log('RN:::::::::' + receiptNumber);
 									receipt.sheetNumber = currentSheet;
 									receipt.receiptNumber = receiptNumber;
 									receipt.projectNumber = currentProject;
 									receipt.parentExpense = expenseId;
-									receipt.save(function(err) {
+									receipt.save(function(err,receipt) {
+										receiptArray.push(receipt);
 										callback();	
 									});
 									receiptNumber++;
@@ -127,12 +124,12 @@ function numberExpenses(req, res, next) {
 						});
 					} else {
 						Quixpense.Receipt.findById(receipt._id, '-img', function (err, receipt) {
-							console.log('RN:::::::::' + receiptNumber);
 							receipt.sheetNumber = currentSheet;
 							receipt.receiptNumber = receiptNumber;
 							receipt.projectNumber = currentProject;
 							receipt.parentExpense = expenseId;
-							receipt.save(function(err) {
+							receipt.save(function(err, receipt) {
+								receiptArray.push(receipt);
 								callback();	
 							});
 							receiptNumber++;
@@ -141,7 +138,7 @@ function numberExpenses(req, res, next) {
 
 				}, function(err) {
 					Quixpense.Project.find({parentExpense: expenseId}, function(err, projects) {
-						generateExpense(expenseId, userId, receipts, projects, next);
+						generateExpense(expenseId, userId, receiptArray, projects, next);
 					});
 				}
 		);
