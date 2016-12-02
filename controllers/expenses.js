@@ -137,8 +137,15 @@ function numberExpenses(req, res, next) {
 					}
 
 				}, function(err) {
+					var params = {
+						fullname: req.user.firstname + ' ' + req.user.lastname,
+						expCurrency: req.user.expCurrency,
+						reimbCurrency: req.user.reimbCurrency,
+						oldestBillDate: oldestBillDate
+					};
+
 					Quixpense.Project.find({parentExpense: expenseId}, function(err, projects) {
-						generateExpense(expenseId, userId, receiptArray, projects, next);
+						generateExpense(expenseId, userId, receiptArray, projects, params, next);
 					});
 				}
 		);
@@ -147,9 +154,13 @@ function numberExpenses(req, res, next) {
 	});
 }
 
-function generateExpense(expenseId, userId, newReceipts, newProjects, next) {
+function generateExpense(expenseId, userId, newReceipts, newProjects, params, next) {
 	Quixpense.Expense.create({
-		_id: expenseId
+		_id: expenseId,
+		fullname: params.fullname,
+		expCurrency: params.expCurrency,
+		reimbCurrency: params.reimbCurrency,
+		oldestBillDate: params.oldestBillDate
 	}, function(err, expense) {
 		if(err) { console.log('sss'); }
 		Quixpense.Expense.findByIdAndUpdate(expenseId, {$push: {receipts: {$each: newReceipts}, projects: {$each: newProjects}}}, function(err, exp) {

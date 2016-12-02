@@ -41,7 +41,7 @@ var ProjectSchema = new mongoose.Schema({
 
 var ExpenseSchema = new mongoose.Schema({
     	userId: mongoose.Schema.Types.ObjectId,
-    	username: String,
+    	fullname: String,
 	submitDate: { type: Date, default: Date.now },
     	expCurrency: String,
 	reimbCurrency: String,
