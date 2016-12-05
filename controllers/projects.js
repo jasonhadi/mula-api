@@ -118,10 +118,18 @@ function deleteProject(req, res, next) {
 	});
 }
 
+function getReceipts(req, res, next) {
+	Quixpense.Receipt.find({ userId: req.user.id, parentProject: req.projectid }, '-img', function (err, receipts) {
+		if (err) { return console.error(err); }
+		else { next(receipts); }     
+	});
+}
+
 module.exports = {
 	getProjects: getProjects, 
 	newProject: newProject,
 	getProject: getProject,
+	getReceipts: getReceipts,
 	updateProject: updateProject,
 	deleteProject: deleteProject,
 	verifyProjectId: verifyProjectId

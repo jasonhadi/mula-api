@@ -237,6 +237,27 @@ describe('Expenses', function() {
 				done();
 			});	
 	}).timeout(10000);	
+	it('should get RECEIPTS by PROJECT /projects/:id/receipts GET', function(done) {
+		chai.request(server)
+			.get('/projects/' + projectid1 + '/receipts') 
+			.set('Authorization', token)
+			.end(function(err, res) {
+				//console.log(res.body[0]);
+				res.should.have.status(200);
+				r = res.should.be.array;
+				res.body[0].should.have.a.property('_id');
+				res.body[0].should.have.a.property('userId');
+				res.body[0].should.have.a.property('where');
+				res.body[0].should.have.a.property('type');
+				res.body[0].should.have.a.property('amount');
+
+				res.body.length.should.equal(2);
+
+				done();
+			});	
+	}).timeout(10000);	
+
+
 	it('should create new EXPENSE for User on /expenses POST', function(done) {
 		chai.request(server)
 			.post('/expenses')
@@ -248,7 +269,7 @@ describe('Expenses', function() {
 				res.should.have.status(200);
 				r = res.should.be.json;
 				
-				console.log(res.body);
+				//console.log(res.body);
 
 				done();
 			});	

@@ -223,7 +223,7 @@ function generateExpensePdf(expenseId, userId, next) {
 }
 
 function verifyExpenseId(req, res, next, expenseid) {
-	mongoose.model('Expense').findById(expenseid, function (err, expense) {
+	Quixpense.Expense.findById(expenseid, function (err, expense) {
 		if (err) {
 			console.log('Expense ' + expenseid + ' was not found');
 			res.status(500);

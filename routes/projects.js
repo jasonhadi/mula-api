@@ -200,4 +200,18 @@ router.route('/:projectid')
 	  });
   });
 
+router.route('/:projectid/receipts')
+  .get(function(req, res) {
+	  projectController.getReceipts(req, res, function(receipts) {
+		res.json(receipts);
+	  });
+  });
+
+router.route('/batchupdate')
+  .post(function(req, res) {
+	  projectController.batchUpdate(req, res, function(project) {
+		res.json(project);
+	  });
+  });
+
 module.exports = router;
