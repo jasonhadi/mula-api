@@ -188,4 +188,11 @@ router.route('/:expenseid/pdf')
 	  });
   });
 
+router.route('/:expenseid/send')
+  .post(function(req,res) {
+	expenseController.sendExpense(req, res, function(mail) {
+		res.json(mail);
+	});
+  });
+
 module.exports = router;

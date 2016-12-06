@@ -4,6 +4,8 @@ var mongoose = require('mongoose'), //mongo connection
     async = require('async'),
     PDFMerge = require('pdf-merge'),
     gm = require('gm').subClass({imageMagick: true}),
+    nodemailer = require('nodemailer'),
+    config = require('../config'),
     Quixpense = require('../models/quixpense');
 
 function getExpense(req, res, next) {
@@ -141,7 +143,9 @@ function numberExpenses(req, res, next) {
 						fullname: req.user.firstname + ' ' + req.user.lastname,
 						expCurrency: req.user.expCurrency,
 						reimbCurrency: req.user.reimbCurrency,
-						oldestBillDate: oldestBillDate
+						oldestBillDate: oldestBillDate,
+						receiptCount: receiptNumber,
+						sheetCount: currentSheet
 					};
 
 					Quixpense.Project.find({parentExpense: expenseId}, function(err, projects) {
@@ -160,7 +164,9 @@ function generateExpense(expenseId, userId, newReceipts, newProjects, params, ne
 		fullname: params.fullname,
 		expCurrency: params.expCurrency,
 		reimbCurrency: params.reimbCurrency,
-		oldestBillDate: params.oldestBillDate
+		oldestBillDate: params.oldestBillDate,
+		receiptCount: params.receiptNumber,
+		sheetCount: params.currentSheet
 	}, function(err, expense) {
 		if(err) { console.log('sss'); }
 		Quixpense.Expense.findByIdAndUpdate(expenseId, {$push: {receipts: {$each: newReceipts}, projects: {$each: newProjects}}}, function(err, exp) {
@@ -238,11 +244,54 @@ function verifyExpenseId(req, res, next, expenseid) {
 	});
 }
 
+function sendExpense(req, res, next) {
+	//TODO: Hack for TLS certificate missing
+	process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+
+	var sheet;
+	var contentType;
+	var transporter = nodemailer.createTransport(config.nodemailer);
+
+	Quixpense.Expense.findById(req.expenseid, function (err, expense) {
+		if (err) { return console.error(err); }
+		else {
+			sheet = expense.sheet.data;
+			contentType = expense.sheet.contentType;
+
+			var mailOptions = {
+				from: '"Mula" <mula@rlsolutions.com>',
+				to: req.user.email,
+				subject: 'Your expense has been exported! 💰💰💰',
+				text: 'This is a test message from Mula!',
+				attachments: [
+					{
+						filename: 'receipts.pdf',
+						content: new Buffer(sheet, contentType)
+					},
+					{
+						filename: 'expenses.xlsm',
+						path: 'export/' + req.expenseid + '.xlsm'
+					}
+				]
+			};
+		
+			transporter.sendMail(mailOptions, function(err, info) {
+				if(err) { console.log(err); }
+				next({
+					status: "success",
+					date: new Date()
+				});
+			});
+		}
+	});
+}
+
 module.exports = {
 	getExpense: getExpense,
 	getExpenses: getExpenses,
 	deleteExpense: deleteExpense,
 	getExpenseSheet: getExpenseSheet,
 	numberExpenses: numberExpenses,
-	verifyExpenseId: verifyExpenseId
+	verifyExpenseId: verifyExpenseId,
+	sendExpense: sendExpense
 };
