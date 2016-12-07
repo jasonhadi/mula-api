@@ -75,10 +75,19 @@ var FeedbackSchema = new mongoose.Schema({
     	feedback: String
 });
 
+var ExportSchema = new mongoose.Schema({
+	expenseId: mongoose.Schema.Types.ObjectId,
+    	userId: mongoose.Schema.Types.ObjectId,
+	email: String,
+	submitted: { type: Date, default: Date.now },
+    	action: { type: String, enum: ['generate', 'mail'] }
+}, {capped: 1024});
+
 module.exports = {
 	Receipt: mongoose.model('Receipt', ReceiptSchema),
 	Project: mongoose.model('Project', ProjectSchema),
 	Expense: mongoose.model('Expense', ExpenseSchema),
 	User: mongoose.model('User', UserSchema),
-	Feedback: mongoose.model('Feedback', FeedbackSchema)
+	Feedback: mongoose.model('Feedback', FeedbackSchema),
+	Export: mongoose.model('Export', ExportSchema)
 };

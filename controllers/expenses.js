@@ -8,6 +8,17 @@ var mongoose = require('mongoose'), //mongo connection
     config = require('../config'),
     Quixpense = require('../models/quixpense');
 
+//Mailer queue
+var exportStream = Quixpense.Export.find({ action: 'mail', submitted: {$gt: Date.now()} }).tailable().cursor();
+exportStream.on("data", function(data) {
+    console.log(JSON.stringify(data));
+    mailExpense(data);
+}).on('error', function (error){
+    console.log(error);
+}).on('close', function () {
+    console.log('closed');
+});
+
 function getExpense(req, res, next) {
 	Quixpense.Expense.findById(req.expenseid, '-sheet').populate('receipts').exec(function (err, expense) {
 		if (err) { return console.error(err); }
@@ -74,11 +85,12 @@ function numberExpenses(req, res, next) {
 	var expenseId = mongoose.Types.ObjectId();
 	var userId = req.user.id;
 
-	Quixpense.Project.update({_id: { $in: projects.map(mongoose.Types.ObjectId)}}, { row: [] }, { multi: true } , function(err) {
-		Quixpense.Receipt.find({parentProject: { $in: projects.map(mongoose.Types.ObjectId)}}, '-img')
+	Quixpense.Project.update({_id: { $in: projects.map(mongoose.Types.ObjectId)}, submitted: false}, { row: [] }, { multi: true } , function(err) {
+		Quixpense.Receipt.find({parentProject: { $in: projects.map(mongoose.Types.ObjectId)}, submitted: false }, '-img')
 		.sort({ parentProject: 1 })
 		.lean()
 		.exec(function(err, receipts) {
+			if(receipts.length === 0) { return next({"msg": "empty expense"}); }
 			var currentSheet = 1;
 			var currentProject = 0;
 			var currentProjectId = "";
@@ -144,8 +156,9 @@ function numberExpenses(req, res, next) {
 						expCurrency: req.user.expCurrency,
 						reimbCurrency: req.user.reimbCurrency,
 						oldestBillDate: oldestBillDate,
-						receiptCount: receiptNumber,
-						sheetCount: currentSheet
+						receiptCount: receipts.length,
+						sheetCount: currentSheet,
+						email: req.user.email
 					};
 
 					Quixpense.Project.find({parentExpense: expenseId}, function(err, projects) {
@@ -165,13 +178,20 @@ function generateExpense(expenseId, userId, newReceipts, newProjects, params, ne
 		expCurrency: params.expCurrency,
 		reimbCurrency: params.reimbCurrency,
 		oldestBillDate: params.oldestBillDate,
-		receiptCount: params.receiptNumber,
-		sheetCount: params.currentSheet
+		receiptCount: params.receiptCount,
+		sheetCount: params.sheetCount
 	}, function(err, expense) {
 		if(err) { console.log('sss'); }
 		Quixpense.Expense.findByIdAndUpdate(expenseId, {$push: {receipts: {$each: newReceipts}, projects: {$each: newProjects}}}, function(err, exp) {
 			if(err) { console.log('aaa'); }
 			generateExpensePdf(expenseId, userId, next);
+			markSubmitted(expenseId);
+			Quixpense.Export.create({
+				expenseId: expenseId,
+				userId: userId,
+				action: 'generate',
+				email: params.email
+			});
 		});
 	});
 }
@@ -228,6 +248,15 @@ function generateExpensePdf(expenseId, userId, next) {
 	});
 }
 
+function markSubmitted(expenseId) {
+	Quixpense.Project.update({ parentExpense: expenseId }, { $set: { submitted: true }}, { multi: true }, function(err, projects) {
+		if (err) { return console.error(err); }
+	});
+	Quixpense.Receipt.update({ parentExpense: expenseId }, { $set: { submitted: true }}, { multi: true },  function(err, projects) {
+		if (err) { return console.error(err); }
+	});
+}
+
 function verifyExpenseId(req, res, next, expenseid) {
 	Quixpense.Expense.findById(expenseid, function (err, expense) {
 		if (err) {
@@ -244,15 +273,15 @@ function verifyExpenseId(req, res, next, expenseid) {
 	});
 }
 
-function sendExpense(req, res, next) {
+function mailExpense(params) {
 	//TODO: Hack for TLS certificate missing
-	process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+	process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 	var sheet;
 	var contentType;
 	var transporter = nodemailer.createTransport(config.nodemailer);
 
-	Quixpense.Expense.findById(req.expenseid, function (err, expense) {
+	Quixpense.Expense.findById(params.expenseId, function (err, expense) {
 		if (err) { return console.error(err); }
 		else {
 			sheet = expense.sheet.data;
@@ -260,8 +289,8 @@ function sendExpense(req, res, next) {
 
 			var mailOptions = {
 				from: '"Mula" <mula@rlsolutions.com>',
-				to: req.user.email,
-				subject: 'Your expense has been exported! 💰💰💰',
+				to: params.email,
+				subject: 'Your expense has been exported! 💰💰',
 				text: 'This is a test message from Mula!',
 				attachments: [
 					{
@@ -270,17 +299,14 @@ function sendExpense(req, res, next) {
 					},
 					{
 						filename: 'expenses.xlsm',
-						path: 'export/' + req.expenseid + '.xlsm'
+						path: 'export/' + params.expenseId + '.xlsm'
 					}
 				]
 			};
 		
 			transporter.sendMail(mailOptions, function(err, info) {
-				if(err) { console.log(err); }
-				next({
-					status: "success",
-					date: new Date()
-				});
+				if(err) { return console.log(err); }
+				return;
 			});
 		}
 	});
@@ -292,6 +318,5 @@ module.exports = {
 	deleteExpense: deleteExpense,
 	getExpenseSheet: getExpenseSheet,
 	numberExpenses: numberExpenses,
-	verifyExpenseId: verifyExpenseId,
-	sendExpense: sendExpense
+	verifyExpenseId: verifyExpenseId
 };
