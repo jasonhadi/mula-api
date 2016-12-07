@@ -8,7 +8,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Alliance royalties, relat"
+        "name": "Alliance royalties, relat",
+	"number": "ALLIANCES"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -19,7 +20,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "American Hospital Association"
+        "name": "American Hospital Association",
+	"number": "AHA_2016"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -30,7 +32,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "APIC 2014"
+        "name": "APIC 2014",
+	"number": "APIC_2014"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -41,7 +44,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "APIC 2015"
+        "name": "APIC 2015",
+	"number": "APIC_2015"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -52,7 +56,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "APIC 2016"
+        "name": "APIC 2016",
+	"number": "APIC_2016"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -63,7 +68,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "APIC 2017"
+        "name": "APIC 2017",
+	"number": "APIC_2017"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -74,7 +80,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "ASHP 2015"
+        "name": "ASHP 2015",
+	"number": "ASHP_2015"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -85,7 +92,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "ASHP 2016"
+        "name": "ASHP 2016",
+	"number": "ASHP_2016"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -96,7 +104,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "ASHRM 2015"
+        "name": "ASHRM 2015",
+	"number": "ASHRM_2015"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -107,7 +116,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "ASHRM 2016"
+        "name": "ASHRM 2016",
+	"number": "ASHRM_2016"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -118,7 +128,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "ASHRM_2013"
+        "name": "ASHRM_2013",
+	"number": "ASHRM_2013"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -129,7 +140,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "ASHRM_2014"
+        "name": "ASHRM_2014",
+	"number": "ASHRM_2014"
     },
     {
         "assignment": "Australia (Gen Exp)",
@@ -140,7 +152,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Australian/NZ Expenses General"
+        "name": "Australian/NZ Expenses General",
+	"number": "AU/NZ_GENERAL"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -151,7 +164,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Booth Maintenance and Upkeep"
+        "name": "Booth Maintenance and Upkeep",
+	"number": "BOOTH_MAINT"
     },
     {
         "assignment": "Office/Dept Events",
@@ -162,7 +176,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Children Christmas Party 2015"
+        "name": "Children Christmas Party 2015",
+	"number": "XMASCHILD2015"
     },
     {
         "assignment": "Office/Dept Events",
@@ -173,7 +188,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Children Christmas Party 2016"
+        "name": "Children Christmas Party 2016",
+	"number": "XMASCHILD2015"
     },
     {
         "assignment": "Office/Dept Events",
@@ -184,7 +200,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Christmas Party 2013"
+        "name": "Christmas Party 2013",
+	"number": "XMASPARTY2013"
     },
     {
         "assignment": "Office/Dept Events",
@@ -195,7 +212,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Christmas Party 2014"
+        "name": "Christmas Party 2014",
+	"number": "XMASPARTY2014"
     },
     {
         "assignment": "Office/Dept Events",
@@ -206,7 +224,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Christmas Party 2015"
+        "name": "Christmas Party 2015",
+	"number": "XMASPARTY2015"
     },
     {
         "assignment": "Office/Dept Events",
@@ -217,7 +236,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Christmas Party 2016"
+        "name": "Christmas Party 2016",
+	"number": "XMASPARTY2016"
     },
     {
         "assignment": "Office/Dept Events",
@@ -228,7 +248,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Company Retreat 2015"
+        "name": "Company Retreat 2015",
+	"number": "CORP_RETRE_2015"
     },
     {
         "assignment": "Office/Dept Events",
@@ -239,7 +260,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Company Retreat 2016"
+        "name": "Company Retreat 2016",
+	"number": "CORP_RETRE_2016"
     },
     {
         "assignment": "Office/Dept Events",
@@ -250,7 +272,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Company Retreat 2017"
+        "name": "Company Retreat 2017",
+	"number": "CORP_RETRE_2017"
     },
     {
         "assignment": "Office/Dept Events",
@@ -261,7 +284,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Company Retreat 2018"
+        "name": "Company Retreat 2018",
+	"number": "CORP_RETRE_2018"
     },
     {
         "assignment": "Office/Dept Events",
@@ -272,7 +296,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Company Retreat 2019"
+        "name": "Company Retreat 2019",
+	"number": "CORP_RETRE_2019"
     },
     {
         "assignment": "Office/Dept Events",
@@ -283,7 +308,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Company-wide meetings"
+        "name": "Company-wide meetings",
+	"number": "CORP_EVENTS"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -294,18 +320,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Conf: Beryl PX"
-    },
-    {
-        "assignment": "Client Billable",
-        "coding": "client",
-        "costCategories": [
-            "Meals & Entertainment",
-            "Car Rentl, Parking, Toll",
-            "Hotel",
-            "Taxi"
-        ],
-        "project": "Config FIM: PSO"
+        "name": "Conf: Beryl PX",
+	"number": "CONF_BERYL_PX"
     },
     {
         "assignment": "Client Billable",
@@ -316,7 +332,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Consulting"
+        "name": "Consulting",
+	"number": "13045EXP120-001"
     },
     {
         "assignment": "Office/Dept Events",
@@ -327,7 +344,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Dept activities, meals, entrtn"
+        "name": "Dept activities, meals, entrtn",
+	"number": "DEPT_ACTIVITIES"
     },
     {
         "assignment": "Prof. Development",
@@ -338,18 +356,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Employee Prof. Development"
-    },
-    {
-        "assignment": "Client Billable",
-        "coding": "misc",
-        "costCategories": [
-            "Meals & Entertainment",
-            "Car Rentl, Parking, Toll",
-            "Hotel",
-            "Taxi"
-        ],
-        "project": "Escrow Fees 8yrs 2010-2016"
+        "name": "Employee Prof. Development",
+	"number": "PROF_DEV"
     },
     {
         "assignment": "Z-Travel/Ent/Food",
@@ -360,7 +368,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Food & Alcohol for office"
+        "name": "Food & Alcohol for office",
+	"number": "FOOD_FOR_OFFICE"
     },
     {
         "assignment": "Z-Travel/Ent/Food",
@@ -371,7 +380,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "General Marketing Expenses"
+        "name": "General Marketing Expenses",
+	"number": "MKT_GENERAL"
     },
     {
         "assignment": "Coference (Mkt Exp)",
@@ -382,7 +392,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "HIMSS 2014"
+        "name": "HIMSS 2014",
+	"number": "HIMSS_2014"
     },
     {
         "assignment": "Coference (Mkt Exp)",
@@ -393,7 +404,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "HIMSS 2015"
+        "name": "HIMSS 2015",
+	"number": "HIMSS_2015"
     },
     {
         "assignment": "Coference (Mkt Exp)",
@@ -404,7 +416,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "HIMSS 2016"
+        "name": "HIMSS 2016",
+	"number": "HIMSS_2016"
     },
     {
         "assignment": "Coference (Mkt Exp)",
@@ -415,18 +428,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "HIMSS 2017"
-    },
-    {
-        "assignment": "",
-        "coding": "misc",
-        "costCategories": [
-            "Meals & Entertainment",
-            "Car Rentl, Parking, Toll",
-            "Hotel",
-            "Taxi"
-        ],
-        "project": "HST/GST-ITC"
+        "name": "HIMSS 2017",
+	"number": "HIMSS_2017"
     },
     {
         "assignment": "Coference (Mkt Exp)",
@@ -437,7 +440,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "IHI 2015"
+        "name": "IHI 2015",
+	"number": "IHI_2015"
     },
     {
         "assignment": "Coference (Mkt Exp)",
@@ -448,7 +452,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "IHI 2016"
+        "name": "IHI 2016",
+	"number": "IHI_2016"
     },
     {
         "assignment": "Coference (Mkt Exp)",
@@ -459,7 +464,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "IHI_2013"
+        "name": "IHI_2013",
+	"number": "IHI_2013"
     },
     {
         "assignment": "Coference (Mkt Exp)",
@@ -470,29 +476,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "IHI_2014"
-    },
-    {
-        "assignment": "Client Billable",
-        "coding": "misc",
-        "costCategories": [
-            "Meals & Entertainment",
-            "Car Rentl, Parking, Toll",
-            "Hotel",
-            "Taxi"
-        ],
-        "project": "Implement: R"
-    },
-    {
-        "assignment": "Client Billable",
-        "coding": "misc",
-        "costCategories": [
-            "Meals & Entertainment",
-            "Car Rentl, Parking, Toll",
-            "Hotel",
-            "Taxi"
-        ],
-        "project": "Implement: R,RC,PR"
+        "name": "IHI_2014",
+	"number": "IHI_2014"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -503,7 +488,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Infection Conference CAD"
+        "name": "Infection Conference CAD",
+	"number": "CONF_CAD_INFECT"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -514,7 +500,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Infection Conference US"
+        "name": "Infection Conference US",
+	"number": "CONF_US_INFECT"
     },
     {
         "assignment": "Z-Travel/Ent/Food",
@@ -525,7 +512,7 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Meals & Ent (without travel)"
+        "name": "Meals & Ent (without travel)"
     },
     {
         "assignment": "Office Renovation",
@@ -536,7 +523,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Office Renovation"
+        "name": "Office Renovation",
+	"number": "RENOVATION"
     },
     {
         "assignment": "Office/Dept Events",
@@ -547,7 +535,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Other Cross-Departmentl Events"
+        "name": "Other Cross-Departmentl Events",
+	"number": "OTHER_EVENTS"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -558,7 +547,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Patient Safety Congress 2016"
+        "name": "Patient Safety Congress 2016",
+	"number": "PATSAF_2016"
     },
     {
         "assignment": "R&D",
@@ -569,7 +559,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Product Research"
+        "name": "Product Research",
+	"number": "PRO_RESEARCH"
     },
     {
         "assignment": "Office/Dept Events",
@@ -580,7 +571,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Pub Nights"
+        "name": "Pub Nights",
+	"number": "PUB_NIGHTS"
     },
     {
         "assignment": "Recruitment",
@@ -591,7 +583,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Recruitment"
+        "name": "Recruitment",
+	"number": "RECRUITMENT"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -602,7 +595,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Regional Conf: Australia/NZ"
+        "name": "Regional Conf: Australia/NZ",
+	"number": "CONF_AU/NZ"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -613,7 +607,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Regional Conf: Canada"
+        "name": "Regional Conf: Canada",
+	"number": "CONF_CANADA"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -624,7 +619,9 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Regional Conf: International"
+        "name": "Regional Conf: International",
+	"number": "CONF_INTERNTL"
+	
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -635,7 +632,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Regional Conf: US"
+        "name": "Regional Conf: US",
+	"number": "CONF_US"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -646,7 +644,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Regional Conf: US Central"
+        "name": "Regional Conf: US Central",
+	"number": "CONF_US_CENTRL"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -657,7 +656,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Regional Conf: US East"
+        "name": "Regional Conf: US East",
+	"number": "CONF_US_EAST"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -668,7 +668,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Regional Conf: US Midwest"
+        "name": "Regional Conf: US Midwest",
+	"number": "CONF_US_MIDWST"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -679,7 +680,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Regional Conf: US South"
+        "name": "Regional Conf: US South",
+	"number": "CONF_US_SOUTH"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -690,7 +692,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Regional Conf: US South East"
+        "name": "Regional Conf: US South East",
+	"number": "CONF_US_SOUT-SE"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -701,7 +704,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Regional Conf: US West, SW"
+        "name": "Regional Conf: US West, SW",
+	"number": "CONF_US_WST-SW"
     },
     {
         "assignment": "UGC",
@@ -712,7 +716,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "RL Connections CA"
+        "name": "RL Connections CA",
+	"number": "CONNECTIONS_CA"
     },
     {
         "assignment": "UGC",
@@ -723,7 +728,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "RL Connections Canada"
+        "name": "RL Connections Canada",
+	"number": "CONNECTIONS_CAD"
     },
     {
         "assignment": "UGC",
@@ -734,7 +740,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "RL Connections GA"
+        "name": "RL Connections GA",
+	"number": "CONNECTIONS_GA"
     },
     {
         "assignment": "UGC",
@@ -745,7 +752,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "RL Connections IL"
+        "name": "RL Connections IL",
+	"number": "CONNECTIONS_IL"
     },
     {
         "assignment": "UGC",
@@ -756,7 +764,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "RL Connections PA"
+        "name": "RL Connections PA",
+	"number": "CONNECTIONS_PA"
     },
     {
         "assignment": "Office/Dept Events",
@@ -767,7 +776,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "RL Golf Tournament 2014"
+        "name": "RL Golf Tournament 2014",
+	"number": "GOLF_TRNMT_2014"
     },
     {
         "assignment": "Office/Dept Events",
@@ -778,7 +788,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "RL Golf Tournament 2015"
+        "name": "RL Golf Tournament 2015",
+	"number": "GOLF_TRNMT_2015"
     },
     {
         "assignment": "Office/Dept Events",
@@ -789,29 +800,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "RL Golf Tournament 2016"
-    },
-    {
-        "assignment": "",
-        "coding": "misc",
-        "costCategories": [
-            "Meals & Entertainment",
-            "Car Rentl, Parking, Toll",
-            "Hotel",
-            "Taxi"
-        ],
-        "project": "RSA Lim. 100hrs: R,C"
-    },
-    {
-        "assignment": "Client Billable",
-        "coding": "misc",
-        "costCategories": [
-            "Meals & Entertainment",
-            "Car Rentl, Parking, Toll",
-            "Hotel",
-            "Taxi"
-        ],
-        "project": "RSA Lim. Expense"
+        "name": "RL Golf Tournament 2016",
+	"number": "GOLF_TRNMT_2016"
     },
     {
         "assignment": "Marketing Other",
@@ -822,7 +812,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Sales Campaigns"
+        "name": "Sales Campaigns",
+	"number": "SALES_CAMPAIGNS"
     },
     {
         "assignment": "Sales Trip",
@@ -833,7 +824,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Sales Retreat"
+        "name": "Sales Retreat",
+	"number": "SALE_RETREAT"
     },
     {
         "assignment": "Sales Trip",
@@ -844,7 +836,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Sales Retreat 2014"
+        "name": "Sales Travel: Australia/NZ",
+	"number": "SALES_AU/NZ"
     },
     {
         "assignment": "Sales Trip",
@@ -855,7 +848,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Sales Travel: Australia/NZ"
+        "name": "Sales Travel: Canada",
+	"number": "SALES_CANADA"
     },
     {
         "assignment": "Sales Trip",
@@ -866,7 +860,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Sales Travel: Canada"
+        "name": "Sales Travel: International",
+	"number": "SALES_INTERNTL"
     },
     {
         "assignment": "Sales Trip",
@@ -877,7 +872,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Sales Travel: International"
+        "name": "Sales Travel: US Central",
+	"number": "SALES_US_CENTRL"
     },
     {
         "assignment": "Sales Trip",
@@ -888,7 +884,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Sales Travel: US Central"
+        "name": "Sales Travel: US East",
+	"number": "SALES_US_EAST"
     },
     {
         "assignment": "Sales Trip",
@@ -899,7 +896,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Sales Travel: US East"
+        "name": "Sales Travel: US Midwest",
+	"number": "SALES_US_MIDWST"
     },
     {
         "assignment": "Sales Trip",
@@ -910,40 +908,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Sales Travel: US Midwest"
-    },
-    {
-        "assignment": "Sales Trip",
-        "coding": "salestrip",
-        "costCategories": [
-            "Meals & Entertainment",
-            "Car Rentl, Parking, Toll",
-            "Hotel",
-            "Taxi"
-        ],
-        "project": "Sales Travel: US West, SW"
-    },
-    {
-        "assignment": "Client Billable",
-        "coding": "misc",
-        "costCategories": [
-            "Meals & Entertainment",
-            "Car Rentl, Parking, Toll",
-            "Hotel",
-            "Taxi"
-        ],
-        "project": "System Health Check"
-    },
-    {
-        "assignment": "Client Billable",
-        "coding": "misc",
-        "costCategories": [
-            "Meals & Entertainment",
-            "Car Rentl, Parking, Toll",
-            "Hotel",
-            "Taxi"
-        ],
-        "project": "Training: 07 hrs Onsite"
+        "name": "Sales Travel: US West, SW",
+	"number": "SALES_WST-SW"
     },
     {
         "assignment": "Z-Travel/Ent/Food",
@@ -954,7 +920,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "Travel(can't allocate elsewhr)"
+        "name": "Travel(can't allocate elsewhr)",
+	"number": "TRAVEL_GENERAL"
     },
     {
         "assignment": "UGC",
@@ -965,7 +932,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "UGC 2014 San Diego"
+        "name": "UGC 2014 San Diego",
+	"number": "UGC_2014"
     },
     {
         "assignment": "UGC",
@@ -976,7 +944,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "UGC 2015 New Orleans"
+        "name": "UGC 2015 New Orleans",
+	"number": "UGC_2015"
     },
     {
         "assignment": "UGC",
@@ -987,7 +956,8 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "UGC 2016 Toronto"
+        "name": "UGC 2016 Toronto",
+	"number": "UGC_2016"
     },
     {
         "assignment": "UGC",
@@ -998,6 +968,7 @@
             "Hotel",
             "Taxi"
         ],
-        "project": "UGCUS 2016"
+        "name": "UGCUS 2016",
+	"number": "UGCUS_2016"
     }
 ]
