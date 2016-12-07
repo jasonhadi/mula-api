@@ -90,13 +90,13 @@ describe('Expenses', function() {
 				done();
 			});	
 	}).timeout(10000);	
-	it('should create new PROJECT "UGC 2016 Toronto" for User on /projects POST', function(done) {
+	it('should create new PROJECT "UGC_2016: UGC 2016 Toronto" for User on /projects POST', function(done) {
 		chai.request(server)
 			.post('/projects')
 			.set('Authorization', token)
 			.send({ 
 				description: 'Stuff for UGC Toronto 2016',
-			       	name: 'UGC 2016 Toronto', 
+			       	name: 'UGC_2016: UGC 2016 Toronto', 
 			       	assignment: 'UGC' 
 			})
 			.end(function(err, res) {
@@ -109,7 +109,7 @@ describe('Expenses', function() {
 				res.body.should.have.a.property('description');
 				res.body.should.have.a.property('assignment');
 
-				res.body.name.should.equal('UGC 2016 Toronto');
+				res.body.name.should.equal('UGC_2016: UGC 2016 Toronto');
 				res.body.description.should.equal('Stuff for UGC Toronto 2016');
 				res.body.assignment.should.equal('UGC');
 
@@ -118,13 +118,13 @@ describe('Expenses', function() {
 				done();
 			});	
 	}).timeout(10000);	
-	it('should create new PROJECT "ASHRM 2016" for User on /projects POST', function(done) {
+	it('should create new PROJECT "ASHRM_2016: ASHRM 2016" for User on /projects POST', function(done) {
 		chai.request(server)
 			.post('/projects')
 			.set('Authorization', token)
 			.send({ 
 				description: 'Stuff for ASHRM 2016',
-			       	name: 'ASHRM 2016', 
+			       	name: 'ASHRM_2016: ASHRM 2016', 
 			       	assignment: 'Conference (Mkt Exp)' 
 			})
 			.end(function(err, res) {
@@ -137,7 +137,7 @@ describe('Expenses', function() {
 				res.body.should.have.a.property('description');
 				res.body.should.have.a.property('assignment');
 
-				res.body.name.should.equal('ASHRM 2016');
+				res.body.name.should.equal('ASHRM_2016: ASHRM 2016');
 				res.body.description.should.equal('Stuff for ASHRM 2016');
 				res.body.assignment.should.equal('Conference (Mkt Exp)');
 
