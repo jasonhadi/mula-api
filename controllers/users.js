@@ -112,7 +112,6 @@ function submitFeedback(req, res, next) {
 	var feedback = req.body.feedback;
 
 	Quixpense.Feedback.create({
-		username: userid, 
 		fullname: fullname,
 		feedback: feedback
 	}, function(err, feedback) {

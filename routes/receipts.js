@@ -109,11 +109,8 @@ router.route('/')
 	    });
     });
 
-router.get('/new', function(req, res) {
-    res.render('receipts/new', { title: 'Add new receipt' });
-});
-router.get('/:receiptid/new', function(req, res) {
-    res.render('receipts/new', { title: 'update receipt' });
+router.post('/batch', function(req, res) {
+
 });
 
 router.route('/:receiptid')

@@ -207,7 +207,7 @@ router.route('/:projectid/receipts')
 	  });
   });
 
-router.route('/batchupdate')
+router.route('/batch')
   .post(function(req, res) {
 	  projectController.batchUpdate(req, res, function(project) {
 		res.json(project);

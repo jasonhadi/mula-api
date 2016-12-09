@@ -8,8 +8,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Alliance royalties, relat",
-	"number": "ALLIANCES"
+        "displayname": "Alliance royalties, relat",
+	"gpname": "ALLIANCES: Alliance royalties, relat"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -20,8 +20,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "American Hospital Association",
-	"number": "AHA_2016"
+        "displayname": "American Hospital Association",
+	"gpname": "AHA_2016: American Hospital Association"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -32,8 +32,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "APIC 2014",
-	"number": "APIC_2014"
+        "displayname": "APIC 2014",
+	"gpname": "APIC_2014: APIC 2014"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -44,8 +44,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "APIC 2015",
-	"number": "APIC_2015"
+        "displayname": "APIC 2015",
+	"gpname": "APIC_2015: APIC 2015"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -56,8 +56,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "APIC 2016",
-	"number": "APIC_2016"
+        "displayname": "APIC 2016",
+	"gpname": "APIC_2016: APIC 2016"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -68,8 +68,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "APIC 2017",
-	"number": "APIC_2017"
+        "displayname": "APIC 2017",
+	"gpname": "APIC_2017: APIC 2017"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -80,8 +80,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "ASHP 2015",
-	"number": "ASHP_2015"
+        "displayname": "ASHP 2015",
+	"gpname": "ASHP_2015: ASHP 2015"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -92,8 +92,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "ASHP 2016",
-	"number": "ASHP_2016"
+        "displayname": "ASHP 2016",
+	"gpname": "ASHP_2016: ASHP 2016"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -104,8 +104,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "ASHRM 2015",
-	"number": "ASHRM_2015"
+        "displayname": "ASHRM 2015",
+	"gpname": "ASHRM_2015: ASHRM 2015"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -116,8 +116,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "ASHRM 2016",
-	"number": "ASHRM_2016"
+        "displayname": "ASHRM 2016",
+	"gpname": "ASHRM_2016: ASHRM 2016"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -128,8 +128,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "ASHRM_2013",
-	"number": "ASHRM_2013"
+        "displayname": "ASHRM_2013",
+	"gpname": "ASHRM_2013: ASHRM_2013"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -140,8 +140,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "ASHRM_2014",
-	"number": "ASHRM_2014"
+        "displayname": "ASHRM_2014",
+	"gpname": "ASHRM_2014: ASHRM_2014"
     },
     {
         "assignment": "Australia (Gen Exp)",
@@ -152,8 +152,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Australian/NZ Expenses General",
-	"number": "AU/NZ_GENERAL"
+        "displayname": "Australian/NZ Expenses General",
+	"gpname": "AU/NZ_GENERAL: Australian/NZ Expenses General"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -164,8 +164,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Booth Maintenance and Upkeep",
-	"number": "BOOTH_MAINT"
+        "displayname": "Booth Maintenance and Upkeep",
+	"gpname": "BOOTH_MAINT: Booth Maintenance and Upkeep"
     },
     {
         "assignment": "Office/Dept Events",
@@ -176,8 +176,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Children Christmas Party 2015",
-	"number": "XMASCHILD2015"
+        "displayname": "Children Christmas Party 2015",
+	"gpname": "XMASCHILD2015: Children Christmas Party 2015"
     },
     {
         "assignment": "Office/Dept Events",
@@ -188,8 +188,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Children Christmas Party 2016",
-	"number": "XMASCHILD2015"
+        "displayname": "Children Christmas Party 2016",
+	"gpname": "XMASCHILD2015: Children Christmas Party 2016"
     },
     {
         "assignment": "Office/Dept Events",
@@ -200,8 +200,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Christmas Party 2013",
-	"number": "XMASPARTY2013"
+        "displayname": "Christmas Party 2013",
+	"gpname": "XMASPARTY2013: Christmas Party 2013"
     },
     {
         "assignment": "Office/Dept Events",
@@ -212,8 +212,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Christmas Party 2014",
-	"number": "XMASPARTY2014"
+        "displayname": "Christmas Party 2014",
+	"gpname": "XMASPARTY2014: Christmas Party 2014"
     },
     {
         "assignment": "Office/Dept Events",
@@ -224,8 +224,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Christmas Party 2015",
-	"number": "XMASPARTY2015"
+        "displayname": "Christmas Party 2015",
+	"gpname": "XMASPARTY2015: Christmas Party 2015"
     },
     {
         "assignment": "Office/Dept Events",
@@ -236,8 +236,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Christmas Party 2016",
-	"number": "XMASPARTY2016"
+        "displayname": "Christmas Party 2016",
+	"gpname": "XMASPARTY2016: Christmas Party 2016"
     },
     {
         "assignment": "Office/Dept Events",
@@ -248,8 +248,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Company Retreat 2015",
-	"number": "CORP_RETRE_2015"
+        "displayname": "Company Retreat 2015",
+	"gpname": "CORP_RETRE_2015: Company Retreat 2015"
     },
     {
         "assignment": "Office/Dept Events",
@@ -260,8 +260,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Company Retreat 2016",
-	"number": "CORP_RETRE_2016"
+        "displayname": "Company Retreat 2016",
+	"gpname": "CORP_RETRE_2016: Company Retreat 2016"
     },
     {
         "assignment": "Office/Dept Events",
@@ -272,8 +272,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Company Retreat 2017",
-	"number": "CORP_RETRE_2017"
+        "displayname": "Company Retreat 2017",
+	"gpname": "CORP_RETRE_2017: Company Retreat 2017"
     },
     {
         "assignment": "Office/Dept Events",
@@ -284,8 +284,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Company Retreat 2018",
-	"number": "CORP_RETRE_2018"
+        "displayname": "Company Retreat 2018",
+	"gpname": "CORP_RETRE_2018: Company Retreat 2018"
     },
     {
         "assignment": "Office/Dept Events",
@@ -296,8 +296,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Company Retreat 2019",
-	"number": "CORP_RETRE_2019"
+        "displayname": "Company Retreat 2019",
+	"gpname": "CORP_RETRE_2019: Company Retreat 2019"
     },
     {
         "assignment": "Office/Dept Events",
@@ -308,8 +308,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Company-wide meetings",
-	"number": "CORP_EVENTS"
+        "displayname": "Company-wide meetings",
+	"gpname": "CORP_EVENTS: Company-wide meetings"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -320,8 +320,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Conf: Beryl PX",
-	"number": "CONF_BERYL_PX"
+        "displayname": "Conf: Beryl PX",
+	"gpname": "CONF_BERYL_PX: Conf: Beryl PX"
     },
     {
         "assignment": "Client Billable",
@@ -332,8 +332,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Consulting",
-	"number": "13045EXP120-001"
+        "displayname": "Consulting",
+	"gpname": "13045EXP120-001: Consulting"
     },
     {
         "assignment": "Office/Dept Events",
@@ -344,8 +344,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Dept activities, meals, entrtn",
-	"number": "DEPT_ACTIVITIES"
+        "displayname": "Dept activities, meals, entrtn",
+	"gpname": "DEPT_ACTIVITIES: Dept activities, meals, entrtn"
     },
     {
         "assignment": "Prof. Development",
@@ -356,8 +356,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Employee Prof. Development",
-	"number": "PROF_DEV"
+        "displayname": "Employee Prof. Development",
+	"gpname": "PROF_DEV: Employee Prof. Development"
     },
     {
         "assignment": "Z-Travel/Ent/Food",
@@ -368,8 +368,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Food & Alcohol for office",
-	"number": "FOOD_FOR_OFFICE"
+        "displayname": "Food & Alcohol for office",
+	"gpname": "FOOD_FOR_OFFICE: Food & Alcohol for office"
     },
     {
         "assignment": "Z-Travel/Ent/Food",
@@ -380,8 +380,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "General Marketing Expenses",
-	"number": "MKT_GENERAL"
+        "displayname": "General Marketing Expenses",
+	"gpname": "MKT_GENERAL: General Marketing Expenses"
     },
     {
         "assignment": "Coference (Mkt Exp)",
@@ -392,8 +392,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "HIMSS 2014",
-	"number": "HIMSS_2014"
+        "displayname": "HIMSS 2014",
+	"gpname": "HIMSS_2014: HIMSS 2014"
     },
     {
         "assignment": "Coference (Mkt Exp)",
@@ -404,8 +404,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "HIMSS 2015",
-	"number": "HIMSS_2015"
+        "displayname": "HIMSS 2015",
+	"gpname": "HIMSS_2015: HIMSS 2015"
     },
     {
         "assignment": "Coference (Mkt Exp)",
@@ -416,8 +416,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "HIMSS 2016",
-	"number": "HIMSS_2016"
+        "displayname": "HIMSS 2016",
+	"gpname": "HIMSS_2016: HIMSS 2016"
     },
     {
         "assignment": "Coference (Mkt Exp)",
@@ -428,8 +428,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "HIMSS 2017",
-	"number": "HIMSS_2017"
+        "displayname": "HIMSS 2017",
+	"gpname": "HIMSS_2017: HIMSS 2017"
     },
     {
         "assignment": "Coference (Mkt Exp)",
@@ -440,8 +440,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "IHI 2015",
-	"number": "IHI_2015"
+        "displayname": "IHI 2015",
+	"gpname": "IHI_2015: IHI 2015"
     },
     {
         "assignment": "Coference (Mkt Exp)",
@@ -452,8 +452,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "IHI 2016",
-	"number": "IHI_2016"
+        "displayname": "IHI 2016",
+	"gpname": "IHI_2016: IHI 2016"
     },
     {
         "assignment": "Coference (Mkt Exp)",
@@ -464,8 +464,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "IHI_2013",
-	"number": "IHI_2013"
+        "displayname": "IHI_2013",
+	"gpname": "IHI_2013: IHI_2013"
     },
     {
         "assignment": "Coference (Mkt Exp)",
@@ -476,8 +476,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "IHI_2014",
-	"number": "IHI_2014"
+        "displayname": "IHI_2014",
+	"gpname": "IHI_2014: IHI_2014"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -488,8 +488,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Infection Conference CAD",
-	"number": "CONF_CAD_INFECT"
+        "displayname": "Infection Conference CAD",
+	"gpname": "CONF_CAD_INFECT: Infection Conference CAD"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -500,8 +500,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Infection Conference US",
-	"number": "CONF_US_INFECT"
+        "displayname": "Infection Conference US",
+	"gpname": "CONF_US_INFECT: Infection Conference US"
     },
     {
         "assignment": "Z-Travel/Ent/Food",
@@ -512,7 +512,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Meals & Ent (without travel)"
+        "displayname": "Meals & Ent (without travel)",
+	"gpname": "MEALS_ENTERTNT: Meals & Ent (without travel)"
     },
     {
         "assignment": "Office Renovation",
@@ -523,8 +524,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Office Renovation",
-	"number": "RENOVATION"
+        "displayname": "Office Renovation",
+	"gpname": "RENOVATION: Office Renovation"
     },
     {
         "assignment": "Office/Dept Events",
@@ -535,8 +536,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Other Cross-Departmentl Events",
-	"number": "OTHER_EVENTS"
+        "displayname": "Other Cross-Departmentl Events",
+	"gpname": "OTHER_EVENTS: Other Cross-Departmentl Events"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -547,8 +548,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Patient Safety Congress 2016",
-	"number": "PATSAF_2016"
+        "displayname": "Patient Safety Congress 2016",
+	"gpname": "PATSAF_2016: Patient Safety Congress 2016"
     },
     {
         "assignment": "R&D",
@@ -559,8 +560,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Product Research",
-	"number": "PRO_RESEARCH"
+        "displayname": "Product Research",
+	"gpname": "PRO_RESEARCH: Product Research"
     },
     {
         "assignment": "Office/Dept Events",
@@ -571,8 +572,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Pub Nights",
-	"number": "PUB_NIGHTS"
+        "displayname": "Pub Nights",
+	"gpname": "PUB_NIGHTS: Pub Nights"
     },
     {
         "assignment": "Recruitment",
@@ -583,8 +584,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Recruitment",
-	"number": "RECRUITMENT"
+        "displayname": "Recruitment",
+	"gpname": "RECRUITMENT: Recruitment"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -595,8 +596,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Regional Conf: Australia/NZ",
-	"number": "CONF_AU/NZ"
+        "displayname": "Regional Conf: Australia/NZ",
+	"gpname": "CONF_AU/NZ: Regional Conf: Australia/NZ"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -607,8 +608,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Regional Conf: Canada",
-	"number": "CONF_CANADA"
+        "displayname": "Regional Conf: Canada",
+	"gpname": "CONF_CANADA: Regional Conf: Canada"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -619,9 +620,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Regional Conf: International",
-	"number": "CONF_INTERNTL"
-	
+        "displayname": "Regional Conf: International",
+	"gpname": "CONF_INTERNTL: Regional Conf: International"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -632,8 +632,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Regional Conf: US",
-	"number": "CONF_US"
+        "displayname": "Regional Conf: US",
+	"gpname": "CONF_US: Regional Conf: US"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -644,8 +644,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Regional Conf: US Central",
-	"number": "CONF_US_CENTRL"
+        "displayname": "Regional Conf: US Central",
+	"gpname": "CONF_US_CENTRL: Regional Conf: US Central"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -656,8 +656,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Regional Conf: US East",
-	"number": "CONF_US_EAST"
+        "displayname": "Regional Conf: US East",
+	"gpname": "CONF_US_EAST: Regional Conf: US East"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -668,8 +668,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Regional Conf: US Midwest",
-	"number": "CONF_US_MIDWST"
+        "displayname": "Regional Conf: US Midwest",
+	"gpname": "CONF_US_MIDWST: Regional Conf: US Midwest"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -680,8 +680,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Regional Conf: US South",
-	"number": "CONF_US_SOUTH"
+        "displayname": "Regional Conf: US South",
+	"gpname": "CONF_US_SOUTH: Regional Conf: US South"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -692,8 +692,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Regional Conf: US South East",
-	"number": "CONF_US_SOUT-SE"
+        "displayname": "Regional Conf: US South East",
+	"gpname": "CONF_US_SOUT-SE: Regional Conf: US South East"
     },
     {
         "assignment": "Conference (Mkt Exp)",
@@ -704,8 +704,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Regional Conf: US West, SW",
-	"number": "CONF_US_WST-SW"
+        "displayname": "Regional Conf: US West, SW",
+	"gpname": "CONF_US_WST-SW: Regional Conf: US West, SW"
     },
     {
         "assignment": "UGC",
@@ -716,8 +716,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "RL Connections CA",
-	"number": "CONNECTIONS_CA"
+        "displayname": "RL Connections CA",
+	"gpname": "CONNECTIONS_CA: RL Connections CA"
     },
     {
         "assignment": "UGC",
@@ -728,8 +728,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "RL Connections Canada",
-	"number": "CONNECTIONS_CAD"
+        "displayname": "RL Connections Canada",
+	"gpname": "CONNECTIONS_CAD: RL Connections Canada"
     },
     {
         "assignment": "UGC",
@@ -740,8 +740,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "RL Connections GA",
-	"number": "CONNECTIONS_GA"
+        "displayname": "RL Connections GA",
+	"gpname": "CONNECTIONS_GA: RL Connections GA"
     },
     {
         "assignment": "UGC",
@@ -752,8 +752,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "RL Connections IL",
-	"number": "CONNECTIONS_IL"
+        "displayname": "RL Connections IL",
+	"gpname": "CONNECTIONS_IL: RL Connections IL"
     },
     {
         "assignment": "UGC",
@@ -764,8 +764,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "RL Connections PA",
-	"number": "CONNECTIONS_PA"
+        "displayname": "RL Connections PA",
+	"gpname": "CONNECTIONS_PA: RL Connections PA"
     },
     {
         "assignment": "Office/Dept Events",
@@ -776,8 +776,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "RL Golf Tournament 2014",
-	"number": "GOLF_TRNMT_2014"
+        "displayname": "RL Golf Tournament 2014",
+	"gpname": "GOLF_TRNMT_2014: RL Golf Tournament 2014"
     },
     {
         "assignment": "Office/Dept Events",
@@ -788,8 +788,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "RL Golf Tournament 2015",
-	"number": "GOLF_TRNMT_2015"
+        "displayname": "RL Golf Tournament 2015",
+	"gpname": "GOLF_TRNMT_2015: RL Golf Tournament 2015"
     },
     {
         "assignment": "Office/Dept Events",
@@ -800,8 +800,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "RL Golf Tournament 2016",
-	"number": "GOLF_TRNMT_2016"
+        "displayname": "RL Golf Tournament 2016",
+	"gpname": "GOLF_TRNMT_2016: RL Golf Tournament 2016"
     },
     {
         "assignment": "Marketing Other",
@@ -812,8 +812,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Sales Campaigns",
-	"number": "SALES_CAMPAIGNS"
+        "displayname": "Sales Campaigns",
+	"gpname": "SALES_CAMPAIGNS: Sales Campaigns"
     },
     {
         "assignment": "Sales Trip",
@@ -824,8 +824,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Sales Retreat",
-	"number": "SALE_RETREAT"
+        "displayname": "Sales Retreat",
+	"gpname": "SALE_RETREAT: Sales Retreat"
     },
     {
         "assignment": "Sales Trip",
@@ -836,8 +836,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Sales Travel: Australia/NZ",
-	"number": "SALES_AU/NZ"
+        "displayname": "Sales Travel: Australia/NZ",
+	"gpname": "SALES_AU/NZ: Sales Travel: Australia/NZ"
     },
     {
         "assignment": "Sales Trip",
@@ -848,8 +848,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Sales Travel: Canada",
-	"number": "SALES_CANADA"
+        "displayname": "Sales Travel: Canada",
+	"gpname": "SALES_CANADA: Sales Travel: Canada"
     },
     {
         "assignment": "Sales Trip",
@@ -860,8 +860,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Sales Travel: International",
-	"number": "SALES_INTERNTL"
+        "displayname": "Sales Travel: International",
+	"gpname": "SALES_INTERNTL: Sales Travel: International"
     },
     {
         "assignment": "Sales Trip",
@@ -872,8 +872,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Sales Travel: US Central",
-	"number": "SALES_US_CENTRL"
+        "displayname": "Sales Travel: US Central",
+	"gpname": "SALES_US_CENTRL: Sales Travel: US Central"
     },
     {
         "assignment": "Sales Trip",
@@ -884,8 +884,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Sales Travel: US East",
-	"number": "SALES_US_EAST"
+        "displayname": "Sales Travel: US East",
+	"gpname": "SALES_US_EAST: Sales Travel: US East"
     },
     {
         "assignment": "Sales Trip",
@@ -896,8 +896,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Sales Travel: US Midwest",
-	"number": "SALES_US_MIDWST"
+        "displayname": "Sales Travel: US Midwest",
+	"gpname": "SALES_US_MIDWST: Sales Travel: US Midwest"
     },
     {
         "assignment": "Sales Trip",
@@ -908,8 +908,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Sales Travel: US West, SW",
-	"number": "SALES_WST-SW"
+        "displayname": "Sales Travel: US West, SW",
+	"gpname": "SALES_WST-SW: Sales Travel: US West, SW"
     },
     {
         "assignment": "Z-Travel/Ent/Food",
@@ -920,8 +920,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "Travel(can't allocate elsewhr)",
-	"number": "TRAVEL_GENERAL"
+        "displayname": "Travel(can't allocate elsewhr)",
+	"gpname": "TRAVEL_GENERAL: Travel(can't allocate elsewhr)"
     },
     {
         "assignment": "UGC",
@@ -932,8 +932,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "UGC 2014 San Diego",
-	"number": "UGC_2014"
+        "displayname": "UGC 2014 San Diego",
+	"gpname": "UGC_2014: UGC 2014 San Diego"
     },
     {
         "assignment": "UGC",
@@ -944,8 +944,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "UGC 2015 New Orleans",
-	"number": "UGC_2015"
+        "displayname": "UGC 2015 New Orleans",
+	"gpname": "UGC_2015: UGC 2015 New Orleans"
     },
     {
         "assignment": "UGC",
@@ -956,8 +956,8 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "UGC 2016 Toronto",
-	"number": "UGC_2016"
+        "displayname": "UGC 2016 Toronto",
+	"gpname": "UGC_2016: UGC 2016 Toronto"
     },
     {
         "assignment": "UGC",
@@ -968,7 +968,7 @@
             "Hotel",
             "Taxi"
         ],
-        "name": "UGCUS 2016",
-	"number": "UGCUS_2016"
+        "displayname": "UGCUS 2016",
+	"gpname": "UGCUS_2016: UGCUS 2016"
     }
 ]

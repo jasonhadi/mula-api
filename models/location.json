@@ -1,0 +1,19 @@
+[
+	{ "location": "Alberta", "code": "CAN GST" },
+	{ "location": "British Columbia", "code": "CAN GST" },
+	{ "location": "Manitoba", "code": "CAN GST" },
+	{ "location": "New Brunswick", "code": "CAN HST" },
+	{ "location": "Newfoundland", "code": "CAN HST" },
+	{ "location": "Northwest Territories", "code": "CAN GST" },
+	{ "location": "Nova Scotia", "code": "CAN HST" },
+	{ "location": "Nunavut", "code": "CAN GST" },
+	{ "location": "Ontario", "code": "O" },
+	{ "location": "Prince Edward Island", "code": "CAN HST" },
+	{ "location": "Quebec", "code": "CAN GST" },
+	{ "location": "Sasktchewan", "code": "CAN GST" },
+	{ "location": "Yukon", "code": "CAN GST" },
+	{ "location": "United States", "code": "U" },
+	{ "location": "Australia", "code": "Aus" },
+	{ "location": "New Zealand", "code": "NZ" },
+	{ "location": "Elsewhere", "code": "E" }
+]

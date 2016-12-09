@@ -33,6 +33,7 @@ var ProjectSchema = new mongoose.Schema({
     	clientName: String,
     	name: String,
     	description: String,
+    	receiptCount: { type: Number, default: 0 },
     	parentExpense: mongoose.Schema.Types.ObjectId,
 	created: { type: Date, default: Date.now },
 	submitted: { type: Boolean, default: false },
@@ -48,7 +49,7 @@ var ExpenseSchema = new mongoose.Schema({
 	oldestBillDate: { type: Date, default: Date.now },
     	receiptCount: { type: Number, default: 0 },
     	sheetCount: { type: Number, default: 0 },
-    	submitted: { type: Boolean, default: false },
+	number: Number,
 	sheet: {
 		data: Buffer,
     		contentType: String
@@ -63,13 +64,13 @@ var UserSchema = new mongoose.Schema({
     	username: String,
     	expCurrency: { type: String, default: 'CAD' },
     	reimbCurrency: { type: String, default: 'CAD' },
+	expenseCount: { type: Number, default: 1},
     	hasCorporateCard: { type: Boolean, default: false },
     	cardType: String,
     	bankType: String
 });   
 
 var FeedbackSchema = new mongoose.Schema({
-	username: String,
 	fullname: String,
 	submitted: { type: Date, default: Date.now },
     	feedback: String

@@ -3,17 +3,46 @@ var express = require('express'),
     gp = require('../controllers/gp');
 
 /**
- * @api {get} /gp/expenses Get all Projects
+ * @api {get} /gp/projects Get all Projects from GP
  * @apiGroup GP
  * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
- * @apiSuccess {String[]} projects String Array of Projects in GP.
+ * @apiSuccess {Object[]} projects Object Array of Projects from GP.
+ * @apiSuccess {String} projects.assignment Assignment parent of Project.
+ * @apiSuccess {String} projects.type Type of Project for sorting via questionaire.
+ * @apiSuccess {String} projects.displayname Display name of Project.
+ * @apiSuccess {String} projects.gpname GP name of Project required for GP spreadsheet.
+ * @apiSuccess {String[]} projects.costCategories String array of cost categories for the Project.
+ * @apiSuccess {String} projects.costCategories.costCategory  String name of cost category for the Project.
  * @apiSuccessExample {json} Example Response:
  * HTTP/1.1 200 OK
  * [
- *   "Sales Travel: International",
- *   "Product Research",
+ *   {
+ *     "_id": "5849d78744866fde70c4d4f5",
+ *     "assignment": "Conference (Mkt Exp)",
+ *     "type": "conference",
+ *     "displayname": "ASHP 2016",
+ *     "gpname": "ASHP_2016: ASHP 2016",
+ *     "costCategories": [
+ *       "Meals & Entertainment",
+ *       "Car Rentl, Parking, Toll",
+ *       "Hotel",
+ *       "Taxi"
+ *     ]
+ *   },
  *   ...
- *   "UGC 2016"
+ *   {
+ *     "_id": "5849d78744866fde70c4d4f6",
+ *     "assignment": "Alliances",
+ *     "type": "misc",
+ *     "displayname": "Alliance royalties, relat",
+ *     "gpname": "ALLIANCES: Alliance royalties, relat",
+ *     "costCategories": [
+ *       "Meals & Entertainment",
+ *       "Car Rentl, Parking, Toll",
+ *       "Hotel",
+ *       "Taxi"
+ *     ]
+ *   }
  * ]  
  */
 router.get('/projects', function(req, res) {
@@ -22,96 +51,32 @@ router.get('/projects', function(req, res) {
 	});	
 });
 /**
- * @api {get} /gp/assignments Get all Assignments
+ * @api {get} /gp/locations Get all Locations from GP
  * @apiGroup GP
  * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
- * @apiSuccess {String[]} assignments String Array list of Assignments in GP.
+ * @apiSuccess {Object[]} locations Array list of Locations in GP.
+ * @apiSuccess {String} locations.location String name of Location.
+ * @apiSuccess {String} locations.code GP code corresponding to Location.
  * @apiSuccessExample {json} Example Response:
  * HTTP/1.1 200 OK
  * [
- *   "Alliances",
- *   "Donations",
+ *   {
+ *     "_id": "5849d75b44866fde70c4d4e4",
+ *     "location": "Alberta",
+ *     "code": "CAN GST"
+ *   },
  *   ...
- *   "Office Overhead"
- * ]  
- */
-router.get('/assignments', function(req, res) {
-	gp.getAssignments(req, res, function(assignments) {
-		res.json(assignments);
-	});	
-});
-/**
- * @api {get} /gp/costcategories Get all Cost Categories
- * @apiGroup GP
- * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
- * @apiSuccess {String[]} costcategories String Array list of Cost Categories in GP.
- * @apiSuccessExample {json} Example Response:
- * HTTP/1.1 200 OK
- * [
- *   "Accounting",
- *   "Advertising",
- *   ...
- *   "Supplies"
- * ]  
- */
-router.get('/costcategories', function(req, res) {
-	gp.getCostCategories(req, res, function(costCategories) {
-		res.json(costCategories);
-	});	
-});
-/**
- * @api {get} /gp/mapping Get full GP mapping
- * @apiGroup GP
- * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
- * @apiSuccess {Object[]} gp Array list of projects in GP.
- * @apiSuccess {Object} project Project object from GP.
- * @apiSuccess {String} project.projectname Project name of Project from GP.
- * @apiSuccess {String} project.Assignment Assignment of Project from GP.
- * @apiSuccess {String[]} project.costCategories String Array of related Cost Categories of Project from GP.
- * @apiSuccessExample {json} Example Response:
- * HTTP/1.1 200 OK
- * [
- *    {
- *        "Assignment": "Client Billable",
- *        "Project Name": "Escrow Fees 8yrs 2010-2016",
- *        "costCategories": [
- *            "Communication     aa",
- *            "Meals & Entertainment",
- *            "Mileage",
- *            "Miscellaneous",
- *            "Z - RITC",
- *            "Supplies/Postage",
- *            "Z - GST/HST",
- *            "Airfare",
- *            "Car Rentl, Parking, Toll",
- *            "Hotel",
- *            "Taxi"
- *        ]
- *    },
- *    ...
- *    {
- *        "Assignment": "Client Billable",
- *        "Project Name": "Implement: R",
- *        "costCategories": [
- *            "Communication     aa",
- *            "Meals & Entertainment",
- *            "Mileage",
- *            "Miscellaneous",
- *            "Z - RITC",
- *            "Supplies/Postage",
- *            "Z - GST/HST",
- *            "Airfare",
- *            "Car Rentl, Parking, Toll",
- *            "Hotel",
- *            "Taxi"
- *        ]
- *    }
+ *   {
+ *     "_id": "5849d75b44866fde70c4d4e5",
+ *     "location": "Ontario",
+ *     "code": "O"
+ *   }
  * ]
  */
-router.get('/mapping', function(req, res) {
-	gp.getProjectsJson(req, res, function(projectJson) {
-		res.json(projectJson);
+router.get('/locations', function(req, res) {
+	gp.getLocations(req, res, function(locations) {
+		res.json(locations);
 	});	
-});	
+});
 
 module.exports = router;

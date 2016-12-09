@@ -65,7 +65,26 @@ router.route('/')
 			res.json(user);
 		});
 	});
-
+/**
+ * @api {post} /feedback Submit Feedback
+ * @apiGroup User
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
+ * @apiParam {String} feedback Feedback to be submitted.
+ * @apiParamExample {json} Content Example:
+ * {
+ * 	"feedback": "This app is ok."
+ * }
+ * @apiSuccess {String} fullname Full name of User who submitted Feedback.
+ * @apiSuccess {String} feedback The full text of the submitted Feedback.
+ * @apiSuccess {Date} submitted The date the feedback was submitted.
+ * @apiSuccessExample {json} Example Response:
+ * HTTP/1.1 200 OK
+ * {
+ *     "fullname" : "Jason Hadi",
+ *     "feedback" : "This is feedback special symbols &@#$%^&*.",
+ *     "submitted" : ISODate("2016-11-28T22:37:54.151Z"),
+ * }
+ */
 router.route('/feedback')
 	.post(function(req, res) {
 		userController.submitFeedback(req, res, function(feedback) {
