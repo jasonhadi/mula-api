@@ -89,6 +89,23 @@ router.route('/')
 	    });
     });
 
+router.route('/batch')
+  .post(function(req, res) {
+	  projectController.batchCreate(req, res, function(project) {
+		res.json(project);
+	  });
+  })
+  .put(function(req, res) {
+	  projectController.batchUpdate(req, res, function(project) {
+		res.json(project);
+	  });
+  })
+  .delete(function(req, res) {
+	  projectController.batchDelete(req, res, function(project) {
+		res.json(project);
+	  });
+  });
+
 router.param('projectid', function(req, res, next, projectid) {
 	projectController.verifyProjectId(req, res, next, projectid);
 });
@@ -207,11 +224,5 @@ router.route('/:projectid/receipts')
 	  });
   });
 
-router.route('/batch')
-  .post(function(req, res) {
-	  projectController.batchUpdate(req, res, function(project) {
-		res.json(project);
-	  });
-  });
 
 module.exports = router;
