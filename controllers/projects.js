@@ -1,6 +1,5 @@
 var mongoose = require('mongoose'), //mongo connection
-    bodyParser = require('body-parser'), //parses information from POST
-    methodOverride = require('method-override'), //used to manipulate POST
+    async = require('async'),
     Quixpense = require('../models/quixpense');
 
 function getProjects(req, res, next) {
@@ -46,11 +45,7 @@ function newProject(req, res, next) {
 function verifyProjectId(req, res, next, projectid) {
 	mongoose.model('Project').findById(projectid, function (err, project) {
 		if (err || !project) {
-			console.log(id + ' was not found');
-			res.status(404);
-			err = new Error('ID Not Found');
-			err.status = 404;
-			res.json({message : err.status  + ' ' + err});
+			res.status(500).json({message : '500 Project not found.'});
 		} else {
 			req.projectid = projectid;
 			next(); 
@@ -125,6 +120,49 @@ function getReceipts(req, res, next) {
 	});
 }
 
+function batchCreate(req, res, next) {
+	Quixpense.Project.create(req.body.projects, function(err, projects) {
+		if(err) { return next(err); }
+		else {
+			return next({
+				count: projects.length,
+				projects: projects,
+				status: 'success'
+			});
+		}
+	});
+}
+
+function batchDelete(req, res, next) {
+	Quixpense.Project.remove({_id: {$in: req.body.projects}}, function(err, r) {
+		if(err) { return next(err); }
+		else {
+			return next({
+				count: r.result.n,
+				status: 'success'
+			});
+		}
+	});
+}
+
+function batchUpdate(req, res, next) {
+	async.each(req.body.projects, function(p, callback) {
+		Quixpense.Project.findOneAndUpdate({_id: p._id}, {$set: p}, function(err, project) {
+			if(err) { callback(err); }
+			else { callback(); }
+		});
+	}, function(err) {
+		if(err) { return next(err); }
+		else {
+			return next({
+				count: req.body.projects.length,
+				status: 'success'
+			});
+		}
+	});
+}
+
+
 module.exports = {
 	getProjects: getProjects, 
 	newProject: newProject,
@@ -132,6 +170,9 @@ module.exports = {
 	getReceipts: getReceipts,
 	updateProject: updateProject,
 	deleteProject: deleteProject,
+	batchCreate: batchCreate,
+	batchDelete: batchDelete,
+	batchUpdate: batchUpdate,
 	verifyProjectId: verifyProjectId
 };
 

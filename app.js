@@ -48,6 +48,14 @@ app.use('/expenses', expenses);
 app.use('/projects', projects);
 app.use('/receipts', receipts);
 
+app.get('/', function(req, res, next) {
+	res.status(200).json({
+		info: "Mula API by RL Solutions",
+		version: process.env.npm_package_version,
+		contact: "jhadi@rlsolutions.com"
+	});
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
