@@ -19,7 +19,7 @@ function newReceipt(req, res, next) {
 	var date = req.body.date;
 	var description = req.body.description;
 	
-	gm(data, req.file.filename + ".jpg")
+	gm(data, req.file.filename)
 		.page(647, 792)
 		.toBuffer('PDF', function (err, pdf) {
 			if(err) {

@@ -9,7 +9,7 @@ var mongoose = require('mongoose'), //mongo connection
     Quixpense = require('../models/quixpense');
 
 //Mailer queue
-var exportStream = Quixpense.Export.find({ action: 'mail', submitted: {$gt: Date.now()} }).tailable().cursor();
+var exportStream = Quixpense.Export.find({ action: 'mail', submitted: {$gt: Date.now()} }).tailable(true, { awaitdata: true, tailableRetryInterval: 1000}).cursor();
 exportStream.on("data", function(data) {
     console.log(JSON.stringify(data));
     mailExpense(data);
