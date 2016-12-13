@@ -90,16 +90,112 @@ router.route('/')
     });
 
 router.route('/batch')
+/**
+ * @api {post} /projects/batch Batch create Projects
+ * @apiGroup Projects
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
+ * @apiParam {Object[]} projects Array of new Projects.
+ * @apiParam {String} projects.assignment Assignment of project.
+ * @apiParam {String} [projects.clientName] Name of client associated with the Project.
+ * @apiParam {String} projects.name Name associated with the Project.
+ * @apiParam {String} [projects.description] Description associated with the Project.
+ * @apiParamExample {json} Content Example:
+ * {
+ * 	"projects": [
+ * 		{
+ * 			"assignment": "UGC",
+ * 			"name": "UGC 2016 Toronto",
+ * 			"description": "Receipts for UGC 2016",
+ * 		}
+ * 	]
+ * }
+ * @apiSuccess {Number} count Number of Projects created.
+ * @apiSuccess {String="success","failed"} status Status of the batch Project CREATE action.
+ * @apiSuccess {Object[]} projects Array of new Projects.
+ * @apiSuccess {ObjectId} projects._id ID of the Project.
+ * @apiSuccess {ObjectId} projects.userId The User which created this Expense.
+ * @apiSuccess {String} projects.assignment Assignment of project.
+ * @apiSuccess {String} projects.clientName Name of client associated with the Project.
+ * @apiSuccess {String} projects.name Name of Project.
+ * @apiSuccess {String} projects.description Description of Project.
+ * @apiSuccess {Date} projects.created Creation date of the Project.
+ * @apiSuccess {Date} projects.lastUpdated Last updated date of the Project.
+ * @apiSuccessExample {json} Example Response:
+ * HTTP/1.1 200 OK
+ * {
+ * 	"count": 1,
+ * 	"status": "success",
+ * 	"projects": [ {
+ * 		"_id": "57c86fea2f4ac8860450e8a5",
+ * 		"userId": "57c5ed60cb9c234842d4d61f",
+ * 		"assignment": "UGC",
+ * 		"name": "UGC 2016 Toronto",
+ * 		"description": "Receipts for UGC 2016",
+ * 		"lastUpdated": "2016-09-01T18:14:02.408Z",
+ * 		"created": "2016-09-01T18:14:02.408Z"
+ * 	} ]
+ * }
+ */
   .post(function(req, res) {
 	  projectController.batchCreate(req, res, function(project) {
 		res.json(project);
 	  });
   })
+/**
+ * @api {put} /projects/batch Batch update Projects
+ * @apiGroup Projects
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
+ * @apiParam {Object[]} projects Array of Projects.
+ * @apiParam {ObjectId} projects._id ID of the Project.
+ * @apiParam {String} [projects.assignment] Assignment of project.
+ * @apiParam {String} [projects.clientName] Name of client associated with the Project.
+ * @apiParam {String} [projects.name] Name associated with the Project.
+ * @apiParam {String} [projects.description] Description associated with the Project.
+ * @apiParamExample {json} Content Example:
+ * {
+ * 	"projects": [
+ * 		{
+ * 			"_id": "57c86fea2f4ac8860450e8a5",
+ * 			"assignment": "UGC",
+ * 			"name": "UGC 2016 Toronto",
+ * 			"description": "Receipts for UGC 2016",
+ * 		}
+ * 	]
+ * }
+ * @apiSuccess {Number} count Number of Projects updated.
+ * @apiSuccess {String="success","failed"} status Status of the batch Project UPDATE action.
+ * @apiSuccessExample {json} Example Response:
+ * HTTP/1.1 200 OK
+ * {
+ * 	"count": 1,
+ * 	"status": "success",
+  * }
+ */
   .put(function(req, res) {
 	  projectController.batchUpdate(req, res, function(project) {
 		res.json(project);
 	  });
   })
+/**
+ * @api {delete} /projects/batch Batch delete Projects
+ * @apiGroup Projects
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
+ * @apiParam {ObjectId[]} projects Array of Project IDs.
+ * @apiParamExample {json} Content Example:
+ * {
+ * 	"projects": [
+ * 		"57c86fea2f4ac8860450e8a5"
+ * 	]
+ * }
+ * @apiSuccess {Number} count Number of Projects deleted.
+ * @apiSuccess {String="success","failed"} status Status of the batch Project DELETE action.
+ * @apiSuccessExample {json} Example Response:
+ * HTTP/1.1 200 OK
+ * {
+ * 	"count": 1,
+ * 	"status": "success",
+  * }
+ */
   .delete(function(req, res) {
 	  projectController.batchDelete(req, res, function(project) {
 		res.json(project);
