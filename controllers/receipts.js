@@ -8,45 +8,66 @@ var mongoose = require('mongoose'), //mongo connection
 function newReceipt(req, res, next) {
 	var userid = req.user.id;
 
-	var data = fs.readFileSync(req.file.path);
-	var contentType = req.file.mimetype;
+	if(req.file) {
+		var data = fs.readFileSync(req.file.path);
+		var contentType = req.file.mimetype;
 
-	var receiptId = mongoose.Types.ObjectId();
-	var parentProject = req.body.parentProject;
-	var where = req.body.where;
-	var type = req.body.type;
-    	var amount = req.body.amount;
-	var date = req.body.date;
-	var description = req.body.description;
-	
-	gm(data, req.file.filename)
-		.page(647, 792)
-		.toBuffer('PDF', function (err, pdf) {
-			if(err) {
-				err = new Error("Could not convert image to pdf!");
-				err.status = 500;
-				res.status(500).json({message : err.status  + ' ' + err});
-			} else { 
-				Quixpense.Receipt.create({
-					_id: receiptId,
-					userId: userid,
-					parentProject: parentProject,
-					where: where,
-					type: type,
-					amount: amount,
-					date: date,
-					description: description,
-					img: {
-						data: pdf,
-						contentType: 'application/pdf'
-					}
+		var receiptId = mongoose.Types.ObjectId();
+		var parentProject = req.body.parentProject;
+		var where = req.body.where;
+		var type = req.body.type;
+    		var amount = req.body.amount;
+		var date = req.body.date;
+		var description = req.body.description;
+		
+		gm(data, req.file.filename)
+			.page(647, 792)
+			.toBuffer('PDF', function (err, pdf) {
+				if(err) {
+					err = new Error("Could not convert image to pdf!");
+					err.status = 500;
+					res.status(500).json({message : err.status  + ' ' + err});
+				} else { 
+					Quixpense.Receipt.create({
+						_id: receiptId,
+						userId: userid,
+						parentProject: parentProject,
+						where: where,
+						type: type,
+						amount: amount,
+						date: date,
+						description: description,
+						img: {
+							data: pdf,
+							contentType: 'application/pdf'
+						}
 
-				}, function (err, receipt) {
-					receipt.img = undefined;
-					next(receipt);
-				});
-			}
+					}, function (err, receipt) {
+						receipt.img = undefined;
+						next(receipt);
+					});
+				}
+			});
+	} else {
+		var parentProject = req.body.parentProject;
+		var where = req.body.where;
+		var type = req.body.type;
+    		var amount = req.body.amount;
+		var date = req.body.date;
+		var description = req.body.description;
+
+		Quixpense.Receipt.create({
+			userId: userid,
+			parentProject: parentProject,
+			where: where,
+			type: type,
+			amount: amount,
+			date: date,
+			description: description
+		}, function (err, receipt) {
+			next(receipt);
 		});
+	}
 }
 
 function updateReceipt(req, res, next) {
