@@ -20,7 +20,7 @@ router.use(methodOverride(function(req, res){
 
 router.route('/')
 /**
- * @api {get} /projects Get all Receipts 
+ * @api {get} /receipts Get all Receipts 
  * @apiGroup Receipts
  * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
  * @apiSuccess {Object[]} receipts Array list of Receipts for the User.
@@ -109,8 +109,39 @@ router.route('/')
 	    });
     });
 
-router.post('/batch', function(req, res) {
-
+/**
+ * @api {get} /receipts/uncategorized Get all uncategorized Receipts 
+ * @apiGroup Receipts
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
+ * @apiSuccess {Object[]} receipts Array list of Receipts for the User.
+ * @apiSuccess {ObjectId} receipts._id ID of the Receipt.
+ * @apiSuccess {ObjectId} receipts.userId The User which created this Receipt.
+ * @apiSuccess {String} receipts.type Type of Receipt.
+ * @apiSuccess {String="O","U","Can HST", "Can GST"} receipts.where Location code of Receipt.
+ * @apiSuccess {Number} receipts.amount Value of Receipt.
+ * @apiSuccess {String} [receipts.description] Description of Receipt.
+ * @apiSuccess {Date} receipts.created Creation date of the Receipt.
+ * @apiSuccess {Date} receipts.created Creation date of the Receipt.
+ * @apiSuccess {Date} receipts.date Date marked on Receipt.
+ * @apiSuccessExample {json} Example Response:
+ * HTTP/1.1 200 OK
+ * [
+ *	{
+ *		"_id": "57c8704c2f4ac8860450e8a8",
+ *		"userId": "57c5ed60cb9c234842d4d61f",
+ *		"where": "O",
+ *		"type": "Taxi",
+ *		"amount": 20.52,
+ *		"lastUpdated": "2016-09-01T18:15:41.130Z",
+ *		"created": "2016-09-01T18:15:41.130Z",
+ *		"date": "2016-09-01T20:50:23.676Z",
+ *	}
+ * ]
+ */
+router.get('/uncategorized', function(req, res) {
+	receiptController.getUncategorized(req, res, function(receipts) {
+		res.json(receipts);	    
+	});
 });
 
 router.route('/:receiptid')

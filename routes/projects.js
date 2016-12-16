@@ -312,7 +312,38 @@ router.route('/:projectid')
 		res.json(project);
 	  });
   });
-
+/**
+ * @api {get} /projects/:projectid/receipts Get Receipts by Project ID
+ * @apiGroup Projects
+ * @apiHeader {String} Authorization Authorization token for the User. See /auth for usage.
+ * @apiParam {ObjectId} projectid Project ID of the Project.
+ * @apiSuccess {Object[]} receipts Array list of Receipts.
+ * @apiSuccess {ObjectId} receipts._id ID of the Receipt.
+ * @apiSuccess {ObjectId} receipts.userId The User which created this Receipt.
+ * @apiSuccess {ObjectId} receipts.parentProject The Project ID which this Receipt is categorized under.
+ * @apiSuccess {String} receipts.type Type of Receipt.
+ * @apiSuccess {String="O","U","Can HST", "Can GST"} receipts.where Location code of Receipt.
+ * @apiSuccess {Number} receipts.amount Value of Receipt.
+ * @apiSuccess {String} [receipts.description] Description of Receipt.
+ * @apiSuccess {Date} receipts.created Creation date of the Receipt.
+ * @apiSuccess {Date} receipts.created Creation date of the Receipt.
+ * @apiSuccess {Date} receipts.date Date marked on Receipt.
+ * @apiSuccessExample {json} Example Response:
+ * HTTP/1.1 200 OK
+ * [
+ *	{
+ *		"_id": "57c8704c2f4ac8860450e8a8",
+ *		"userId": "57c5ed60cb9c234842d4d61f",
+ *		"where": "O",
+ *		"type": "Taxi",
+ *		"amount": 20.52,
+ *		"parentProject": "57c86ff12f4ac8860450e8a6",
+ *		"lastUpdated": "2016-09-01T18:15:41.130Z",
+ *		"created": "2016-09-01T18:15:41.130Z",
+ *		"date": "2016-09-01T20:50:23.676Z",
+ *	}
+ * ]
+ */
 router.route('/:projectid/receipts')
   .get(function(req, res) {
 	  projectController.getReceipts(req, res, function(receipts) {

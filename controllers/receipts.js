@@ -200,11 +200,19 @@ function getReceiptImg(req, res, next) {
 	});
 }
 
+function getUncategorized(req, res, next) {
+	Quixpense.Receipt.find({ userId: req.user.id, parentProject: null, submitted: false }, '-img -submitted -__v', function(err, receipts) {
+		if (err) { return res.status(500).json(err); }
+		else { return next(receipts); }     
+	});
+}
+
 module.exports = {
-	newReceipt: newReceipt,
+	deleteReceipt: deleteReceipt,
 	getReceipt: getReceipt,
-	getReceipts: getReceipts,
 	getReceiptImg: getReceiptImg,
-	updateReceipt: updateReceipt,
-	deleteReceipt: deleteReceipt
+	getReceipts: getReceipts,
+	getUncategorized: getUncategorized,
+	newReceipt: newReceipt,
+	updateReceipt: updateReceipt
 };
