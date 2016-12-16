@@ -14,6 +14,7 @@ function newReceipt(req, res, next) {
 	var receiptId = mongoose.Types.ObjectId();
 	var parentProject = req.body.parentProject;
 	var where = req.body.where;
+	var whereDisplayName = req.body.whereDisplayName;
 	var type = req.body.type;
     	var amount = req.body.amount;
 	var date = req.body.date;
@@ -32,6 +33,7 @@ function newReceipt(req, res, next) {
 					userId: userid,
 					parentProject: parentProject,
 					where: where,
+					whereDisplayName: whereDisplayName,
 					type: type,
 					amount: amount,
 					date: date,
@@ -68,6 +70,7 @@ function updateReceipt(req, res, next) {
 			if(req.body.projectId) receipt.projectId = req.body.projectId;
 			if(req.body.description) receipt.description = req.body.description;
 			if(req.body.where) receipt.where = req.body.where;
+			if(req.body.whereDisplayName) receipt.whereDisplayName = req.body.whereDisplayName;
 			if(req.body.type) receipt.type = req.body.type;
     			if(req.body.amount) receipt.amount = req.body.amount;
 			if(req.body.created) receipt.created = req.body.created;
