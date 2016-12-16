@@ -14,6 +14,7 @@ var ReceiptSchema = new mongoose.Schema({
     	projectNumber: Number,
 	sheetNumber: Number,
     	where: String,
+    	whereDisplayName: String,
     	type: String,
     	amount: Number,
 	date: { type: Date, default: Date.now },
