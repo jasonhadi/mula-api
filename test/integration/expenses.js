@@ -1,4 +1,4 @@
-process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = 'development';
 
 var chai = require('chai');
 var chaiHttp = require('chai-http');
@@ -82,7 +82,7 @@ describe('Expenses', function() {
 				res.body.where.should.equal('O');
 				res.body.type.should.equal('Taxi');
 				res.body.amount.should.equal(12.50);
-				res.body.date.should.equal('2016-11-01T04:00:00.000Z');
+				res.body.date.should.equal('2016/11/01');
 				res.body.description.should.equal('Receipt 1.');
 
 				receiptid1 = res.body._id;
@@ -172,7 +172,7 @@ describe('Expenses', function() {
 				res.body.where.should.equal('O');
 				res.body.type.should.equal('Hotel');
 				res.body.amount.should.equal(193.50);
-				res.body.date.should.equal('2016-11-02T04:00:00.000Z');
+				res.body.date.should.equal('2016/11/02');
 				res.body.description.should.equal('Receipt 2.');
 				res.body.parentProject.should.equal(projectid2);
 
@@ -229,7 +229,7 @@ describe('Expenses', function() {
 				res.body.where.should.equal('O');
 				res.body.type.should.equal('Meal & Entertainmt');
 				res.body.amount.should.equal(93.80);
-				res.body.date.should.equal('2016-11-02T04:00:00.000Z');
+				res.body.date.should.equal('2016/11/02');
 				res.body.description.should.equal('Receipt 3.');
 
 				receiptid3 = res.body._id;

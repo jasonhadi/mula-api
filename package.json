@@ -1,6 +1,6 @@
 {
   "name": "quixpense-server",
-  "version": "0.1.83",
+  "version": "0.1.85",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",

@@ -111,7 +111,7 @@ function numberExpenses(req, res, next) {
 						currentProject = 1;
 						projectSave = true;
 					} 
-					if(oldestBillDate.isAfter(receipt.date)) oldestBillDate = moment(receipt.date);
+					if(oldestBillDate.isAfter(moment(receipt.date, "YYYY/MM/DD"))) oldestBillDate = moment(receipt.date, "YYYY/MM/DD");
 
 					if(projectSave) {
 						projectSave = false;
