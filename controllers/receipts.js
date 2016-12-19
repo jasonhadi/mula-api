@@ -99,7 +99,10 @@ function updateReceipt(req, res, next) {
 			if(req.body.created) receipt.created = req.body.created;
 			if(req.body.lastUpdated) receipt.lastUpdated = new Date();
 			if(req.body.date) receipt.date = req.body.date;
-			if(req.body.parentProject) receipt.parentProject = req.body.parentProject;
+			if(req.body.parentProject) { 
+				if(req.body.parentProject === 'null') receipt.parentProject = undefined;
+				else receipt.parentProject = req.body.parentProject;
+			}
 
 			if(req.file) { 
 				var data = fs.readFileSync(req.file.path);
