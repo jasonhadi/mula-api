@@ -84,6 +84,11 @@ function numberExpenses(req, res, next) {
 	var projects = req.body.projects;
 	var expenseId = mongoose.Types.ObjectId();
 	var userId = req.user.id;
+	
+	//For single projects, convert string to array
+	if(typeof projects === 'string') {
+		projects = [ projects ];
+	}
 
 	Quixpense.Project.update({_id: { $in: projects.map(mongoose.Types.ObjectId)}, submitted: false}, { row: [] }, { multi: true } , function(err) {
 		Quixpense.Receipt.find({parentProject: { $in: projects.map(mongoose.Types.ObjectId)}, submitted: false }, '-img')
