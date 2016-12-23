@@ -68,7 +68,7 @@ describe('Receipts', function() {
 				res.body.where.should.equal('O');
 				res.body.type.should.equal('Taxi');
 				res.body.amount.should.equal(12.50);
-				res.body.date.should.equal('2016-12-01T05:00:00.000Z');
+				res.body.date.should.equal('2016/12/01');
 				res.body.description.should.equal('Test description.');
 
 				receiptid = res.body._id;
@@ -113,7 +113,7 @@ describe('Receipts', function() {
 				res.body.where.should.equal('U');
 				res.body.type.should.equal('Hotel');
 				res.body.amount.should.equal(120.50);
-				res.body.date.should.equal('2016-11-01T04:00:00.000Z');
+				res.body.date.should.equal('2016/11/01');
 				res.body.description.should.equal('Test update.');
 
 				done();
