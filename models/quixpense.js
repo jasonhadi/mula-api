@@ -6,6 +6,8 @@ var ReceiptSchema = new mongoose.Schema({
     	userId: mongoose.Schema.Types.ObjectId,
 	img: {
 		data: Buffer,
+    		imgdata: Buffer,
+    		mimetype: String,
     		contentType: String
 	},
     	parentProject: mongoose.Schema.Types.ObjectId,

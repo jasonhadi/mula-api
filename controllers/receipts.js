@@ -41,6 +41,8 @@ function newReceipt(req, res, next) {
 						description: description,
 						img: {
 							data: pdf,
+							imgdata: data,
+							mimetype: req.file.mimetype,
 							contentType: 'application/pdf'
 						}
 
