@@ -214,13 +214,15 @@ function generateExpensePdf(expenseId, userId, next) {
 					 .exec(function (err, receipts) {
 						async.each(receipts,
 							function(receipt, callback) {
-								var img64 = receipt.img.data;
+								var img64 = receipt.img.imgdata;
 								var img = new Buffer(img64, 'base64');
 								var fn = path + "/" + receipt.receiptNumber + ".pdf";
 								gm(img)
+									.resize(50, 50, "%")
+									.out('-undercolor', 'white')
 									.font("Courier-Bold")
-									.gravity("North")
-									.fontSize("50")
+									.gravity("NorthEast")
+									.fontSize("75")
 									.drawText(0, 100, "RECEIPT " + receipt.receiptNumber)
 									.write(fn, function (err) {
 										if(err) { console.log(err); }	
