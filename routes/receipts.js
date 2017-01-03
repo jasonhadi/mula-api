@@ -271,7 +271,7 @@ router.route('/:receiptid')
 	  });
   });
 
-router.route('/:receiptid/img')
+router.route('/:receiptid/pdf')
   .get(function(req, res) {
 	  receiptController.getReceiptImg(req, res, function(receipt) {
 		  var img64 = receipt.img.data;
@@ -284,5 +284,20 @@ router.route('/:receiptid/img')
 		  res.end(img);
 	  });
   });
+
+router.route('/:receiptid/img')
+  .get(function(req, res) {
+	  receiptController.getReceiptImg(req, res, function(receipt) {
+		  var img64 = receipt.img.imgdata;
+		  var img = new Buffer(img64, 'base64');
+
+		  res.writeHead(200, {
+			  'Content-Type': receipt.img.mimetype,
+			  'Content-Length': img.length
+		  });
+		  res.end(img);
+	  });
+  });
+
 
 module.exports = router;
