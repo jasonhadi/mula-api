@@ -42,7 +42,9 @@ function newReceipt(req, res, next) {
 						img: {
 							data: pdf,
 							imgdata: data,
-							mimetype: req.file.mimetype,
+							//mimetype: req.file.mimetype,
+							//TODO: Fix mimetype being sent from app
+							mimetype: 'image/png',
 							contentType: 'application/pdf'
 						}
 
