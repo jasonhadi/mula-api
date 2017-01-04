@@ -39,7 +39,7 @@ module.exports = function(passport) {
 					username: 'admin',
 					firstname: 'Admin',
 					lastname: 'User',
-					email: 'admin@admin.rl',
+					email: 'jhadi@rlsolutions.com',
 					expCurrency: user.expCurrency,
 					reimbCurrency: user.reimbCurrency
 				};
