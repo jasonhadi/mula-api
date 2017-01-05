@@ -222,7 +222,7 @@ function generateExpensePdf(expenseId, userId, next) {
 									.out('-undercolor', 'white')
 									.font("Courier-Bold")
 									.gravity("NorthEast")
-									.fontSize("75")
+									.fontSize("18")
 									.drawText(0, 100, "RECEIPT " + receipt.receiptNumber)
 									.write(fn, function (err) {
 										if(err) { console.log(err); }	
