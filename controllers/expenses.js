@@ -294,21 +294,23 @@ function mailExpense(params) {
 			sheet = expense.sheet.data;
 			contentType = expense.sheet.contentType;
 
+			var attachments = [{
+				filename: 'receipts.pdf',
+				content: new Buffer(sheet, contentType)
+			}];
+			for(var i = 1; i < expense.sheetCount + 1; i++) {
+				attachments.push({
+					filename: 'expenses-' + i + '.xlsm',
+					path: 'export/' + params.expenseId + '-' + i + '.xlsm'
+				});
+			}
+
 			var mailOptions = {
 				from: '"Mula" <mula@rlsolutions.com>',
 				to: params.email,
 				subject: 'Your expense has been exported! 💰💰',
-				text: 'This is a test message from Mula!',
-				attachments: [
-					{
-						filename: 'receipts.pdf',
-						content: new Buffer(sheet, contentType)
-					},
-					{
-						filename: 'expenses.xlsm',
-						path: 'export/' + params.expenseId + '.xlsm'
-					}
-				]
+				text: 'Your expenses have been compiled! Please upload the following attachments to GP.',
+				attachments: attachments
 			};
 		
 			transporter.sendMail(mailOptions, function(err, info) {
