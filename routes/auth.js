@@ -39,17 +39,18 @@ module.exports = function(passport) {
 				userController.getUserByUsername(req.user.sAMAccountName, function(user) {
 					var userObj = {
 						id: user._id,
-						username: req.user.sAMAccountName,
-						firstname: req.user.givenName,
-						lastname: req.user.sn,
-						email: req.user.mail,
-						expCurrency: user.expCurrency,
-						reimbCurrency: user.reimbCurrency
+					username: req.user.sAMAccountName,
+					firstname: req.user.givenName,
+					lastname: req.user.sn,
+					email: req.user.mail,
+					expCurrency: user.expCurrency,
+					reimbCurrency: user.reimbCurrency
 					};
 					return res.json({ token: jwt.sign(userObj, config.jwtsecret) }); 
 				});
 			}
 		});
+
 	});
 	return router;
 };
