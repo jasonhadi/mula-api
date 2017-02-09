@@ -44,69 +44,78 @@ function getLocations(req, res, next) {
 //	next(json);
 //}
 //
-//function getProjectsJson(req, res, next) {
-//	function generate(assignments, costCategories, projects, next) {
-//		assignments.forEach(function(a) {
-//			costCategory = mapCostCategoriestoAssignment(costCategories, a.Assignment);
-//
-//			//Transportation & Hotel Replacement
-//			thIndex = costCategory.indexOf('Transportation & Hotel');
-//			if(thIndex > -1) {
-//				costCategory.pop(thIndex);
-//				costCategory.push('Airfare', 'Car Rentl, Parking, Toll', 'Hotel', 'Taxi');
-//			}
-//
-//			//Remove duplicate - sometimes Meals & Ent are there twice
-//			costCategory = removeDuplicates(costCategory);
-//			mapCostCategorytoProject(costCategory, a.Assignment, projects);	
-//		});	
-//		next(projects);
-//	}
-//
-//	function removeDuplicates(a) {
-//		return a.filter( function(item, index, inputArray) {
-//			return inputArray.indexOf(item) == index;
-//		});
-//	}
-//
-//	function mapCostCategoriestoAssignment(costCategories, assignment) {
-//		return costCategories.filter(function(c) { 
-//			return (c.Assignment === assignment);
-//		}).map(function(c) {
-//			if(c['Cost Category Name'] === 'Mileage') return 'Mileage (KM)';
-//			return c['Cost Category Name'];
-//		});
-//	}
-//
-//	function mapCostCategorytoProject(costCategory, assignment, projects) {
-//		return projects.map(function(p) {
-//			if(p.Assignment === assignment) {
-//				p.costCategories = costCategory;
-//			}
-//			return p;
-//		});
-//	}
-//
-//	async.parallel({
-//		projects: function(callback) {
-//			mssql.query("SELECT [Project Name],[Assignment] FROM [RLINC].[dbo].[_projectList] WHERE [Project Name] NOT LIKE 'Expenses%'", function(err, recordset) {
-//				callback(err, recordset);
-//			});
-//		},
-//		assignments: function(callback) {
-//			mssql.query("SELECT DISTINCT [Assignment] FROM [RLINC].[dbo].[_costCategoryByAssignment]", function(err, recordset) {
-//				callback(err, recordset);
-//			});
-//		},
-//		costCategories: function(callback) {
-//			mssql.query("SELECT [Assignment], [Cost Category Name] FROM [RLINC].[dbo].[_costCategoryByAssignment]", function(err, recordset) {
-//				callback(err, recordset);
-//			});
-//		}
-//	}, function(err, results) {
-//		generate(results.assignments, results.costCategories, results.projects, next);
-//	});
-//}
+function getProjectsJson(req, res, next) {
+	function generate(assignments, costCategories, projects, next) {
+		assignments.forEach(function(a) {
+			costCategory = mapCostCategoriestoAssignment(costCategories, a.Assignment);
+
+			//Transportation & Hotel Replacement
+			thIndex = costCategory.indexOf('Transportation & Hotel');
+			if(thIndex > -1) {
+				costCategory.pop(thIndex);
+				costCategory.push('Airfare', 'Car Rentl, Parking, Toll', 'Hotel', 'Taxi');
+			}
+
+			//Remove duplicate - sometimes Meals & Ent are there twice
+			costCategory = removeDuplicates(costCategory);
+			mapCostCategorytoProject(costCategory, a.Assignment, projects);	
+		});	
+
+		next(projects);
+	}
+
+	function removeDuplicates(a) {
+		return a.filter( function(item, index, inputArray) {
+			return inputArray.indexOf(item) == index;
+		});
+	}
+
+	function mapCostCategoriestoAssignment(costCategories, assignment) {
+		return costCategories.filter(function(c) { 
+			return (c.Assignment === assignment);
+		}).map(function(c) {
+			if(c['Cost Category Name'] === 'Mileage') return 'Mileage (KM)';
+			return c['Cost Category Name'];
+		});
+	}
+
+	function mapCostCategorytoProject(costCategory, assignment, projects) {
+		return projects.map(function(p) {
+			if(p.Assignment === assignment) {
+				p.costCategories = costCategory;
+			}
+			var a = p['Project Number'] + ': ' + p['Project Name'];
+			p.gpName = a;
+			p.assignment = p.Assignment;
+			p.displayName = p['Project Name'];
+			delete p['Project Name'];
+			delete p['Project Number'];
+
+
+			return p;
+		});
+	}
+
+	async.parallel({
+		projects: function(callback) {
+			mssql.query("SELECT [Project Name],[Project Number],[Assignment] FROM [RLINC].[dbo].[_projectList] WHERE [Project Name] NOT LIKE 'Expenses%'", function(err, recordset) {
+				callback(err, recordset);
+			});
+		},
+		assignments: function(callback) {
+			mssql.query("SELECT DISTINCT [Assignment] FROM [RLINC].[dbo].[_costCategoryByAssignment]", function(err, recordset) {
+				callback(err, recordset);
+			});
+		},
+		costCategories: function(callback) {
+			mssql.query("SELECT [Assignment], [Cost Category Name] FROM [RLINC].[dbo].[_costCategoryByAssignment]", function(err, recordset) {
+				callback(err, recordset);
+			});
+		}
+	}, function(err, results) {
+		generate(results.assignments, results.costCategories, results.projects, next);
+	});
+}
 
 module.exports = {
 	//getCostCategories: getCostCategories,
@@ -114,6 +123,7 @@ module.exports = {
 	//getProjectsJson: getProjectsJson,
 	//getProjectsJson: getPremadeJson,
 	//getAssignments: getAssignments
+	test: getProjectsJson,
 	getProjects: getProjects,
 	getLocations: getLocations
 };
