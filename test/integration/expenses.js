@@ -64,7 +64,7 @@ describe('Expenses', function() {
 			.field('description', 'Receipt 1.')
 			.field('where', 'O')
 			.field('type', 'Taxi')
-			.field('amount', 12.50)
+			.field('amount', 12)
 			.field('date', '2016/11/01')
 			.attach('img', imgpath1)
 			.end(function(err, res) {
@@ -81,7 +81,7 @@ describe('Expenses', function() {
 
 				res.body.where.should.equal('O');
 				res.body.type.should.equal('Taxi');
-				res.body.amount.should.equal(12.50);
+				res.body.amount.should.equal(12);
 				res.body.date.should.equal('2016/11/01');
 				res.body.description.should.equal('Receipt 1.');
 
